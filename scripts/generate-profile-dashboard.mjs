@@ -333,7 +333,7 @@ const svg = `<svg width="1200" height="1060" viewBox="0 0 1200 1060" fill="none"
     <text class="accent" x="482" y="104" font-size="16" text-anchor="end">${privateContributions > 0 ? fmt(privateContributions) : "Token gated"}</text>
     <text class="muted" x="26" y="140" font-size="15">Public Repositories</text>
     <text class="accent" x="482" y="140" font-size="16" text-anchor="end">${fmt(publicRepos)}</text>
-    <text class="muted" x="26" y="176" font-size="15">Visible Owner Repositories</text>
+    <text class="muted" x="26" y="176" font-size="15">Visible Repositories</text>
     <text class="accent" x="482" y="176" font-size="16" text-anchor="end">${fmt(visibleRepos)}</text>
     <text class="muted" x="26" y="212" font-size="15">Longest Contribution Streak</text>
     <text class="accent" x="482" y="212" font-size="16" text-anchor="end">${fmt(longestStreak)} days</text>
