@@ -305,6 +305,21 @@ const totalIssues = collection.totalIssueContributions || issueSeries.reduce((su
 const languages = languageStats(repos);
 const updated = now.toISOString().slice(0, 10);
 
+const tokenLooksUnderScoped =
+  process.env.GITHUB_ACTIONS === "true" &&
+  !process.env.PROFILE_STATS_TOKEN &&
+  totalContributions > 500 &&
+  totalPrs < 50 &&
+  totalIssues < 50;
+
+if (tokenLooksUnderScoped) {
+  console.warn(
+    `Skipping dashboard update: default GITHUB_TOKEN appears under-scoped for ${USERNAME} profile-wide PR/issue stats. ` +
+      "Add PROFILE_STATS_TOKEN to enable full automatic updates.",
+  );
+  process.exit(0);
+}
+
 const svg = `<svg width="1200" height="1060" viewBox="0 0 1200 1060" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
   <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, activity overview, and AI infrastructure positioning.</desc>
