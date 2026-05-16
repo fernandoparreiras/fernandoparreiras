@@ -492,9 +492,9 @@
     <g transform="translate(484 0)">
       <rect class="mini-card" x="0" y="0" width="216" height="158" rx="14"/>
       <text class="muted" x="20" y="32" font-size="13">Issues</text>
-      <text class="title" x="20" y="68" font-size="30">714</text>
+      <text class="title" x="20" y="68" font-size="30">701</text>
       <text fill="#facc15" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">authored</text>
-      <polyline points="22.0,132.8 37.6,132.6 53.3,133.6 68.9,133.9 84.5,132.8 100.2,132.9 115.8,126.5 131.5,133.8 147.1,133.8 162.7,129.7 178.4,92.0 194.0,109.0" fill="none" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,133.2 37.6,132.6 53.3,133.6 68.9,133.9 84.5,132.9 100.2,133.0 115.8,126.5 131.5,133.8 147.1,133.8 162.7,130.8 178.4,92.0 194.0,108.9" fill="none" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
     
     <g transform="translate(726 0)">

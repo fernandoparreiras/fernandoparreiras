@@ -103,6 +103,37 @@ async function searchCount(query) {
   return payload?.total_count ?? 0;
 }
 
+async function monthlyContributionCounts(months) {
+  const query = `
+  query MonthlyContributionCounts($login: String!, $from: DateTime!, $to: DateTime!) {
+    user(login: $login) {
+      contributionsCollection(from: $from, to: $to) {
+        totalIssueContributions
+        totalPullRequestContributions
+      }
+    }
+  }`;
+
+  const issues = [];
+  const prs = [];
+  for (const month of months) {
+    const { start, end } = monthRange(month);
+    const fromDate = `${start}T00:00:00Z`;
+    const endDate = new Date(`${end}T00:00:00Z`);
+    endDate.setUTCSeconds(endDate.getUTCSeconds() - 1);
+    const payload = await githubGraphql(query, {
+      login: USERNAME,
+      from: fromDate,
+      to: endDate.toISOString(),
+    });
+    const collection = payload.user.contributionsCollection;
+    issues.push(collection.totalIssueContributions);
+    prs.push(collection.totalPullRequestContributions);
+  }
+
+  return { issues, prs };
+}
+
 function escapeXml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -245,13 +276,18 @@ const publicProfile = await githubRest(`/users/${USERNAME}`);
 
 const months = lastMonths(12);
 const contributionSeries = monthlyContributionSeries(days, months);
-const prSeries = [];
-const issueSeries = [];
+const monthlyCounts = await monthlyContributionCounts(months);
+let prSeries = monthlyCounts.prs;
+let issueSeries = monthlyCounts.issues;
 
-for (const m of months) {
-  const { start, end } = monthRange(m);
-  prSeries.push(await searchCount(`author:${USERNAME} type:pr created:${start}..${end}`));
-  issueSeries.push(await searchCount(`author:${USERNAME} type:issue created:${start}..${end}`));
+if (!prSeries.some(Boolean) && !issueSeries.some(Boolean)) {
+  prSeries = [];
+  issueSeries = [];
+  for (const m of months) {
+    const { start, end } = monthRange(m);
+    prSeries.push(await searchCount(`author:${USERNAME} type:pr created:${start}..${end}`));
+    issueSeries.push(await searchCount(`author:${USERNAME} type:issue created:${start}..${end}`));
+  }
 }
 
 const repoSeries = months.map((m, index) => {
@@ -264,8 +300,8 @@ const privateContributions = collection.restrictedContributionsCount;
 const publicRepos = publicProfile?.public_repos ?? repos.filter((repo) => !repo.isPrivate).length;
 const visibleRepos = user.repositories.totalCount;
 const longestStreak = calcLongestStreak(days);
-const totalPrs = prSeries.reduce((sum, value) => sum + value, 0);
-const totalIssues = issueSeries.reduce((sum, value) => sum + value, 0);
+const totalPrs = collection.totalPullRequestContributions || prSeries.reduce((sum, value) => sum + value, 0);
+const totalIssues = collection.totalIssueContributions || issueSeries.reduce((sum, value) => sum + value, 0);
 const languages = languageStats(repos);
 const updated = now.toISOString().slice(0, 10);
 
