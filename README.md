@@ -1,10 +1,8 @@
 <div align="center">
 
-# Fernando Parreiras
+<img src="./assets/profile-dashboard.svg" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
 
-### AI Systems Architect | Founder @ Trustyu.ai & Tech Human
-
-I build AI-powered products, multi-agent systems, and platform infrastructure for real-world companies.
+<br />
 
 [![Website](https://img.shields.io/badge/Website-fernandoparreiras.com.br-111827?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.fernandoparreiras.com.br)
 [![Trustyu.ai](https://img.shields.io/badge/Trustyu.ai-AI_Product_Platform-111827?style=for-the-badge&logo=openai&logoColor=white)](https://trustyu.ai)
@@ -17,7 +15,7 @@ I build AI-powered products, multi-agent systems, and platform infrastructure fo
 
 ## Builder Signal
 
-I am building Trustyu as a vertical SaaS platform powered by AI squads, shared infrastructure, product-specific data isolation, and a repeatable launch methodology called JARVIS.
+I am building Trustyu as a vertical SaaS platform powered by AI squads, shared infrastructure, product-specific data isolation, and a repeatable launch methodology called **JARVIS**.
 
 | Area | What I am building |
 | --- | --- |
@@ -100,29 +98,16 @@ Rule of thumb: start with the simplest layer that solves the problem, then move 
 
 ## Multi-Agent Operating Model
 
-```mermaid
-flowchart TB
-  P["Founder / Product Direction"] --> O["AI Orchestration"]
-  O --> C1["Claude / Claude Code"]
-  O --> C2["Codex"]
-  O --> C3["Specialist agents"]
-  C1 --> R["Repos, ADRs, tests, deploys"]
-  C2 --> R
-  C3 --> R
-  R --> V["Empirical validation"]
-  V --> P
-```
-
 I use AI agents as an execution layer, not as a novelty layer. The goal is simple: faster product iteration with stronger engineering discipline.
 
-Operating standards:
-
-- Named branches and explicit ownership for multi-agent work
-- ADRs for architectural decisions
-- RED/GREEN commits for contract-first implementation
-- Tenant isolation checks in product logic
-- Observability for agent workflows using tracing and analytics
-- Secrets handled as operational risk, not convenience
+| Standard | Why it matters |
+| --- | --- |
+| Named branches and explicit ownership | Prevents parallel AI sessions from colliding |
+| ADRs for architecture | Keeps decisions out of chat history and inside the system |
+| RED/GREEN commits | Makes contracts, tests, and implementation reviewable |
+| Tenant isolation checks | Keeps vertical SaaS systems safe by default |
+| Observability on agents | Turns AI behavior into debuggable traces |
+| Secrets as operational risk | Treats leakage and drift as production concerns |
 
 ## Active Building Themes
 
@@ -142,13 +127,6 @@ Operating standards:
   <img alt="GitHub contribution snake animation" src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/output/github-contribution-grid-snake.svg" />
 </picture>
 
-## Public Work To Explore
-
-- [Personal website](https://github.com/TECH-HUMAN/fernandoparreiras-website): positioning hub and personal site
-- Tech Human playbooks: humanized technology, leadership, and AI adoption frameworks
-- AI system designs: architecture notes for agents, RAG, and vertical SaaS platforms
-- Prompt and evaluation patterns: reusable workflows for reliable AI execution
-
 ## Operating Principles
 
 ```text
@@ -157,11 +135,3 @@ Make technology more human.
 Turn complex systems into practical leverage.
 Validate reality before scaling opinion.
 ```
-
----
-
-<div align="center">
-
-Founder. Builder. Systems thinker. Still human.
-
-</div>

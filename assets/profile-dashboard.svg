@@ -1,0 +1,146 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fernando Parreiras AI infrastructure dashboard</title>
+  <desc id="desc">A dark dashboard showing Fernando Parreiras as an AI systems architect building Trustyu, JARVIS, Hub Agents, and serious AI infrastructure.</desc>
+  <defs>
+    <radialGradient id="glowGreen" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1030 110) rotate(135) scale(520 360)">
+      <stop stop-color="#22c55e" stop-opacity="0.26"/>
+      <stop offset="0.56" stop-color="#22c55e" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(150 80) rotate(38) scale(500 320)">
+      <stop stop-color="#38bdf8" stop-opacity="0.20"/>
+      <stop offset="0.62" stop-color="#2563eb" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0f172a" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#020617" stop-opacity="0.98"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#22c55e"/>
+      <stop offset="0.52" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="barGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#16a34a"/>
+      <stop offset="1" stop-color="#86efac"/>
+    </linearGradient>
+    <linearGradient id="barBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7dd3fc"/>
+    </linearGradient>
+    <linearGradient id="barPurple" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#c4b5fd"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .bg { fill: #020617; }
+      .card { fill: url(#panel); stroke: #233044; stroke-width: 1; filter: url(#softShadow); }
+      .card-soft { fill: #07111f; stroke: #233044; stroke-width: 1; }
+      .muted { fill: #94a3b8; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .text { fill: #e5e7eb; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .title { fill: #f8fafc; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-weight: 800; }
+      .accent { fill: #86efac; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-weight: 700; }
+      .blue { fill: #7dd3fc; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-weight: 700; }
+      .purple { fill: #c4b5fd; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-weight: 700; }
+      .mono { fill: #cbd5e1; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+      .chip { fill: #111c31; stroke: #24324a; stroke-width: 1; }
+      .track { fill: #1e293b; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="760" rx="28"/>
+  <rect width="1200" height="760" rx="28" fill="url(#glowGreen)"/>
+  <rect width="1200" height="760" rx="28" fill="url(#glowBlue)"/>
+  <path d="M40 94C192 41 332 34 460 73C592 114 681 154 835 115C951 85 1045 75 1160 112" stroke="#1f6feb" stroke-opacity="0.18"/>
+  <path d="M60 680C222 635 345 622 486 660C621 696 744 722 887 672C1006 631 1091 635 1160 660" stroke="#22c55e" stroke-opacity="0.18"/>
+
+  <g transform="translate(42 38)">
+    <rect class="card" x="0" y="0" width="1116" height="684" rx="22"/>
+
+    <g transform="translate(36 34)">
+      <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
+      <text class="title" x="0" y="48" font-size="48">Fernando Parreiras</text>
+      <text class="text" x="0" y="84" font-size="20">Building serious AI infrastructure for products that need to survive reality.</text>
+      <rect x="0" y="112" width="468" height="4" rx="2" fill="url(#line)"/>
+
+      <g transform="translate(0 145)">
+        <rect class="chip" x="0" y="0" width="116" height="34" rx="17"/>
+        <text class="blue" x="18" y="22" font-size="13">Trustyu.ai</text>
+        <rect class="chip" x="128" y="0" width="104" height="34" rx="17"/>
+        <text class="accent" x="146" y="22" font-size="13">JARVIS</text>
+        <rect class="chip" x="244" y="0" width="126" height="34" rx="17"/>
+        <text class="purple" x="262" y="22" font-size="13">Hub Agents</text>
+        <rect class="chip" x="382" y="0" width="154" height="34" rx="17"/>
+        <text class="blue" x="400" y="22" font-size="13">Vertical SaaS</text>
+      </g>
+    </g>
+
+    <g transform="translate(718 38)">
+      <rect class="card-soft" x="0" y="0" width="350" height="178" rx="18"/>
+      <text class="muted" x="24" y="34" font-size="13" letter-spacing="2">LIVE OPERATING MODEL</text>
+      <text class="title" x="24" y="72" font-size="28">AI squad execution</text>
+      <text class="muted" x="24" y="104" font-size="15">Claude + Claude Code + Codex</text>
+      <text class="muted" x="24" y="130" font-size="15">ADRs, tests, smoke checks, deploys</text>
+      <circle cx="306" cy="62" r="20" fill="#0b1f16" stroke="#22c55e"/>
+      <circle cx="306" cy="62" r="7" fill="#86efac"/>
+    </g>
+
+    <g transform="translate(36 260)">
+      <rect class="card-soft" x="0" y="0" width="330" height="174" rx="18"/>
+      <text class="muted" x="22" y="34" font-size="13" letter-spacing="2">CORE SYSTEM</text>
+      <text class="title" x="22" y="70" font-size="28">JARVIS</text>
+      <text class="text" x="22" y="104" font-size="15">Product launch OS for AI-assisted</text>
+      <text class="text" x="22" y="128" font-size="15">vertical SaaS: from idea to prod.</text>
+      <text class="accent" x="22" y="158" font-size="14">ADRs -> agents -> validation -> learning</text>
+
+      <rect class="card-soft" x="360" y="0" width="330" height="174" rx="18"/>
+      <text class="muted" x="382" y="34" font-size="13" letter-spacing="2">PLATFORM</text>
+      <text class="title" x="382" y="70" font-size="28">Trustyu.ai</text>
+      <text class="text" x="382" y="104" font-size="15">Shared services, isolated product data,</text>
+      <text class="text" x="382" y="128" font-size="15">tenant-aware systems, reusable CI/CD.</text>
+      <text class="blue" x="382" y="158" font-size="14">Keycloak + Postgres + Redis + Railway/Vercel</text>
+
+      <rect class="card-soft" x="720" y="0" width="330" height="174" rx="18"/>
+      <text class="muted" x="742" y="34" font-size="13" letter-spacing="2">AI ENGINE</text>
+      <text class="title" x="742" y="70" font-size="28">Hub Agents</text>
+      <text class="text" x="742" y="104" font-size="15">Shared core plus vertical isolation for</text>
+      <text class="text" x="742" y="128" font-size="15">stateful agents, RAG and orchestration.</text>
+      <text class="purple" x="742" y="158" font-size="14">LangGraph + FastAPI + pgvector + tracing</text>
+    </g>
+
+    <g transform="translate(36 474)">
+      <rect class="card-soft" x="0" y="0" width="510" height="148" rx="18"/>
+      <text class="title" x="22" y="34" font-size="21">AI architecture ladder</text>
+      <g transform="translate(22 58)">
+        <text class="muted" x="0" y="0" font-size="13">Direct SDK</text>
+        <rect class="track" x="112" y="-12" width="330" height="10" rx="5"/>
+        <rect x="112" y="-12" width="108" height="10" rx="5" fill="url(#barGreen)"/>
+        <text class="accent" x="456" y="0" font-size="13">L1</text>
+        <text class="muted" x="0" y="28" font-size="13">LangChain / RAG</text>
+        <rect class="track" x="112" y="16" width="330" height="10" rx="5"/>
+        <rect x="112" y="16" width="188" height="10" rx="5" fill="url(#barBlue)"/>
+        <text class="blue" x="456" y="28" font-size="13">L2</text>
+        <text class="muted" x="0" y="56" font-size="13">LangGraph / ADK</text>
+        <rect class="track" x="112" y="44" width="330" height="10" rx="5"/>
+        <rect x="112" y="44" width="266" height="10" rx="5" fill="url(#barPurple)"/>
+        <text class="purple" x="456" y="56" font-size="13">L3+</text>
+      </g>
+
+      <rect class="card-soft" x="540" y="0" width="510" height="148" rx="18"/>
+      <text class="title" x="562" y="34" font-size="21">Execution standards</text>
+      <text class="mono" x="562" y="70" font-size="14">contract-first . tenant isolation . observability</text>
+      <text class="mono" x="562" y="100" font-size="14">named branches . ADRs . RED/GREEN commits</text>
+      <text class="mono" x="562" y="130" font-size="14">empirical validation > interface assumptions</text>
+    </g>
+
+    <g transform="translate(36 646)">
+      <rect x="0" y="0" width="1050" height="1" fill="#233044"/>
+      <text class="muted" x="0" y="36" font-size="14">Founder. Builder. Systems thinker. Still human.</text>
+      <text class="accent" x="752" y="36" font-size="14">Build useful things. Validate reality. Scale leverage.</text>
+    </g>
+  </g>
+</svg>
