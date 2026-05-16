@@ -14,6 +14,44 @@
 
 ---
 
+## Platform Stack
+
+### Product Foundation
+
+![Next.js](https://img.shields.io/badge/Next.js_16-111827?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript_6-111827?style=for-the-badge&logo=typescript&logoColor=3178C6)
+![React](https://img.shields.io/badge/React-111827?style=for-the-badge&logo=react&logoColor=61DAFB)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-111827?style=for-the-badge&logo=shadcnui&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-111827?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
+![pnpm](https://img.shields.io/badge/pnpm_10-111827?style=for-the-badge&logo=pnpm&logoColor=F69220)
+
+### Backend, Data, and Infra
+
+![Node.js](https://img.shields.io/badge/Node.js_LTS-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
+![Python](https://img.shields.io/badge/Python_3.12+-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
+![FastAPI](https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=009688)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL_%2B_pgvector-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
+![Redis](https://img.shields.io/badge/Redis-111827?style=for-the-badge&logo=redis&logoColor=FF4438)
+![AWS](https://img.shields.io/badge/AWS-111827?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900)
+![Terraform](https://img.shields.io/badge/Terraform-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
+![Docker](https://img.shields.io/badge/Docker-111827?style=for-the-badge&logo=docker&logoColor=2496ED)
+![Keycloak](https://img.shields.io/badge/Keycloak-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=2088FF)
+
+### AI, Agents, and LLM Tooling
+
+![Claude](https://img.shields.io/badge/Claude-111827?style=for-the-badge&logo=anthropic&logoColor=D97757)
+![Claude Code](https://img.shields.io/badge/Claude_Code-111827?style=for-the-badge&logo=anthropic&logoColor=D97757)
+![OpenAI](https://img.shields.io/badge/OpenAI-111827?style=for-the-badge&logo=openai&logoColor=white)
+![Codex](https://img.shields.io/badge/Codex-111827?style=for-the-badge&logo=openai&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Gemini-111827?style=for-the-badge&logo=googlegemini&logoColor=8E75B2)
+![LangGraph](https://img.shields.io/badge/LangGraph-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
+![LangChain](https://img.shields.io/badge/LangChain-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
+![LangSmith](https://img.shields.io/badge/LangSmith-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
+![LangFuse](https://img.shields.io/badge/LangFuse-111827?style=for-the-badge&logo=rocket&logoColor=white)
+
+---
+
 ## Builder Signal
 
 I am a founder and AI systems architect building companies, products, and operating systems around applied artificial intelligence.
@@ -54,7 +92,7 @@ Core principles:
 - Multi-agent collaboration between Claude, Claude Code, Codex, and other coding agents
 - Empirical validation over assumptions, especially for infra, auth, LLM, and observability layers
 
-## Platform Stack
+## Stack Philosophy
 
 I use a pragmatic, production-minded stack: simple enough to ship fast, structured enough to scale across products.
 
