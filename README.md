@@ -56,75 +56,45 @@ Core principles:
 
 ## Platform Stack
 
-### Product Foundation
+I use a pragmatic, production-minded stack: simple enough to ship fast, structured enough to scale across products.
 
-![Next.js](https://img.shields.io/badge/Next.js_16-111827?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript_6-111827?style=for-the-badge&logo=typescript&logoColor=3178C6)
-![React](https://img.shields.io/badge/React-111827?style=for-the-badge&logo=react&logoColor=61DAFB)
-![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-111827?style=for-the-badge&logo=shadcnui&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-111827?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
-![pnpm](https://img.shields.io/badge/pnpm_10-111827?style=for-the-badge&logo=pnpm&logoColor=F69220)
-
-### Backend, Data, and Infra
-
-![Node.js](https://img.shields.io/badge/Node.js_LTS-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
-![Python](https://img.shields.io/badge/Python_3.12+-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
-![FastAPI](https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=009688)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL_%2B_pgvector-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
-![Redis](https://img.shields.io/badge/Redis-111827?style=for-the-badge&logo=redis&logoColor=FF4438)
-![AWS](https://img.shields.io/badge/AWS-111827?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900)
-![Terraform](https://img.shields.io/badge/Terraform-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
-![Docker](https://img.shields.io/badge/Docker-111827?style=for-the-badge&logo=docker&logoColor=2496ED)
-![Keycloak](https://img.shields.io/badge/Keycloak-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=2088FF)
-
-### AI, Agents, and LLM Tooling
-
-![Claude](https://img.shields.io/badge/Claude-111827?style=for-the-badge&logo=anthropic&logoColor=D97757)
-![Claude Code](https://img.shields.io/badge/Claude_Code-111827?style=for-the-badge&logo=anthropic&logoColor=D97757)
-![OpenAI](https://img.shields.io/badge/OpenAI-111827?style=for-the-badge&logo=openai&logoColor=white)
-![Codex](https://img.shields.io/badge/Codex-111827?style=for-the-badge&logo=openai&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Gemini-111827?style=for-the-badge&logo=googlegemini&logoColor=8E75B2)
-![LangGraph](https://img.shields.io/badge/LangGraph-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
-![LangChain](https://img.shields.io/badge/LangChain-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
-![LangSmith](https://img.shields.io/badge/LangSmith-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
-![LangFuse](https://img.shields.io/badge/LangFuse-111827?style=for-the-badge&logo=rocket&logoColor=white)
+| Layer | Stack |
+| --- | --- |
+| Product foundation | Next.js 16, TypeScript, React, shadcn/ui, Tailwind CSS, pnpm |
+| AI backend | Python 3.12+, FastAPI, Pydantic, SQLAlchemy, Alembic, pytest |
+| Data and infra | PostgreSQL + pgvector, Redis, Docker, Keycloak, GitHub Actions |
+| Cloud platform | AWS, Terraform/HCL, CI/CD automation, production operations |
+| Agent tooling | Claude, Claude Code, Codex, OpenAI, Gemini, LangGraph, LangChain, LangSmith, LangFuse |
 
 ## AI Architecture Rules I Use
 
-| Complexity | Default choice | Use when |
-| --- | --- | --- |
-| Level 1 | Direct Anthropic SDK | Simple LLM calls, classification, extraction, short prompt chains |
-| Level 2 | LangChain | RAG pipelines, retrievers, document processing, vector search |
-| Level 3 | LangGraph | Stateful agents, conditional workflows, checkpointing, handoffs |
-| Level 4 | Google ADK | Parent-child hierarchies, parallel fan-out, multi-agent consolidation |
-| Level 5 | Anthropic Agent SDK | High-autonomy Claude-native agents, coding automation, deep research |
+I do not start with the most complex agent framework. I start with the simplest layer that solves the problem, then move up only when the system asks for it.
 
-Rule of thumb: start with the simplest layer that solves the problem, then move up only when real constraints demand it.
+- Direct SDK for classification, extraction, generation, streaming, and short prompt chains
+- LangChain for RAG, retrievers, document pipelines, chunking, embeddings, and vector search
+- LangGraph for stateful agents, conditional workflows, checkpointing, and handoffs
+- Google ADK for parent-child hierarchies, parallel fan-out, and multi-agent consolidation
+- Anthropic Agent SDK for high-autonomy Claude-native agents, coding automation, and deep research
 
 ## Multi-Agent Operating Model
 
 I use AI agents as an execution layer, not as a novelty layer. The goal is simple: faster product iteration with stronger engineering discipline.
 
-| Standard | Why it matters |
-| --- | --- |
-| Named branches and explicit ownership | Prevents parallel AI sessions from colliding |
-| ADRs for architecture | Keeps decisions out of chat history and inside the system |
-| RED/GREEN commits | Makes contracts, tests, and implementation reviewable |
-| Tenant isolation checks | Keeps vertical SaaS systems safe by default |
-| Observability on agents | Turns AI behavior into debuggable traces |
-| Secrets as operational risk | Treats leakage and drift as production concerns |
+- Named branches and explicit ownership to prevent parallel AI sessions from colliding
+- ADRs for architecture so decisions live in the system, not only in chat history
+- RED/GREEN commits for contract-first implementation and reviewable progress
+- Tenant isolation checks because vertical SaaS must be safe by default
+- Observability on agents so AI behavior becomes debuggable traces
+- Secrets treated as operational risk, not convenience
 
 ## Active Building Themes
 
-| Theme | Direction |
-| --- | --- |
-| Vertical SaaS | Repeatable product architecture for niche, high-context markets |
-| AWS Infrastructure | Cloud architecture, automation, HCL/Terraform, CI/CD, and production operations |
-| Hub Agents | Shared AI engine with vertical isolation and reusable agent infrastructure |
-| Trustyu CRM | AI-assisted CRM workflows, onboarding, messaging, and operational automation |
-| AI Literacy | Governance readiness, use-case mapping, maturity models, and ROI frameworks |
-| Humanized Technology | Systems that increase leverage without losing human judgment |
+- **Vertical SaaS:** repeatable product architecture for niche, high-context markets
+- **AWS Infrastructure:** cloud architecture, automation, HCL/Terraform, CI/CD, and production operations
+- **Hub Agents:** shared AI engine with vertical isolation and reusable agent infrastructure
+- **Trustyu CRM:** AI-assisted CRM workflows, onboarding, messaging, and operational automation
+- **AI Literacy:** governance readiness, use-case mapping, maturity models, and ROI frameworks
+- **Humanized Technology:** systems that increase leverage without losing human judgment
 
 ## Contribution Flow
 
