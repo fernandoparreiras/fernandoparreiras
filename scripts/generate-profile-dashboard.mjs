@@ -32,6 +32,20 @@ const PROJECTS = [
     progress: 90,
     color: "#60a5fa",
   },
+  {
+    name: "Needyu",
+    repo: "needyuai/needyu-service",
+    tagline: "Digital services and cloud infrastructure",
+    progress: 75,
+    color: "#38bdf8",
+  },
+  {
+    name: "JARVIS",
+    repo: "needyuai/trustyu-jarvis-site",
+    tagline: "AI product launch methodology",
+    progress: 85,
+    color: "#86efac",
+  },
 ];
 
 if (!TOKEN) {
@@ -259,15 +273,18 @@ function metricCard({ x, y, title, value, change, color, values }) {
 }
 
 function projectCard(project, index) {
-  const x = index * 262;
+  const col = index % 3;
+  const row = Math.floor(index / 3);
+  const x = col * 358;
+  const y = row * 200;
   const progressWidth = Math.round((project.progress / 100) * 160);
   const repoName = project.repo.split("/").at(-1);
   const updated = project.updatedAt ? `Updated ${project.updatedAt.slice(0, 10)}` : "Repo metadata gated";
   const language = project.language ? `${project.language}` : "Private project";
 
   return `
-    <g transform="translate(${x} 0)">
-      <rect class="mini-card" x="0" y="0" width="240" height="174" rx="16"/>
+    <g transform="translate(${x} ${y})">
+      <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="${project.color}" fill-opacity="0.12" stroke="${project.color}" stroke-width="2"/>
       <text fill="${project.color}" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">${index + 1}</text>
       <text class="title" x="22" y="82" font-size="21">${escapeXml(project.name)}</text>
@@ -382,7 +399,7 @@ if (tokenLooksUnderScoped) {
   process.exit(0);
 }
 
-const svg = `<svg width="1200" height="1270" viewBox="0 0 1200 1270" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
   <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, activity overview, and AI infrastructure positioning.</desc>
   <defs>
@@ -417,9 +434,9 @@ const svg = `<svg width="1200" height="1270" viewBox="0 0 1200 1270" fill="none"
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="1270" rx="28"/>
-  <rect width="1200" height="1270" rx="28" fill="url(#greenGlow)"/>
-  <rect width="1200" height="1270" rx="28" fill="url(#blueGlow)"/>
+  <rect class="bg" width="1200" height="1460" rx="28"/>
+  <rect width="1200" height="1460" rx="28" fill="url(#greenGlow)"/>
+  <rect width="1200" height="1460" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
