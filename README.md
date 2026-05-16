@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/profile-dashboard.svg" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260516-jarvis-needyu" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
 
 <br />
 
