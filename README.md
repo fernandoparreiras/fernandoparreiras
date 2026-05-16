@@ -16,14 +16,17 @@
 
 ## Builder Signal
 
-I am building Trustyu as a vertical SaaS platform powered by AI squads, shared infrastructure, product-specific data isolation, and a repeatable launch methodology called **JARVIS**.
+I am a founder and AI systems architect building companies, products, and operating systems around applied artificial intelligence.
 
-| Area | What I am building |
+My current work connects **Trustyu.ai**, **needyu.ai**, **Tech Human**, and **JARVIS** into a practical ecosystem: AI-native products, serious infrastructure, business automation, and human-centered adoption.
+
+| Domain | Founder/AI Expert focus |
 | --- | --- |
-| AI product systems | Multi-agent workflows, RAG, LLM routing, evaluation, tracing, and human-in-the-loop operations |
-| Platform architecture | Shared services, product isolation, tenant-aware systems, AWS infrastructure, reusable CI/CD, and deployable product templates |
-| Business infrastructure | CRM, onboarding, messaging, billing, observability, and operational intelligence |
-| AI literacy | Practical frameworks for companies adopting AI with governance, ROI, and execution readiness |
+| Trustyu.ai | AI-powered vertical SaaS, Hub Agents, CRM vNext, BMAI, trust systems, and operational intelligence |
+| needyu.ai | Digital products, cloud infrastructure, AWS/Terraform automation, platform services, and applied AI delivery |
+| JARVIS | My AI product launch operating system: ADRs, agent squads, empirical validation, and repeatable execution |
+| Tech Human | Humanized technology, AI literacy, governance readiness, leadership, and real-world business transformation |
+| AI architecture | Multi-agent workflows, RAG, LLM routing, tracing, evaluation, tenant isolation, and human-in-the-loop systems |
 
 ## JARVIS
 
