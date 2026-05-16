@@ -20,7 +20,7 @@ I am building Trustyu as a vertical SaaS platform powered by AI squads, shared i
 | Area | What I am building |
 | --- | --- |
 | AI product systems | Multi-agent workflows, RAG, LLM routing, evaluation, tracing, and human-in-the-loop operations |
-| Platform architecture | Shared services, product isolation, tenant-aware systems, reusable CI/CD, and deployable product templates |
+| Platform architecture | Shared services, product isolation, tenant-aware systems, AWS infrastructure, reusable CI/CD, and deployable product templates |
 | Business infrastructure | CRM, onboarding, messaging, billing, observability, and operational intelligence |
 | AI literacy | Practical frameworks for companies adopting AI with governance, ROI, and execution readiness |
 
@@ -68,6 +68,8 @@ Core principles:
 ![FastAPI](https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=009688)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL_%2B_pgvector-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
 ![Redis](https://img.shields.io/badge/Redis-111827?style=for-the-badge&logo=redis&logoColor=FF4438)
+![AWS](https://img.shields.io/badge/AWS-111827?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900)
+![Terraform](https://img.shields.io/badge/Terraform-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
 ![Docker](https://img.shields.io/badge/Docker-111827?style=for-the-badge&logo=docker&logoColor=2496ED)
 ![Keycloak](https://img.shields.io/badge/Keycloak-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=2088FF)
@@ -114,6 +116,7 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 | Theme | Direction |
 | --- | --- |
 | Vertical SaaS | Repeatable product architecture for niche, high-context markets |
+| AWS Infrastructure | Cloud architecture, automation, HCL/Terraform, CI/CD, and production operations |
 | Hub Agents | Shared AI engine with vertical isolation and reusable agent infrastructure |
 | Trustyu CRM | AI-assisted CRM workflows, onboarding, messaging, and operational automation |
 | AI Literacy | Governance readiness, use-case mapping, maturity models, and ROI frameworks |

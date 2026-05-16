@@ -312,12 +312,12 @@ const svg = `<svg width="1200" height="1060" viewBox="0 0 1200 1060" fill="none"
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
     <text class="title" x="0" y="54" font-size="52">Hi, I'm Fernando Parreiras</text>
     <text class="text" x="0" y="92" font-size="21">AI Builder | Systems Architect | Founder @ Trustyu.ai &amp; Tech Human</text>
-    <text class="muted" x="0" y="132" font-size="17">I build AI-powered products, multi-agent systems and platform infrastructure that solve real-world problems.</text>
+    <text class="muted" x="0" y="132" font-size="17">I build AI-powered products, multi-agent systems and AWS-backed platform infrastructure.</text>
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
     <g transform="translate(0 186)">
-      ${["Trustyu.ai", "JARVIS", "Hub Agents", "Vertical SaaS", "AI/ML", "Platform"].map((label, i) => {
-        const widths = [112, 94, 126, 142, 80, 104];
+      ${["Trustyu.ai", "JARVIS", "Hub Agents", "AWS", "Terraform", "AI/ML", "Vertical SaaS"].map((label, i) => {
+        const widths = [112, 94, 126, 72, 112, 80, 142];
         const x = widths.slice(0, i).reduce((sum, value) => sum + value + 12, 0);
         return `<rect class="chip" x="${x}" y="0" width="${widths[i]}" height="34" rx="17"/><text class="${i % 3 === 0 ? "blue" : i % 3 === 1 ? "accent" : "purple"}" x="${x + 18}" y="22" font-size="13">${label}</text>`;
       }).join("")}

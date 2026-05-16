@@ -41,11 +41,11 @@
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
     <text class="title" x="0" y="54" font-size="52">Hi, I'm Fernando Parreiras</text>
     <text class="text" x="0" y="92" font-size="21">AI Builder | Systems Architect | Founder @ Trustyu.ai &amp; Tech Human</text>
-    <text class="muted" x="0" y="132" font-size="17">I build AI-powered products, multi-agent systems and platform infrastructure that solve real-world problems.</text>
+    <text class="muted" x="0" y="132" font-size="17">I build AI-powered products, multi-agent systems and AWS-backed platform infrastructure.</text>
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
     <g transform="translate(0 186)">
-      <rect class="chip" x="0" y="0" width="112" height="34" rx="17"/><text class="blue" x="18" y="22" font-size="13">Trustyu.ai</text><rect class="chip" x="124" y="0" width="94" height="34" rx="17"/><text class="accent" x="142" y="22" font-size="13">JARVIS</text><rect class="chip" x="230" y="0" width="126" height="34" rx="17"/><text class="purple" x="248" y="22" font-size="13">Hub Agents</text><rect class="chip" x="368" y="0" width="142" height="34" rx="17"/><text class="blue" x="386" y="22" font-size="13">Vertical SaaS</text><rect class="chip" x="522" y="0" width="80" height="34" rx="17"/><text class="accent" x="540" y="22" font-size="13">AI/ML</text><rect class="chip" x="614" y="0" width="104" height="34" rx="17"/><text class="purple" x="632" y="22" font-size="13">Platform</text>
+      <rect class="chip" x="0" y="0" width="112" height="34" rx="17"/><text class="blue" x="18" y="22" font-size="13">Trustyu.ai</text><rect class="chip" x="124" y="0" width="94" height="34" rx="17"/><text class="accent" x="142" y="22" font-size="13">JARVIS</text><rect class="chip" x="230" y="0" width="126" height="34" rx="17"/><text class="purple" x="248" y="22" font-size="13">Hub Agents</text><rect class="chip" x="368" y="0" width="72" height="34" rx="17"/><text class="blue" x="386" y="22" font-size="13">AWS</text><rect class="chip" x="452" y="0" width="112" height="34" rx="17"/><text class="accent" x="470" y="22" font-size="13">Terraform</text><rect class="chip" x="576" y="0" width="80" height="34" rx="17"/><text class="purple" x="594" y="22" font-size="13">AI/ML</text><rect class="chip" x="668" y="0" width="142" height="34" rx="17"/><text class="blue" x="686" y="22" font-size="13">Vertical SaaS</text>
     </g>
   </g>
 
@@ -55,11 +55,11 @@
     <text class="muted" x="26" y="68" font-size="15">Total Contributions (last year)</text>
     <text class="accent" x="482" y="68" font-size="16" text-anchor="end">2.9k</text>
     <text class="muted" x="26" y="104" font-size="15">Private Contributions</text>
-    <text class="accent" x="482" y="104" font-size="16" text-anchor="end">2.8k</text>
+    <text class="accent" x="482" y="104" font-size="16" text-anchor="end">29</text>
     <text class="muted" x="26" y="140" font-size="15">Public Repositories</text>
     <text class="accent" x="482" y="140" font-size="16" text-anchor="end">2</text>
     <text class="muted" x="26" y="176" font-size="15">Visible Repositories</text>
-    <text class="accent" x="482" y="176" font-size="16" text-anchor="end">2</text>
+    <text class="accent" x="482" y="176" font-size="16" text-anchor="end">17</text>
     <text class="muted" x="26" y="212" font-size="15">Longest Contribution Streak</text>
     <text class="accent" x="482" y="212" font-size="16" text-anchor="end">15 days</text>
 
@@ -68,16 +68,24 @@
     
     <text class="text" x="644" y="48" font-size="14">JavaScript</text>
     <rect class="track" x="770" y="37" width="212" height="9" rx="5"/>
-    <rect x="770" y="37" width="211" height="9" rx="5" fill="#f1e05a"/>
-    <text class="text" x="1002" y="48" font-size="14" text-anchor="end">99.5%</text>
-    <text class="text" x="644" y="84" font-size="14">CSS</text>
+    <rect x="770" y="37" width="83" height="9" rx="5" fill="#f1e05a"/>
+    <text class="text" x="1002" y="48" font-size="14" text-anchor="end">39.4%</text>
+    <text class="text" x="644" y="84" font-size="14">C#</text>
     <rect class="track" x="770" y="73" width="212" height="9" rx="5"/>
-    <rect x="770" y="73" width="8" height="9" rx="5" fill="#663399"/>
-    <text class="text" x="1002" y="84" font-size="14" text-anchor="end">0.4%</text>
-    <text class="text" x="644" y="120" font-size="14">HTML</text>
+    <rect x="770" y="73" width="72" height="9" rx="5" fill="#178600"/>
+    <text class="text" x="1002" y="84" font-size="14" text-anchor="end">33.8%</text>
+    <text class="text" x="644" y="120" font-size="14">TypeScript</text>
     <rect class="track" x="770" y="109" width="212" height="9" rx="5"/>
-    <rect x="770" y="109" width="8" height="9" rx="5" fill="#e34c26"/>
-    <text class="text" x="1002" y="120" font-size="14" text-anchor="end">0.2%</text>
+    <rect x="770" y="109" width="43" height="9" rx="5" fill="#3178c6"/>
+    <text class="text" x="1002" y="120" font-size="14" text-anchor="end">20.4%</text>
+    <text class="text" x="644" y="156" font-size="14">HTML</text>
+    <rect class="track" x="770" y="145" width="212" height="9" rx="5"/>
+    <rect x="770" y="145" width="9" height="9" rx="5" fill="#e34c26"/>
+    <text class="text" x="1002" y="156" font-size="14" text-anchor="end">4.0%</text>
+    <text class="text" x="644" y="192" font-size="14">CSS</text>
+    <rect class="track" x="770" y="181" width="212" height="9" rx="5"/>
+    <rect x="770" y="181" width="8" height="9" rx="5" fill="#663399"/>
+    <text class="text" x="1002" y="192" font-size="14" text-anchor="end">2.1%</text>
   </g>
 
   <g transform="translate(54 604)">
@@ -470,23 +478,23 @@
       <text class="muted" x="20" y="32" font-size="13">Contributions</text>
       <text class="title" x="20" y="68" font-size="30">2.9k</text>
       <text fill="#22c55e" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">last 12 months</text>
-      <polyline points="22.0,133.4 37.6,133.6 53.3,133.8 68.9,133.8 84.5,133.7 100.2,133.7 115.8,132.0 131.5,123.1 147.1,132.9 162.7,127.3 178.4,92.0 194.0,111.8" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,133.4 37.6,133.6 53.3,133.8 68.9,133.8 84.5,133.7 100.2,133.7 115.8,132.0 131.5,123.1 147.1,132.9 162.7,127.3 178.4,92.0 194.0,111.7" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
     
     <g transform="translate(242 0)">
       <rect class="mini-card" x="0" y="0" width="216" height="158" rx="14"/>
       <text class="muted" x="20" y="32" font-size="13">Pull Requests</text>
-      <text class="title" x="20" y="68" font-size="30">10</text>
+      <text class="title" x="20" y="68" font-size="30">192</text>
       <text fill="#a78bfa" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">authored</text>
-      <polyline points="22.0,134.0 37.6,134.0 53.3,134.0 68.9,134.0 84.5,134.0 100.2,134.0 115.8,134.0 131.5,134.0 147.1,134.0 162.7,134.0 178.4,134.0 194.0,92.0" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,134.0 37.6,134.0 53.3,134.0 68.9,134.0 84.5,134.0 100.2,134.0 115.8,134.0 131.5,134.0 147.1,134.0 162.7,134.0 178.4,116.7 194.0,92.0" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
     
     <g transform="translate(484 0)">
       <rect class="mini-card" x="0" y="0" width="216" height="158" rx="14"/>
       <text class="muted" x="20" y="32" font-size="13">Issues</text>
-      <text class="title" x="20" y="68" font-size="30">7</text>
+      <text class="title" x="20" y="68" font-size="30">714</text>
       <text fill="#facc15" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">authored</text>
-      <polyline points="22.0,134.0 37.6,134.0 53.3,134.0 68.9,134.0 84.5,134.0 100.2,134.0 115.8,134.0 131.5,134.0 147.1,134.0 162.7,134.0 178.4,134.0 194.0,92.0" fill="none" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,132.8 37.6,132.6 53.3,133.6 68.9,133.9 84.5,132.8 100.2,132.9 115.8,126.5 131.5,133.8 147.1,133.8 162.7,129.7 178.4,92.0 194.0,109.0" fill="none" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
     
     <g transform="translate(726 0)">
