@@ -3,6 +3,36 @@ import fs from "node:fs/promises";
 const USERNAME = process.env.PROFILE_USERNAME || "fernandoparreiras";
 const TOKEN = process.env.PROFILE_STATS_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard.svg";
+const PROJECTS = [
+  {
+    name: "Trustyu.ai",
+    repo: "needyuai/trustyu-crm",
+    tagline: "AI trust and vertical SaaS platform",
+    progress: 80,
+    color: "#22c55e",
+  },
+  {
+    name: "Hub Agents",
+    repo: "needyuai/trustyu-hub-agents",
+    tagline: "Multi-agent orchestration engine",
+    progress: 70,
+    color: "#a78bfa",
+  },
+  {
+    name: "BMAI",
+    repo: "needyuai/trustyu-bmai",
+    tagline: "Business maturity AI engine",
+    progress: 60,
+    color: "#facc15",
+  },
+  {
+    name: "CRM vNext",
+    repo: "needyuai/trustyu-crm",
+    tagline: "Intelligent CRM and operations platform",
+    progress: 90,
+    color: "#60a5fa",
+  },
+];
 
 if (!TOKEN) {
   throw new Error("Missing GitHub token. Set PROFILE_STATS_TOKEN, GH_TOKEN, or GITHUB_TOKEN.");
@@ -228,6 +258,28 @@ function metricCard({ x, y, title, value, change, color, values }) {
     </g>`;
 }
 
+function projectCard(project, index) {
+  const x = index * 262;
+  const progressWidth = Math.round((project.progress / 100) * 160);
+  const repoName = project.repo.split("/").at(-1);
+  const updated = project.updatedAt ? `Updated ${project.updatedAt.slice(0, 10)}` : "Repo metadata gated";
+  const language = project.language ? `${project.language}` : "Private project";
+
+  return `
+    <g transform="translate(${x} 0)">
+      <rect class="mini-card" x="0" y="0" width="240" height="174" rx="16"/>
+      <circle cx="32" cy="36" r="18" fill="${project.color}" fill-opacity="0.12" stroke="${project.color}" stroke-width="2"/>
+      <text fill="${project.color}" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">${index + 1}</text>
+      <text class="title" x="22" y="82" font-size="21">${escapeXml(project.name)}</text>
+      <text class="muted" x="22" y="110" font-size="13">${escapeXml(project.tagline)}</text>
+      <text class="muted" x="22" y="132" font-size="12">${escapeXml(repoName)} / ${escapeXml(language)}</text>
+      <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
+      <rect x="22" y="150" width="${progressWidth}" height="8" rx="4" fill="${project.color}"/>
+      <text class="text" x="196" y="158" font-size="12">${project.progress}%</text>
+      <text class="muted" x="22" y="190" font-size="11">${escapeXml(updated)}</text>
+    </g>`;
+}
+
 function languageRow(lang, index) {
   const y = 48 + index * 36;
   const width = Math.max(8, Math.round((lang.pct / 100) * 212));
@@ -273,6 +325,16 @@ const weeks = calendar.weeks;
 const days = weeks.flatMap((week) => week.contributionDays).sort((a, b) => a.date.localeCompare(b.date));
 const repos = user.repositories.nodes || [];
 const publicProfile = await githubRest(`/users/${USERNAME}`);
+const projects = [];
+for (const project of PROJECTS) {
+  const repo = await githubRest(`/repos/${project.repo}`);
+  projects.push({
+    ...project,
+    updatedAt: repo?.updated_at,
+    language: repo?.language,
+    stars: repo?.stargazers_count,
+  });
+}
 
 const months = lastMonths(12);
 const contributionSeries = monthlyContributionSeries(days, months);
@@ -320,7 +382,7 @@ if (tokenLooksUnderScoped) {
   process.exit(0);
 }
 
-const svg = `<svg width="1200" height="1060" viewBox="0 0 1200 1060" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+const svg = `<svg width="1200" height="1270" viewBox="0 0 1200 1270" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
   <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, activity overview, and AI infrastructure positioning.</desc>
   <defs>
@@ -355,9 +417,9 @@ const svg = `<svg width="1200" height="1060" viewBox="0 0 1200 1060" fill="none"
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="1060" rx="28"/>
-  <rect width="1200" height="1060" rx="28" fill="url(#greenGlow)"/>
-  <rect width="1200" height="1060" rx="28" fill="url(#blueGlow)"/>
+  <rect class="bg" width="1200" height="1270" rx="28"/>
+  <rect width="1200" height="1270" rx="28" fill="url(#greenGlow)"/>
+  <rect width="1200" height="1270" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
@@ -418,6 +480,12 @@ const svg = `<svg width="1200" height="1060" viewBox="0 0 1200 1060" fill="none"
     ${metricCard({ x: 484, y: 0, title: "Issues", value: fmt(totalIssues), change: "authored", color: "#facc15", values: issueSeries })}
     ${metricCard({ x: 726, y: 0, title: "Repositories", value: fmt(publicRepos), change: "public active", color: "#60a5fa", values: repoSeries })}
     <text class="muted" x="786" y="136" font-size="13">Auto-updated daily</text>
+  </g>
+
+  <g transform="translate(54 1068)">
+    <text class="title" x="0" y="-28" font-size="24">Current Projects</text>
+    <text class="muted" x="914" y="-28" font-size="14">Repo metadata updates automatically</text>
+    ${projects.map(projectCard).join("")}
   </g>
 </svg>`;
 
