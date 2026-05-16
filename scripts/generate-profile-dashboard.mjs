@@ -441,7 +441,7 @@ const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none"
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
     <text class="title" x="0" y="54" font-size="52">Hi, I'm Fernando Parreiras</text>
-    <text class="text" x="0" y="92" font-size="21">AI Builder | Systems Architect | Founder @ Trustyu.ai &amp; Tech Human</text>
+    <text class="text" x="0" y="92" font-size="21">AI Builder | Systems Architect | Founder @ Trustyu.ai, needyu.ai &amp; Tech Human</text>
     <text class="muted" x="0" y="132" font-size="17">I build AI-powered products, multi-agent systems and AWS-backed platform infrastructure.</text>
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
