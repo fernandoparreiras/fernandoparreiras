@@ -47,6 +47,8 @@ const PROJECTS = [
     color: "#86efac",
   },
 ];
+const FAITH_STATEMENT = "Jesus Christ at the center | CEO | POR.life";
+const FAITH_REFERENCES = "Job 8:7 | Colossians 3:23";
 
 if (!TOKEN) {
   throw new Error("Missing GitHub token. Set PROFILE_STATS_TOKEN, GH_TOKEN, or GITHUB_TOKEN.");
@@ -232,6 +234,26 @@ function calcLongestStreak(days) {
   return best;
 }
 
+function calcCurrentStreak(days) {
+  let current = 0;
+  for (let index = days.length - 1; index >= 0; index -= 1) {
+    if (days[index].contributionCount > 0) {
+      current += 1;
+    } else if (current > 0 || days[index].date === now.toISOString().slice(0, 10)) {
+      break;
+    }
+  }
+  return current;
+}
+
+function dateLabel(date) {
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${date}T00:00:00Z`));
+}
+
 function languageStats(repos) {
   const totals = new Map();
   for (const repo of repos) {
@@ -269,6 +291,17 @@ function metricCard({ x, y, title, value, change, color, values }) {
       <text class="title" x="20" y="68" font-size="30">${escapeXml(value)}</text>
       <text fill="${color}" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">${escapeXml(change)}</text>
       <polyline points="${line}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>`;
+}
+
+function pulseCard({ x, y, title, value, detail, color }) {
+  return `
+    <g transform="translate(${x} ${y})">
+      <rect class="mini-card" x="0" y="0" width="168" height="104" rx="14"/>
+      <circle cx="22" cy="26" r="6" fill="${color}"/>
+      <text class="muted" x="40" y="31" font-size="13">${escapeXml(title)}</text>
+      <text class="title" x="18" y="66" font-size="27">${escapeXml(value)}</text>
+      <text class="muted" x="18" y="88" font-size="12">${escapeXml(detail)}</text>
     </g>`;
 }
 
@@ -374,15 +407,24 @@ const repoSeries = months.map((m, index) => {
   return base;
 });
 
+const updated = now.toISOString().slice(0, 10);
 const totalContributions = calendar.totalContributions;
 const privateContributions = collection.restrictedContributionsCount;
 const publicRepos = publicProfile?.public_repos ?? repos.filter((repo) => !repo.isPrivate).length;
 const visibleRepos = user.repositories.totalCount;
 const longestStreak = calcLongestStreak(days);
+const currentStreak = calcCurrentStreak(days);
+const activeDays = days.filter((day) => day.contributionCount > 0).length;
+const averageActiveDay = activeDays ? totalContributions / activeDays : 0;
+const bestDay = days.reduce(
+  (best, day) => (day.contributionCount > best.contributionCount ? day : best),
+  { date: updated, contributionCount: 0 },
+);
 const totalPrs = collection.totalPullRequestContributions || prSeries.reduce((sum, value) => sum + value, 0);
 const totalIssues = collection.totalIssueContributions || issueSeries.reduce((sum, value) => sum + value, 0);
+const totalCommits = collection.totalCommitContributions;
+const totalReviews = collection.totalPullRequestReviewContributions;
 const languages = languageStats(repos);
-const updated = now.toISOString().slice(0, 10);
 
 const tokenLooksUnderScoped =
   process.env.GITHUB_ACTIONS === "true" &&
@@ -399,7 +441,7 @@ if (tokenLooksUnderScoped) {
   process.exit(0);
 }
 
-const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+const svg = `<svg width="1200" height="1880" viewBox="0 0 1200 1880" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
   <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, activity overview, and AI infrastructure positioning.</desc>
   <defs>
@@ -434,9 +476,9 @@ const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none"
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="1460" rx="28"/>
-  <rect width="1200" height="1460" rx="28" fill="url(#greenGlow)"/>
-  <rect width="1200" height="1460" rx="28" fill="url(#blueGlow)"/>
+  <rect class="bg" width="1200" height="1880" rx="28"/>
+  <rect width="1200" height="1880" rx="28" fill="url(#greenGlow)"/>
+  <rect width="1200" height="1880" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
@@ -452,9 +494,17 @@ const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none"
         return `<rect class="chip" x="${x}" y="0" width="${widths[i]}" height="34" rx="17"/><text class="${i % 3 === 0 ? "blue" : i % 3 === 1 ? "accent" : "purple"}" x="${x + 18}" y="22" font-size="13">${label}</text>`;
       }).join("")}
     </g>
+
+    <g transform="translate(0 242)">
+      <rect class="panel" x="0" y="0" width="1090" height="92" rx="16"/>
+      <text class="accent" x="28" y="36" font-size="18">${escapeXml(FAITH_STATEMENT)}</text>
+      <text class="text" x="28" y="66" font-size="16">Jesus Christ is my only Savior and true CEO. Every business, product, and decision is submitted to Him.</text>
+      <text class="purple" x="1048" y="36" font-size="15" text-anchor="end">${escapeXml(FAITH_REFERENCES)}</text>
+      <text class="muted" x="1048" y="66" font-size="13" text-anchor="end">Faith and work, united by purpose.</text>
+    </g>
   </g>
 
-  <g transform="translate(54 308)">
+  <g transform="translate(54 438)">
     <text class="title" x="0" y="0" font-size="24">GitHub Stats</text>
     <rect class="panel" x="0" y="22" width="520" height="218" rx="16"/>
     <text class="muted" x="26" y="68" font-size="15">Total Contributions (last year)</text>
@@ -473,7 +523,7 @@ const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none"
     ${languages.map(languageRow).join("")}
   </g>
 
-  <g transform="translate(54 604)">
+  <g transform="translate(54 734)">
     <text class="title" x="0" y="0" font-size="24">Contributions (last year)</text>
     <rect class="panel" x="0" y="22" width="1090" height="170" rx="16"/>
     <text class="muted" x="28" y="62" font-size="13">Mon</text>
@@ -490,7 +540,7 @@ const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none"
     <text class="muted" x="850" y="184" font-size="13">Updated ${updated}</text>
   </g>
 
-  <g transform="translate(54 850)">
+  <g transform="translate(54 980)">
     <text class="title" x="0" y="-26" font-size="24">Activity Overview</text>
     ${metricCard({ x: 0, y: 0, title: "Contributions", value: fmt(totalContributions), change: "last 12 months", color: "#22c55e", values: contributionSeries })}
     ${metricCard({ x: 242, y: 0, title: "Pull Requests", value: fmt(totalPrs), change: "authored", color: "#a78bfa", values: prSeries })}
@@ -499,7 +549,18 @@ const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none"
     <text class="muted" x="786" y="136" font-size="13">Auto-updated daily</text>
   </g>
 
-  <g transform="translate(54 1068)">
+  <g transform="translate(54 1188)">
+    <text class="title" x="0" y="-26" font-size="24">Git Pulse</text>
+    <text class="muted" x="120" y="-26" font-size="14">last 12 months</text>
+    ${pulseCard({ x: 0, y: 0, title: "Commits", value: fmt(totalCommits), detail: "direct git activity", color: "#22c55e" })}
+    ${pulseCard({ x: 184, y: 0, title: "Reviews", value: fmt(totalReviews), detail: "PR review signal", color: "#38bdf8" })}
+    ${pulseCard({ x: 368, y: 0, title: "Active Days", value: fmt(activeDays), detail: `${Math.round((activeDays / days.length) * 100)}% of days`, color: "#a78bfa" })}
+    ${pulseCard({ x: 552, y: 0, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
+    ${pulseCard({ x: 736, y: 0, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
+    ${pulseCard({ x: 920, y: 0, title: "Current Streak", value: `${fmt(currentStreak)}d`, detail: `longest ${fmt(longestStreak)}d`, color: "#60a5fa" })}
+  </g>
+
+  <g transform="translate(54 1418)">
     <text class="title" x="0" y="-28" font-size="24">Current Projects</text>
     <text class="muted" x="914" y="-28" font-size="14">Repo metadata updates automatically</text>
     ${projects.map(projectCard).join("")}
@@ -507,5 +568,5 @@ const svg = `<svg width="1200" height="1460" viewBox="0 0 1200 1460" fill="none"
 </svg>`;
 
 await fs.mkdir(OUT.split("/").slice(0, -1).join("/"), { recursive: true });
-await fs.writeFile(OUT, svg, "utf8");
+await fs.writeFile(OUT, svg.replace(/^[ \t]+$/gm, ""), "utf8");
 console.log(`Generated ${OUT}`);

@@ -1,16 +1,33 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260516-needyu-founder-spacing" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260522-faith-purpose" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
 
 <br />
 <br />
 
 [![Website](https://img.shields.io/badge/Website-fernandoparreiras.com.br-111827?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.fernandoparreiras.com.br)
 [![Trustyu.ai](https://img.shields.io/badge/Trustyu.ai-AI_Product_Platform-111827?style=for-the-badge&logo=openai&logoColor=white)](https://trustyu.ai)
+[![POR.life](https://img.shields.io/badge/POR.life-Jesus_at_the_center-111827?style=for-the-badge&logo=readme&logoColor=white)](https://por.life)
 [![Tech Human](https://img.shields.io/badge/Tech_Human-Humanized_Technology-111827?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TECH-HUMAN)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-fernandoparreiras-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fernandoparreiras)
 
 </div>
+
+---
+
+## Faith, Work, and Purpose
+
+I am a Christian. I believe Jesus Christ is my only Savior, the center of my life, my family, and the work I build.
+
+Through [POR.life](https://por.life), every business and initiative I lead is aligned with a simple conviction: Jesus is at the center. He is the true CEO over purpose, strategy, execution, ethics, people, and impact.
+
+> Though thy beginning was small, yet thy latter end should greatly increase.
+>
+> **Job 8:7**
+
+> And whatsoever ye do, do it heartily, as to the Lord, and not unto men.
+>
+> **Colossians 3:23**
 
 ---
 
