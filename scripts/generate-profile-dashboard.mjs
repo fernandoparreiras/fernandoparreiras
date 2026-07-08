@@ -305,6 +305,46 @@ function pulseCard({ x, y, title, value, detail, color }) {
     </g>`;
 }
 
+function mixAxisLength(percent) {
+  return percent > 0 ? Math.max(10, (percent / 100) * 164) : 0;
+}
+
+function contributionMixCard({ x, y, mix, total }) {
+  const centerX = 252;
+  const centerY = 136;
+  const commits = mixAxisLength(mix.commits.percent);
+  const issues = mixAxisLength(mix.issues.percent);
+  const reviews = mixAxisLength(mix.reviews.percent);
+  const prs = mixAxisLength(mix.pullRequests.percent);
+
+  return `
+    <g transform="translate(${x} ${y})">
+      <rect class="panel" x="0" y="0" width="500" height="260" rx="16"/>
+      <text class="title" x="24" y="34" font-size="22">Contribution Mix</text>
+      <text class="muted" x="24" y="58" font-size="13">${escapeXml(fmt(total))} classified actions, last 12 months</text>
+      <line x1="92" y1="${centerY}" x2="420" y2="${centerY}" stroke="#1f3b35" stroke-width="2"/>
+      <line x1="${centerX}" y1="58" x2="${centerX}" y2="220" stroke="#1f3b35" stroke-width="2"/>
+      <line x1="${centerX}" y1="${centerY}" x2="${(centerX - commits).toFixed(1)}" y2="${centerY}" stroke="#39d353" stroke-width="3" stroke-linecap="round"/>
+      <line x1="${centerX}" y1="${centerY}" x2="${(centerX + issues).toFixed(1)}" y2="${centerY}" stroke="#39d353" stroke-width="3" stroke-linecap="round"/>
+      <line x1="${centerX}" y1="${centerY}" x2="${centerX}" y2="${(centerY - reviews).toFixed(1)}" stroke="#39d353" stroke-width="3" stroke-linecap="round"/>
+      <line x1="${centerX}" y1="${centerY}" x2="${centerX}" y2="${(centerY + prs).toFixed(1)}" stroke="#39d353" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="${centerX}" cy="${centerY}" r="8" fill="#22c55e" fill-opacity="0.18"/>
+      <circle cx="${centerX}" cy="${centerY}" r="4" fill="#86efac"/>
+      <circle cx="${(centerX - commits).toFixed(1)}" cy="${centerY}" r="4" fill="#86efac" stroke="#22c55e" stroke-width="2"/>
+      <circle cx="${(centerX + issues).toFixed(1)}" cy="${centerY}" r="4" fill="#86efac" stroke="#22c55e" stroke-width="2"/>
+      <circle cx="${centerX}" cy="${(centerY - reviews).toFixed(1)}" r="4" fill="#86efac" stroke="#22c55e" stroke-width="2"/>
+      <circle cx="${centerX}" cy="${(centerY + prs).toFixed(1)}" r="4" fill="#86efac" stroke="#22c55e" stroke-width="2"/>
+      <text class="muted" x="106" y="${centerY - 10}" font-size="12" text-anchor="middle">${mix.commits.percent}%</text>
+      <text class="muted" x="106" y="${centerY + 8}" font-size="12" text-anchor="middle">Commits</text>
+      <text class="muted" x="408" y="${centerY - 10}" font-size="12" text-anchor="middle">${mix.issues.percent}%</text>
+      <text class="muted" x="408" y="${centerY + 8}" font-size="12" text-anchor="middle">Issues</text>
+      <text class="muted" x="${centerX}" y="84" font-size="12" text-anchor="middle">${mix.reviews.percent}%</text>
+      <text class="muted" x="${centerX}" y="102" font-size="12" text-anchor="middle">Code review</text>
+      <text class="muted" x="${centerX}" y="204" font-size="12" text-anchor="middle">${mix.pullRequests.percent}%</text>
+      <text class="muted" x="${centerX}" y="222" font-size="12" text-anchor="middle">Pull requests</text>
+    </g>`;
+}
+
 function projectCard(project, index) {
   const col = index % 3;
   const row = Math.floor(index / 3);
@@ -424,6 +464,13 @@ const totalPrs = collection.totalPullRequestContributions || prSeries.reduce((su
 const totalIssues = collection.totalIssueContributions || issueSeries.reduce((sum, value) => sum + value, 0);
 const totalCommits = collection.totalCommitContributions;
 const totalReviews = collection.totalPullRequestReviewContributions;
+const contributionMixTotal = Math.max(totalCommits + totalIssues + totalPrs + totalReviews, 1);
+const contributionMix = {
+  commits: { total: totalCommits, percent: Math.round((totalCommits / contributionMixTotal) * 100) },
+  issues: { total: totalIssues, percent: Math.round((totalIssues / contributionMixTotal) * 100) },
+  pullRequests: { total: totalPrs, percent: Math.round((totalPrs / contributionMixTotal) * 100) },
+  reviews: { total: totalReviews, percent: Math.round((totalReviews / contributionMixTotal) * 100) },
+};
 const languages = languageStats(repos);
 
 const tokenLooksUnderScoped =
@@ -441,9 +488,9 @@ if (tokenLooksUnderScoped) {
   process.exit(0);
 }
 
-const svg = `<svg width="1200" height="1880" viewBox="0 0 1200 1880" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+const svg = `<svg width="1200" height="1980" viewBox="0 0 1200 1980" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
-  <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, activity overview, and AI infrastructure positioning.</desc>
+  <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, contribution mix, activity overview, and AI infrastructure positioning.</desc>
   <defs>
     <radialGradient id="greenGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 90) rotate(136) scale(560 360)">
       <stop stop-color="#22c55e" stop-opacity="0.28"/>
@@ -476,9 +523,9 @@ const svg = `<svg width="1200" height="1880" viewBox="0 0 1200 1880" fill="none"
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="1880" rx="28"/>
-  <rect width="1200" height="1880" rx="28" fill="url(#greenGlow)"/>
-  <rect width="1200" height="1880" rx="28" fill="url(#blueGlow)"/>
+  <rect class="bg" width="1200" height="1980" rx="28"/>
+  <rect width="1200" height="1980" rx="28" fill="url(#greenGlow)"/>
+  <rect width="1200" height="1980" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
@@ -555,12 +602,13 @@ const svg = `<svg width="1200" height="1880" viewBox="0 0 1200 1880" fill="none"
     ${pulseCard({ x: 0, y: 0, title: "Commits", value: fmt(totalCommits), detail: "direct git activity", color: "#22c55e" })}
     ${pulseCard({ x: 184, y: 0, title: "Reviews", value: fmt(totalReviews), detail: "PR review signal", color: "#38bdf8" })}
     ${pulseCard({ x: 368, y: 0, title: "Active Days", value: fmt(activeDays), detail: `${Math.round((activeDays / days.length) * 100)}% of days`, color: "#a78bfa" })}
-    ${pulseCard({ x: 552, y: 0, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
-    ${pulseCard({ x: 736, y: 0, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
-    ${pulseCard({ x: 920, y: 0, title: "Current Streak", value: `${fmt(currentStreak)}d`, detail: `longest ${fmt(longestStreak)}d`, color: "#60a5fa" })}
+    ${pulseCard({ x: 0, y: 120, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
+    ${pulseCard({ x: 184, y: 120, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
+    ${pulseCard({ x: 368, y: 120, title: "Current Streak", value: `${fmt(currentStreak)}d`, detail: `longest ${fmt(longestStreak)}d`, color: "#60a5fa" })}
+    ${contributionMixCard({ x: 590, y: -38, mix: contributionMix, total: contributionMixTotal })}
   </g>
 
-  <g transform="translate(54 1418)">
+  <g transform="translate(54 1518)">
     <text class="title" x="0" y="-28" font-size="24">Current Projects</text>
     <text class="muted" x="914" y="-28" font-size="14">Repo metadata updates automatically</text>
     ${projects.map(projectCard).join("")}
