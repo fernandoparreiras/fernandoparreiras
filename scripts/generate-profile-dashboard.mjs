@@ -21,6 +21,8 @@ const AI_REVIEW_ACTORS = (process.env.PROFILE_AI_REVIEW_ACTORS || DEFAULT_AI_REV
   .split(",")
   .map((actor) => actor.trim())
   .filter(Boolean);
+const SECURITY_WORKFLOW_PATTERN = /(security|sast|codeql|semgrep|trivy|snyk|gitleaks|secret|dependency|dependabot|audit|vulnerab|sonar|scorecard|osv|zap)/i;
+const QUALITY_WORKFLOW_PATTERN = /(ci|test|build|lint|quality|gate|spec|smoke|e2e|unit|integration|check|security|sast)/i;
 const PROJECTS = [
   {
     name: "Trustyu.ai",
@@ -165,6 +167,75 @@ async function searchCount(query) {
   const encoded = encodeURIComponent(query);
   const payload = await githubRest(`/search/issues?q=${encoded}&per_page=1`);
   return payload?.total_count ?? 0;
+}
+
+function uniqueValues(values) {
+  return Array.from(new Set(values.filter(Boolean)));
+}
+
+async function actionsRunCount(repo, params = {}) {
+  const query = new URLSearchParams({ per_page: "1", ...params });
+  const payload = await githubRest(`/repos/${repo}/actions/runs?${query}`);
+  return payload?.total_count ?? 0;
+}
+
+async function workflowRunCount(repo, workflowId, params = {}) {
+  const query = new URLSearchParams({ per_page: "1", ...params });
+  const payload = await githubRest(`/repos/${repo}/actions/workflows/${workflowId}/runs?${query}`);
+  return payload?.total_count ?? 0;
+}
+
+async function qualityGateStats({ from, to }) {
+  const start = from.slice(0, 10);
+  const end = to.slice(0, 10);
+  const created = `${start}..${end}`;
+  const repos = uniqueValues(
+    (process.env.PROFILE_QUALITY_GATE_REPOS || PROJECTS.map((project) => project.repo).join(","))
+      .split(",")
+      .map((repo) => repo.trim()),
+  );
+  const blockedStatuses = ["failure", "timed_out", "cancelled", "action_required"];
+  const totals = {
+    repos: 0,
+    workflows: 0,
+    completed: 0,
+    success: 0,
+    blocked: 0,
+    security: 0,
+    quality: 0,
+  };
+
+  for (const repo of repos) {
+    const completed = await actionsRunCount(repo, { created, status: "completed" });
+    if (!completed) {
+      continue;
+    }
+
+    totals.repos += 1;
+    totals.completed += completed;
+    totals.success += await actionsRunCount(repo, { created, status: "success" });
+    for (const status of blockedStatuses) {
+      totals.blocked += await actionsRunCount(repo, { created, status });
+    }
+
+    const workflowPayload = await githubRest(`/repos/${repo}/actions/workflows?per_page=100`);
+    const workflows = workflowPayload?.workflows || [];
+    totals.workflows += workflows.length;
+    for (const workflow of workflows) {
+      const label = `${workflow.name || ""} ${workflow.path || ""}`;
+      if (SECURITY_WORKFLOW_PATTERN.test(label)) {
+        totals.security += await workflowRunCount(repo, workflow.id, { created, status: "completed" });
+      }
+      if (QUALITY_WORKFLOW_PATTERN.test(label)) {
+        totals.quality += await workflowRunCount(repo, workflow.id, { created, status: "completed" });
+      }
+    }
+  }
+
+  return {
+    ...totals,
+    passRate: totals.completed ? Math.round((totals.success / totals.completed) * 100) : 0,
+  };
 }
 
 function aiActorLabel(actor) {
@@ -384,7 +455,8 @@ function contributionMixCard({ x, y, mix, total }) {
   const centerY = 136;
   const commits = mixAxisLength(mix.commits.percent);
   const issues = mixAxisLength(mix.issues.percent);
-  const reviews = mixAxisLength(mix.reviews.percent);
+  const reviewSignal = mix.reviewSignal || mix.reviews;
+  const reviews = mixAxisLength(reviewSignal.percent);
   const prs = mixAxisLength(mix.pullRequests.percent);
 
   return `
@@ -408,10 +480,40 @@ function contributionMixCard({ x, y, mix, total }) {
       <text class="muted" x="106" y="${centerY + 8}" font-size="12" text-anchor="middle">Commits</text>
       <text class="muted" x="408" y="${centerY - 10}" font-size="12" text-anchor="middle">${mix.issues.percent}%</text>
       <text class="muted" x="408" y="${centerY + 8}" font-size="12" text-anchor="middle">Issues</text>
-      <text class="muted" x="${centerX}" y="84" font-size="12" text-anchor="middle">${mix.reviews.percent}%</text>
-      <text class="muted" x="${centerX}" y="102" font-size="12" text-anchor="middle">Code review</text>
+      <text class="muted" x="${centerX}" y="78" font-size="12" text-anchor="middle">${reviewSignal.percent}%</text>
+      <text class="muted" x="${centerX}" y="96" font-size="12" text-anchor="middle">Review signal</text>
+      <text class="muted" x="${centerX}" y="112" font-size="11" text-anchor="middle">Human + AI</text>
       <text class="muted" x="${centerX}" y="204" font-size="12" text-anchor="middle">${mix.pullRequests.percent}%</text>
       <text class="muted" x="${centerX}" y="222" font-size="12" text-anchor="middle">Pull requests</text>
+    </g>`;
+}
+
+function qualityMetric({ x, title, value, detail, color }) {
+  return `
+      <g transform="translate(${x} 84)">
+        <circle cx="0" cy="0" r="6" fill="${color}"/>
+        <text class="muted" x="18" y="5" font-size="13">${escapeXml(title)}</text>
+        <text class="title" x="0" y="50" font-size="30">${escapeXml(value)}</text>
+        <text class="muted" x="0" y="76" font-size="12">${escapeXml(detail)}</text>
+      </g>`;
+}
+
+function qualityGatesCard({ x, y, stats }) {
+  const passWidth = Math.round((stats.passRate / 100) * 288);
+  const gateRuns = stats.quality || stats.completed;
+  const gateRunDetail = stats.quality ? "CI/test/security runs" : "completed workflow runs";
+  return `
+    <g transform="translate(${x} ${y})">
+      <rect class="panel" x="0" y="0" width="1090" height="190" rx="16"/>
+      <text class="title" x="24" y="34" font-size="24">Quality Gates</text>
+      <text class="muted" x="184" y="34" font-size="14">GitHub Actions, last 12 months</text>
+      <text class="muted" x="24" y="58" font-size="13">${stats.repos} repos tracked | ${stats.workflows} workflows scanned | CI, SAST, security, smoke, and spec gates</text>
+      ${qualityMetric({ x: 38, title: "CI Pass Rate", value: `${stats.passRate}%`, detail: `${fmt(stats.success)} successful runs`, color: "#22c55e" })}
+      ${qualityMetric({ x: 292, title: "Gate Runs", value: fmt(gateRuns), detail: gateRunDetail, color: "#60a5fa" })}
+      ${qualityMetric({ x: 546, title: "SAST/Security", value: fmt(stats.security), detail: "security-classified runs", color: "#facc15" })}
+      ${qualityMetric({ x: 800, title: "Blocked Gates", value: fmt(stats.blocked), detail: "failed/cancelled gates", color: "#fb7185" })}
+      <rect class="track" x="758" y="26" width="288" height="8" rx="4"/>
+      <rect x="758" y="26" width="${passWidth}" height="8" rx="4" fill="#22c55e"/>
     </g>`;
 }
 
@@ -534,13 +636,6 @@ const totalPrs = collection.totalPullRequestContributions || prSeries.reduce((su
 const totalIssues = collection.totalIssueContributions || issueSeries.reduce((sum, value) => sum + value, 0);
 const totalCommits = collection.totalCommitContributions;
 const totalReviews = collection.totalPullRequestReviewContributions;
-const contributionMixTotal = Math.max(totalCommits + totalIssues + totalPrs + totalReviews, 1);
-const contributionMix = {
-  commits: { total: totalCommits, percent: Math.round((totalCommits / contributionMixTotal) * 100) },
-  issues: { total: totalIssues, percent: Math.round((totalIssues / contributionMixTotal) * 100) },
-  pullRequests: { total: totalPrs, percent: Math.round((totalPrs / contributionMixTotal) * 100) },
-  reviews: { total: totalReviews, percent: Math.round((totalReviews / contributionMixTotal) * 100) },
-};
 const languages = languageStats(repos);
 
 const tokenLooksUnderScoped =
@@ -559,7 +654,17 @@ if (tokenLooksUnderScoped) {
 }
 
 const aiReviews = await aiReviewStats({ from, to, totalPrs });
-const svg = `<svg width="1200" height="2100" viewBox="0 0 1200 2100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+const qualityGates = await qualityGateStats({ from, to });
+const reviewSignal = totalReviews + aiReviews.reviewedPrs;
+const contributionMixTotal = Math.max(totalCommits + totalIssues + totalPrs + reviewSignal, 1);
+const contributionMix = {
+  commits: { total: totalCommits, percent: Math.round((totalCommits / contributionMixTotal) * 100) },
+  issues: { total: totalIssues, percent: Math.round((totalIssues / contributionMixTotal) * 100) },
+  pullRequests: { total: totalPrs, percent: Math.round((totalPrs / contributionMixTotal) * 100) },
+  reviews: { total: totalReviews, percent: Math.round((totalReviews / contributionMixTotal) * 100) },
+  reviewSignal: { total: reviewSignal, percent: Math.round((reviewSignal / contributionMixTotal) * 100) },
+};
+const svg = `<svg width="1200" height="2300" viewBox="0 0 1200 2300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
   <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, contribution mix, activity overview, and AI infrastructure positioning.</desc>
   <defs>
@@ -594,9 +699,9 @@ const svg = `<svg width="1200" height="2100" viewBox="0 0 1200 2100" fill="none"
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="2100" rx="28"/>
-  <rect width="1200" height="2100" rx="28" fill="url(#greenGlow)"/>
-  <rect width="1200" height="2100" rx="28" fill="url(#blueGlow)"/>
+  <rect class="bg" width="1200" height="2300" rx="28"/>
+  <rect width="1200" height="2300" rx="28" fill="url(#greenGlow)"/>
+  <rect width="1200" height="2300" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
@@ -680,7 +785,9 @@ const svg = `<svg width="1200" height="2100" viewBox="0 0 1200 2100" fill="none"
     ${contributionMixCard({ x: 590, y: -38, mix: contributionMix, total: contributionMixTotal })}
   </g>
 
-  <g transform="translate(54 1638)">
+  ${qualityGatesCard({ x: 54, y: 1568, stats: qualityGates })}
+
+  <g transform="translate(54 1818)">
     <text class="title" x="0" y="-28" font-size="24">Current Projects</text>
     <text class="muted" x="914" y="-28" font-size="14">Repo metadata updates automatically</text>
     ${projects.map(projectCard).join("")}
