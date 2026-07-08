@@ -3,6 +3,24 @@ import fs from "node:fs/promises";
 const USERNAME = process.env.PROFILE_USERNAME || "fernandoparreiras";
 const TOKEN = process.env.PROFILE_STATS_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard.svg";
+const DEFAULT_AI_REVIEW_ACTORS = [
+  "coderabbitai[bot]",
+  "claude[bot]",
+  "copilot-pull-request-reviewer[bot]",
+  "cursor[bot]",
+  "openai-codex[bot]",
+  "sourcery-ai[bot]",
+  "qodo-merge-pro[bot]",
+  "qodo-ai[bot]",
+  "qodo[bot]",
+  "greptile-apps[bot]",
+  "sweep-ai[bot]",
+  "devin-ai-integration[bot]",
+];
+const AI_REVIEW_ACTORS = (process.env.PROFILE_AI_REVIEW_ACTORS || DEFAULT_AI_REVIEW_ACTORS.join(","))
+  .split(",")
+  .map((actor) => actor.trim())
+  .filter(Boolean);
 const PROJECTS = [
   {
     name: "Trustyu.ai",
@@ -147,6 +165,58 @@ async function searchCount(query) {
   const encoded = encodeURIComponent(query);
   const payload = await githubRest(`/search/issues?q=${encoded}&per_page=1`);
   return payload?.total_count ?? 0;
+}
+
+function aiActorLabel(actor) {
+  const labels = {
+    "coderabbitai[bot]": "CodeRabbit",
+    "claude[bot]": "Claude",
+    "copilot-pull-request-reviewer[bot]": "Copilot",
+    "cursor[bot]": "Cursor",
+    "openai-codex[bot]": "Codex",
+    "sourcery-ai[bot]": "Sourcery",
+    "qodo-merge-pro[bot]": "Qodo",
+    "qodo-ai[bot]": "Qodo",
+    "qodo[bot]": "Qodo",
+    "greptile-apps[bot]": "Greptile",
+    "sweep-ai[bot]": "Sweep",
+    "devin-ai-integration[bot]": "Devin",
+  };
+  if (labels[actor]) {
+    return labels[actor];
+  }
+  return actor
+    .replace(/\[bot\]$/i, "")
+    .replaceAll("-", " ")
+    .replaceAll("_", " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+async function aiReviewStats({ from, to, totalPrs }) {
+  const start = from.slice(0, 10);
+  const end = to.slice(0, 10);
+  const tools = [];
+
+  for (const actor of AI_REVIEW_ACTORS) {
+    const base = `author:${USERNAME} type:pr created:${start}..${end}`;
+    const commenterCount = await searchCount(`${base} commenter:${actor}`);
+    const reviewCount = commenterCount > 0 ? 0 : await searchCount(`${base} reviewed-by:${actor}`);
+    const count = Math.max(commenterCount, reviewCount);
+    if (count > 0) {
+      tools.push({ actor, label: aiActorLabel(actor), count });
+    }
+  }
+
+  const signals = tools.reduce((sum, tool) => sum + tool.count, 0);
+  const reviewedPrs = Math.min(totalPrs || signals, signals);
+  const coverage = totalPrs ? Math.round((reviewedPrs / totalPrs) * 100) : 0;
+
+  return {
+    activeTools: tools.length,
+    coverage,
+    reviewedPrs,
+    tools: tools.sort((a, b) => b.count - a.count),
+  };
 }
 
 async function monthlyContributionCounts(months) {
@@ -488,7 +558,8 @@ if (tokenLooksUnderScoped) {
   process.exit(0);
 }
 
-const svg = `<svg width="1200" height="1980" viewBox="0 0 1200 1980" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+const aiReviews = await aiReviewStats({ from, to, totalPrs });
+const svg = `<svg width="1200" height="2100" viewBox="0 0 1200 2100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
   <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, contribution mix, activity overview, and AI infrastructure positioning.</desc>
   <defs>
@@ -523,9 +594,9 @@ const svg = `<svg width="1200" height="1980" viewBox="0 0 1200 1980" fill="none"
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="1980" rx="28"/>
-  <rect width="1200" height="1980" rx="28" fill="url(#greenGlow)"/>
-  <rect width="1200" height="1980" rx="28" fill="url(#blueGlow)"/>
+  <rect class="bg" width="1200" height="2100" rx="28"/>
+  <rect width="1200" height="2100" rx="28" fill="url(#greenGlow)"/>
+  <rect width="1200" height="2100" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
@@ -600,15 +671,16 @@ const svg = `<svg width="1200" height="1980" viewBox="0 0 1200 1980" fill="none"
     <text class="title" x="0" y="-26" font-size="24">Git Pulse</text>
     <text class="muted" x="120" y="-26" font-size="14">last 12 months</text>
     ${pulseCard({ x: 0, y: 0, title: "Commits", value: fmt(totalCommits), detail: "direct git activity", color: "#22c55e" })}
-    ${pulseCard({ x: 184, y: 0, title: "Reviews", value: fmt(totalReviews), detail: "PR review signal", color: "#38bdf8" })}
-    ${pulseCard({ x: 368, y: 0, title: "Active Days", value: fmt(activeDays), detail: `${Math.round((activeDays / days.length) * 100)}% of days`, color: "#a78bfa" })}
-    ${pulseCard({ x: 0, y: 120, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
-    ${pulseCard({ x: 184, y: 120, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
-    ${pulseCard({ x: 368, y: 120, title: "Current Streak", value: `${fmt(currentStreak)}d`, detail: `longest ${fmt(longestStreak)}d`, color: "#60a5fa" })}
+    ${pulseCard({ x: 184, y: 0, title: "Human Reviews", value: fmt(totalReviews), detail: "formal PR reviews", color: "#38bdf8" })}
+    ${pulseCard({ x: 368, y: 0, title: "AI Reviews", value: fmt(aiReviews.reviewedPrs), detail: `${aiReviews.activeTools} tools | ${aiReviews.coverage}% PRs`, color: "#86efac" })}
+    ${pulseCard({ x: 0, y: 120, title: "Active Days", value: fmt(activeDays), detail: `${Math.round((activeDays / days.length) * 100)}% of days`, color: "#a78bfa" })}
+    ${pulseCard({ x: 184, y: 120, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
+    ${pulseCard({ x: 368, y: 120, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
+    ${pulseCard({ x: 0, y: 240, title: "Current Streak", value: `${fmt(currentStreak)}d`, detail: `longest ${fmt(longestStreak)}d`, color: "#60a5fa" })}
     ${contributionMixCard({ x: 590, y: -38, mix: contributionMix, total: contributionMixTotal })}
   </g>
 
-  <g transform="translate(54 1518)">
+  <g transform="translate(54 1638)">
     <text class="title" x="0" y="-28" font-size="24">Current Projects</text>
     <text class="muted" x="914" y="-28" font-size="14">Repo metadata updates automatically</text>
     ${projects.map(projectCard).join("")}
