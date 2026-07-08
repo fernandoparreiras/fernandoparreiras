@@ -9,7 +9,7 @@
 [![Trustyu.ai](https://img.shields.io/badge/Trustyu.ai-AI_Product_Platform-111827?style=for-the-badge&logo=openai&logoColor=white)](https://trustyu.ai)
 [![Trustyu FORGE](https://img.shields.io/badge/Trustyu_FORGE-AI_First_Framework-111827?style=for-the-badge&logo=readme&logoColor=white)](https://forge.trustyu.ai)
 [![POR.life](https://img.shields.io/badge/POR.life-Jesus_at_the_center-111827?style=for-the-badge&logo=readme&logoColor=white)](https://por.life)
-[![Tech Human](https://img.shields.io/badge/Tech_Human-Humanized_Technology-111827?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TECH-HUMAN)
+[![Tech Human](https://img.shields.io/badge/Tech_Human-Humanized_Technology-111827?style=for-the-badge&logo=google-chrome&logoColor=white)](https://techhuman.com.br)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-fernandoparreiras-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fernandoparreiras)
 
 </div>
@@ -41,11 +41,11 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 ![React](https://img.shields.io/badge/React-111827?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-111827?style=for-the-badge&logo=shadcnui&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-111827?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
-![pnpm](https://img.shields.io/badge/pnpm_10-111827?style=for-the-badge&logo=pnpm&logoColor=F69220)
+![pnpm](https://img.shields.io/badge/pnpm_11-111827?style=for-the-badge&logo=pnpm&logoColor=F69220)
 
 ### Backend, Data, and Infra
 
-![Node.js](https://img.shields.io/badge/Node.js_LTS-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
+![Node.js](https://img.shields.io/badge/Node.js_24_LTS-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
 ![Python](https://img.shields.io/badge/Python_3.12+-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
 ![FastAPI](https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=009688)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL_%2B_pgvector-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
@@ -74,26 +74,28 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 
 I am a founder and AI systems architect building companies, products, and operating systems around applied artificial intelligence.
 
-My current work connects **Trustyu.ai**, **needyu.ai**, **Tech Human**, and **Trustyu FORGE** into a practical ecosystem: AI-native products, serious infrastructure, business automation, and human-centered adoption.
+My current work connects [Trustyu.ai](https://trustyu.ai), [Trustyu FORGE](https://forge.trustyu.ai), [POR.life](https://por.life), [Tech Human](https://techhuman.com.br), and the [needyuai](https://github.com/needyuai) engineering ecosystem into a practical operating system for AI-native products, serious infrastructure, business automation, and human-centered adoption.
 
 | Domain | Founder/AI Expert focus |
 | --- | --- |
-| Trustyu.ai | AI-powered vertical SaaS, Hub Agents, CRM vNext, BMAI, trust systems, and operational intelligence |
-| needyu.ai | Digital products, cloud infrastructure, AWS/Terraform automation, platform services, and applied AI delivery |
-| Trustyu FORGE | AI-first engineering framework: ADRs, templates, reusable CI/CD, local AI environment, agent squads, and quality gates |
-| Tech Human | Humanized technology, AI literacy, governance readiness, leadership, and real-world business transformation |
+| [Trustyu.ai](https://trustyu.ai) | Vertical AI products, Hub Agents, CRM vNext, BMAI, trust systems, and operational intelligence |
+| [Trustyu FORGE](https://forge.trustyu.ai) | AI-first engineering framework: ADRs, templates, reusable CI/CD, local AI environment, agent squads, and quality gates |
+| [Tech Human](https://techhuman.com.br) | Humanized technology, AI literacy, governance readiness, leadership, and real-world business transformation |
+| [POR.life](https://por.life) | Faith-led initiative where Jesus is at the center of purpose, ethics, business, and impact |
 | AI architecture | Multi-agent workflows, RAG, LLM routing, tracing, evaluation, tenant isolation, and human-in-the-loop systems |
 
 ## Trustyu FORGE
 
 [Trustyu FORGE](https://forge.trustyu.ai) is the AI-first engineering framework behind the Trustyu ecosystem. It turns product ideas into production SaaS through documented decisions, reusable templates, shared infrastructure, local AI engineering environments, agent squads, and empirical validation.
 
+Public references: [FORGE Framework](https://forge.trustyu.ai), [Definition of Done](https://forge.trustyu.ai/#dod), [AI Squad](https://forge.trustyu.ai/#ia-squad), [Security](https://forge.trustyu.ai/#seguranca), and [Market Thesis](https://forge.trustyu.ai/#mercado).
+
 | FORGE layer | Repository | Role |
 | --- | --- | --- |
-| Knowledge OS | [`trustyu-docs`](https://github.com/needyuai/trustyu-docs) | ADRs, engineering standards, business strategy, runbooks, and agent methodology |
-| Product template | [`trustyu-template`](https://github.com/needyuai/trustyu-template) | Base implementation for new Trustyu products: Next.js, TypeScript, Prisma, i18n, tests, CI, design system |
-| Platform infra | [`trustyu-infra`](https://github.com/needyuai/trustyu-infra) | Reusable GitHub Actions, CI/CD, Docker Compose, Keycloak, bootstrap scripts, and shared automation |
-| AI dev environment | [`trustyu-ai-env`](https://github.com/needyuai/trustyu-ai-env) | Developer workstation, MCP setup, dotfiles, Codex/Claude kit, secrets workflow, and AI-first engineering tooling |
+| Knowledge OS | `trustyu-docs` | ADRs, engineering standards, business strategy, runbooks, and agent methodology |
+| Product template | `trustyu-template` | Base implementation for new Trustyu products: Next.js 16, TypeScript, Prisma, i18n, tests, CI, and design system |
+| Platform infra | `trustyu-infra` | Reusable GitHub Actions, CI/CD, Docker Compose, Keycloak, bootstrap scripts, and shared automation |
+| AI dev environment | `trustyu-ai-env` | Developer workstation, MCP setup, dotfiles, Codex/Claude kit, secrets workflow, and AI-first engineering tooling |
 
 ```mermaid
 flowchart LR
@@ -117,7 +119,7 @@ Core principles:
 - Documents that operate like execution systems, not static notes
 - Framework inheritance: decisions, templates, workflows, and environments reused across products
 - Contract-first delivery with tests, smoke checks, and explicit release criteria
-- Multi-agent collaboration between Claude, Claude Code, Codex, and other coding agents
+- Multi-agent collaboration between Claude, Claude Code, Codex, CodeRabbit, and other coding agents
 - Empirical validation over assumptions, especially for infra, auth, LLM, and observability layers
 
 ## Stack Philosophy
@@ -126,17 +128,17 @@ I use a pragmatic, production-minded stack: simple enough to ship fast, structur
 
 | Layer | Stack |
 | --- | --- |
-| Product foundation | Next.js 16, TypeScript, React, shadcn/ui, Tailwind CSS, pnpm |
-| AI backend | Python 3.12+, FastAPI, Pydantic, SQLAlchemy, Alembic, pytest |
-| Data and infra | PostgreSQL + pgvector, Redis, Docker, Keycloak, GitHub Actions |
-| Cloud platform | AWS, Terraform/HCL, CI/CD automation, production operations |
-| Agent tooling | Claude, Claude Code, Codex, OpenAI, Gemini, LangGraph, LangChain, LangSmith, LangFuse |
+| Product foundation | Next.js 16, TypeScript, React, shadcn/ui, Tailwind CSS, pnpm 11 |
+| AI backend | Python 3.12+, FastAPI, Pydantic, SQLAlchemy, Alembic, uv, pytest |
+| Data and infra | PostgreSQL 18 + pgvector, Redis 8.2, Docker, Keycloak 25, GitHub Actions |
+| Cloud platform | AWS, Terraform/HCL, Railway, Vercel, reusable CI/CD, production operations |
+| Agent tooling | Claude, Claude Code, Codex, OpenAI, Gemini, MCP, LangGraph, LangChain, LangSmith, LangFuse |
 
 ## AI Architecture Rules I Use
 
 I do not start with the most complex agent framework. I start with the simplest layer that solves the problem, then move up only when the system asks for it.
 
-- Direct SDK for classification, extraction, generation, streaming, and short prompt chains
+- Direct SDKs for classification, extraction, generation, streaming, and short prompt chains
 - LangChain for RAG, retrievers, document pipelines, chunking, embeddings, and vector search
 - LangGraph for stateful agents, conditional workflows, checkpointing, and handoffs
 - Google ADK for parent-child hierarchies, parallel fan-out, and multi-agent consolidation
@@ -149,8 +151,9 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 - Named branches and explicit ownership to prevent parallel AI sessions from colliding
 - ADRs for architecture so decisions live in the system, not only in chat history
 - RED/GREEN commits for contract-first implementation and reviewable progress
-- Tenant isolation checks because vertical SaaS must be safe by default
-- Observability on agents so AI behavior becomes debuggable traces
+- Human review + AI review signal so delivery speed does not remove engineering judgment
+- Tenant isolation, SAST, smoke tests, and quality gates because vertical SaaS must be safe by default
+- Observability on agents so AI behavior becomes debuggable traces, not folklore
 - Secrets treated as operational risk, not convenience
 
 ## Active Building Themes
@@ -160,7 +163,8 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 - **AWS Infrastructure:** cloud architecture, automation, HCL/Terraform, CI/CD, and production operations
 - **Hub Agents:** shared AI engine with vertical isolation and reusable agent infrastructure
 - **Trustyu CRM:** AI-assisted CRM workflows, onboarding, messaging, and operational automation
-- **AI Literacy:** governance readiness, use-case mapping, maturity models, and ROI frameworks
+- **AI Literacy:** governance readiness, use-case mapping, maturity models, and ROI frameworks through [Tech Human](https://techhuman.com.br)
+- **Faith and purpose:** businesses and products aligned under [POR.life](https://por.life), with Jesus at the center
 - **Humanized Technology:** systems that increase leverage without losing human judgment
 
 ## Contribution Flow
