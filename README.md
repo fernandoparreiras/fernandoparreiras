@@ -1,12 +1,13 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260708-quality-gates" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260708-forge" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
 
 <br />
 <br />
 
 [![Website](https://img.shields.io/badge/Website-fernandoparreiras.com.br-111827?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.fernandoparreiras.com.br)
 [![Trustyu.ai](https://img.shields.io/badge/Trustyu.ai-AI_Product_Platform-111827?style=for-the-badge&logo=openai&logoColor=white)](https://trustyu.ai)
+[![Trustyu FORGE](https://img.shields.io/badge/Trustyu_FORGE-AI_First_Framework-111827?style=for-the-badge&logo=readme&logoColor=white)](https://forge.trustyu.ai)
 [![POR.life](https://img.shields.io/badge/POR.life-Jesus_at_the_center-111827?style=for-the-badge&logo=readme&logoColor=white)](https://por.life)
 [![Tech Human](https://img.shields.io/badge/Tech_Human-Humanized_Technology-111827?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TECH-HUMAN)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-fernandoparreiras-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fernandoparreiras)
@@ -73,38 +74,48 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 
 I am a founder and AI systems architect building companies, products, and operating systems around applied artificial intelligence.
 
-My current work connects **Trustyu.ai**, **needyu.ai**, **Tech Human**, and **JARVIS** into a practical ecosystem: AI-native products, serious infrastructure, business automation, and human-centered adoption.
+My current work connects **Trustyu.ai**, **needyu.ai**, **Tech Human**, and **Trustyu FORGE** into a practical ecosystem: AI-native products, serious infrastructure, business automation, and human-centered adoption.
 
 | Domain | Founder/AI Expert focus |
 | --- | --- |
 | Trustyu.ai | AI-powered vertical SaaS, Hub Agents, CRM vNext, BMAI, trust systems, and operational intelligence |
 | needyu.ai | Digital products, cloud infrastructure, AWS/Terraform automation, platform services, and applied AI delivery |
-| JARVIS | My AI product launch operating system: ADRs, agent squads, empirical validation, and repeatable execution |
+| Trustyu FORGE | AI-first engineering framework: ADRs, templates, reusable CI/CD, local AI environment, agent squads, and quality gates |
 | Tech Human | Humanized technology, AI literacy, governance readiness, leadership, and real-world business transformation |
 | AI architecture | Multi-agent workflows, RAG, LLM routing, tracing, evaluation, tenant isolation, and human-in-the-loop systems |
 
-## JARVIS
+## Trustyu FORGE
 
-JARVIS is my product launch operating system: a way to move from idea to production SaaS with AI-assisted squads, documented architecture decisions, empirical validation, and cross-repo execution.
+[Trustyu FORGE](https://forge.trustyu.ai) is the AI-first engineering framework behind the Trustyu ecosystem. It turns product ideas into production SaaS through documented decisions, reusable templates, shared infrastructure, local AI engineering environments, agent squads, and empirical validation.
+
+| FORGE layer | Repository | Role |
+| --- | --- | --- |
+| Knowledge OS | [`trustyu-docs`](https://github.com/needyuai/trustyu-docs) | ADRs, engineering standards, business strategy, runbooks, and agent methodology |
+| Product template | [`trustyu-template`](https://github.com/needyuai/trustyu-template) | Base implementation for new Trustyu products: Next.js, TypeScript, Prisma, i18n, tests, CI, design system |
+| Platform infra | [`trustyu-infra`](https://github.com/needyuai/trustyu-infra) | Reusable GitHub Actions, CI/CD, Docker Compose, Keycloak, bootstrap scripts, and shared automation |
+| AI dev environment | [`trustyu-ai-env`](https://github.com/needyuai/trustyu-ai-env) | Developer workstation, MCP setup, dotfiles, Codex/Claude kit, secrets workflow, and AI-first engineering tooling |
 
 ```mermaid
 flowchart LR
   A["Business problem"] --> B["Product strategy"]
-  B --> C["ADRs and standards"]
-  C --> D["AI squad execution"]
-  D --> E["Product code"]
-  D --> F["Platform services"]
-  E --> G["Staging validation"]
+  B --> C["FORGE docs and ADRs"]
+  C --> D["trustyu-template"]
+  C --> E["trustyu-infra"]
+  C --> F["trustyu-ai-env"]
+  D --> G["AI squad execution"]
+  E --> G
   F --> G
-  G --> H["Production SaaS"]
-  H --> I["Learning loop"]
-  I --> C
+  G --> H["Product code"]
+  H --> I["Quality gates"]
+  I --> J["Production SaaS"]
+  J --> K["Learning loop"]
+  K --> C
 ```
 
 Core principles:
 
 - Documents that operate like execution systems, not static notes
-- Platform inheritance: decisions made once, reused across products
+- Framework inheritance: decisions, templates, workflows, and environments reused across products
 - Contract-first delivery with tests, smoke checks, and explicit release criteria
 - Multi-agent collaboration between Claude, Claude Code, Codex, and other coding agents
 - Empirical validation over assumptions, especially for infra, auth, LLM, and observability layers
@@ -145,6 +156,7 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 ## Active Building Themes
 
 - **Vertical SaaS:** repeatable product architecture for niche, high-context markets
+- **Trustyu FORGE:** AI-first framework for reusable product delivery, standards, templates, infra, and agent execution
 - **AWS Infrastructure:** cloud architecture, automation, HCL/Terraform, CI/CD, and production operations
 - **Hub Agents:** shared AI engine with vertical isolation and reusable agent infrastructure
 - **Trustyu CRM:** AI-assisted CRM workflows, onboarding, messaging, and operational automation

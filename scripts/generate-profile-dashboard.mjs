@@ -23,6 +23,12 @@ const AI_REVIEW_ACTORS = (process.env.PROFILE_AI_REVIEW_ACTORS || DEFAULT_AI_REV
   .filter(Boolean);
 const SECURITY_WORKFLOW_PATTERN = /(security|sast|codeql|semgrep|trivy|snyk|gitleaks|secret|dependency|dependabot|audit|vulnerab|sonar|scorecard|osv|zap)/i;
 const QUALITY_WORKFLOW_PATTERN = /(ci|test|build|lint|quality|gate|spec|smoke|e2e|unit|integration|check|security|sast)/i;
+const FORGE_PROJECT_REPOS = [
+  "needyuai/trustyu-docs",
+  "needyuai/trustyu-template",
+  "needyuai/trustyu-infra",
+  "needyuai/trustyu-ai-env",
+];
 const PROJECTS = [
   {
     name: "Trustyu.ai",
@@ -60,10 +66,10 @@ const PROJECTS = [
     color: "#38bdf8",
   },
   {
-    name: "JARVIS",
-    repo: "needyuai/trustyu-jarvis-site",
-    tagline: "AI product launch methodology",
-    progress: 85,
+    name: "FORGE",
+    repo: "needyuai/trustyu-docs",
+    tagline: "AI-first engineering framework",
+    progress: 88,
     color: "#86efac",
   },
 ];
@@ -189,8 +195,9 @@ async function qualityGateStats({ from, to }) {
   const start = from.slice(0, 10);
   const end = to.slice(0, 10);
   const created = `${start}..${end}`;
+  const defaultRepos = [...PROJECTS.map((project) => project.repo), ...FORGE_PROJECT_REPOS];
   const repos = uniqueValues(
-    (process.env.PROFILE_QUALITY_GATE_REPOS || PROJECTS.map((project) => project.repo).join(","))
+    (process.env.PROFILE_QUALITY_GATE_REPOS || defaultRepos.join(","))
       .split(",")
       .map((repo) => repo.trim()),
   );
@@ -500,8 +507,7 @@ function qualityMetric({ x, title, value, detail, color }) {
 
 function qualityGatesCard({ x, y, stats }) {
   const passWidth = Math.round((stats.passRate / 100) * 288);
-  const gateRuns = stats.quality || stats.completed;
-  const gateRunDetail = stats.quality ? "CI/test/security runs" : "completed workflow runs";
+  const gateRunDetail = stats.quality ? `${fmt(stats.quality)} CI/test/security` : "completed workflow runs";
   return `
     <g transform="translate(${x} ${y})">
       <rect class="panel" x="0" y="0" width="1090" height="190" rx="16"/>
@@ -509,7 +515,7 @@ function qualityGatesCard({ x, y, stats }) {
       <text class="muted" x="184" y="34" font-size="14">GitHub Actions, last 12 months</text>
       <text class="muted" x="24" y="58" font-size="13">${stats.repos} repos tracked | ${stats.workflows} workflows scanned | CI, SAST, security, smoke, and spec gates</text>
       ${qualityMetric({ x: 38, title: "CI Pass Rate", value: `${stats.passRate}%`, detail: `${fmt(stats.success)} successful runs`, color: "#22c55e" })}
-      ${qualityMetric({ x: 292, title: "Gate Runs", value: fmt(gateRuns), detail: gateRunDetail, color: "#60a5fa" })}
+      ${qualityMetric({ x: 292, title: "Gate Runs", value: fmt(stats.completed), detail: gateRunDetail, color: "#60a5fa" })}
       ${qualityMetric({ x: 546, title: "SAST/Security", value: fmt(stats.security), detail: "security-classified runs", color: "#facc15" })}
       ${qualityMetric({ x: 800, title: "Blocked Gates", value: fmt(stats.blocked), detail: "failed/cancelled gates", color: "#fb7185" })}
       <rect class="track" x="758" y="26" width="288" height="8" rx="4"/>
@@ -711,7 +717,7 @@ const svg = `<svg width="1200" height="2300" viewBox="0 0 1200 2300" fill="none"
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
     <g transform="translate(0 186)">
-      ${["Trustyu.ai", "JARVIS", "Hub Agents", "AWS", "Terraform", "AI/ML", "Vertical SaaS"].map((label, i) => {
+      ${["Trustyu.ai", "FORGE", "Hub Agents", "AWS", "Terraform", "AI/ML", "Vertical SaaS"].map((label, i) => {
         const widths = [112, 94, 126, 72, 112, 80, 142];
         const x = widths.slice(0, i).reduce((sum, value) => sum + value + 12, 0);
         return `<rect class="chip" x="${x}" y="0" width="${widths[i]}" height="34" rx="17"/><text class="${i % 3 === 0 ? "blue" : i % 3 === 1 ? "accent" : "purple"}" x="${x + 18}" y="22" font-size="13">${label}</text>`;

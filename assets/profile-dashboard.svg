@@ -45,7 +45,7 @@
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
     <g transform="translate(0 186)">
-      <rect class="chip" x="0" y="0" width="112" height="34" rx="17"/><text class="blue" x="18" y="22" font-size="13">Trustyu.ai</text><rect class="chip" x="124" y="0" width="94" height="34" rx="17"/><text class="accent" x="142" y="22" font-size="13">JARVIS</text><rect class="chip" x="230" y="0" width="126" height="34" rx="17"/><text class="purple" x="248" y="22" font-size="13">Hub Agents</text><rect class="chip" x="368" y="0" width="72" height="34" rx="17"/><text class="blue" x="386" y="22" font-size="13">AWS</text><rect class="chip" x="452" y="0" width="112" height="34" rx="17"/><text class="accent" x="470" y="22" font-size="13">Terraform</text><rect class="chip" x="576" y="0" width="80" height="34" rx="17"/><text class="purple" x="594" y="22" font-size="13">AI/ML</text><rect class="chip" x="668" y="0" width="142" height="34" rx="17"/><text class="blue" x="686" y="22" font-size="13">Vertical SaaS</text>
+      <rect class="chip" x="0" y="0" width="112" height="34" rx="17"/><text class="blue" x="18" y="22" font-size="13">Trustyu.ai</text><rect class="chip" x="124" y="0" width="94" height="34" rx="17"/><text class="accent" x="142" y="22" font-size="13">FORGE</text><rect class="chip" x="230" y="0" width="126" height="34" rx="17"/><text class="purple" x="248" y="22" font-size="13">Hub Agents</text><rect class="chip" x="368" y="0" width="72" height="34" rx="17"/><text class="blue" x="386" y="22" font-size="13">AWS</text><rect class="chip" x="452" y="0" width="112" height="34" rx="17"/><text class="accent" x="470" y="22" font-size="13">Terraform</text><rect class="chip" x="576" y="0" width="80" height="34" rx="17"/><text class="purple" x="594" y="22" font-size="13">AI/ML</text><rect class="chip" x="668" y="0" width="142" height="34" rx="17"/><text class="blue" x="686" y="22" font-size="13">Vertical SaaS</text>
     </g>
 
     <g transform="translate(0 242)">
@@ -77,11 +77,11 @@
     <text class="text" x="644" y="48" font-size="14">TypeScript</text>
     <rect class="track" x="770" y="37" width="212" height="9" rx="5"/>
     <rect x="770" y="37" width="105" height="9" rx="5" fill="#3178c6"/>
-    <text class="text" x="1002" y="48" font-size="14" text-anchor="end">49.4%</text>
+    <text class="text" x="1002" y="48" font-size="14" text-anchor="end">49.3%</text>
     <text class="text" x="644" y="84" font-size="14">JavaScript</text>
     <rect class="track" x="770" y="73" width="212" height="9" rx="5"/>
-    <rect x="770" y="73" width="52" height="9" rx="5" fill="#f1e05a"/>
-    <text class="text" x="1002" y="84" font-size="14" text-anchor="end">24.7%</text>
+    <rect x="770" y="73" width="53" height="9" rx="5" fill="#f1e05a"/>
+    <text class="text" x="1002" y="84" font-size="14" text-anchor="end">24.8%</text>
     <text class="text" x="644" y="120" font-size="14">C#</text>
     <rect class="track" x="770" y="109" width="212" height="9" rx="5"/>
     <rect x="770" y="109" width="44" height="9" rx="5" fill="#178600"/>
@@ -467,7 +467,7 @@
 <rect x="702" y="48" width="9" height="9" rx="2" fill="#0f172a" stroke="#1e293b" stroke-width="0.4"/>
 <rect x="702" y="60" width="9" height="9" rx="2" fill="#40c463" stroke="#1e293b" stroke-width="0.4"/>
 <rect x="702" y="72" width="9" height="9" rx="2" fill="#216e39" stroke="#1e293b" stroke-width="0.4"/>
-<rect x="702" y="84" width="9" height="9" rx="2" fill="#40c463" stroke="#1e293b" stroke-width="0.4"/>
+<rect x="702" y="84" width="9" height="9" rx="2" fill="#30a14e" stroke="#1e293b" stroke-width="0.4"/>
     <text class="muted" x="836" y="146" font-size="13">Less</text>
     <rect x="878" y="137" width="10" height="10" rx="2" fill="#0f172a"/>
     <rect x="894" y="137" width="10" height="10" rx="2" fill="#0e4429"/>
@@ -486,7 +486,7 @@
       <text class="muted" x="20" y="32" font-size="13">Contributions</text>
       <text class="title" x="20" y="68" font-size="30">7.0k</text>
       <text fill="#22c55e" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">last 12 months</text>
-      <polyline points="22.0,133.9 37.6,133.9 53.3,133.9 68.9,133.9 84.5,132.9 100.2,128.0 115.8,133.4 131.5,130.3 147.1,111.4 162.7,99.2 178.4,92.0 194.0,129.3" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,133.9 37.6,133.9 53.3,133.9 68.9,133.9 84.5,132.9 100.2,128.0 115.8,133.4 131.5,130.3 147.1,111.4 162.7,99.2 178.4,92.0 194.0,129.0" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
     <g transform="translate(242 0)">
@@ -494,7 +494,7 @@
       <text class="muted" x="20" y="32" font-size="13">Pull Requests</text>
       <text class="title" x="20" y="68" font-size="30">1.6k</text>
       <text fill="#a78bfa" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">authored</text>
-      <polyline points="22.0,134.0 37.6,134.0 53.3,134.0 68.9,134.0 84.5,134.0 100.2,134.0 115.8,134.0 131.5,134.0 147.1,131.5 162.7,110.4 178.4,92.0 194.0,130.4" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,134.0 37.6,134.0 53.3,134.0 68.9,134.0 84.5,134.0 100.2,134.0 115.8,134.0 131.5,134.0 147.1,131.5 162.7,110.4 178.4,92.0 194.0,129.9" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
     <g transform="translate(484 0)">
@@ -555,7 +555,7 @@
       <rect class="mini-card" x="0" y="0" width="168" height="104" rx="14"/>
       <circle cx="22" cy="26" r="6" fill="#facc15"/>
       <text class="muted" x="40" y="31" font-size="13">Avg Active Day</text>
-      <text class="title" x="18" y="66" font-size="27">52.0</text>
+      <text class="title" x="18" y="66" font-size="27">52.2</text>
       <text class="muted" x="18" y="88" font-size="12">contributions/day</text>
     </g>
 
@@ -578,7 +578,7 @@
     <g transform="translate(590 -38)">
       <rect class="panel" x="0" y="0" width="500" height="260" rx="16"/>
       <text class="title" x="24" y="34" font-size="22">Contribution Mix</text>
-      <text class="muted" x="24" y="58" font-size="13">8.0k classified actions, last 12 months</text>
+      <text class="muted" x="24" y="58" font-size="13">8.1k classified actions, last 12 months</text>
       <line x1="92" y1="136" x2="420" y2="136" stroke="#1f3b35" stroke-width="2"/>
       <line x1="252" y1="58" x2="252" y2="220" stroke="#1f3b35" stroke-width="2"/>
       <line x1="252" y1="136" x2="171.6" y2="136" stroke="#39d353" stroke-width="3" stroke-linecap="round"/>
@@ -608,37 +608,37 @@
       <rect class="panel" x="0" y="0" width="1090" height="190" rx="16"/>
       <text class="title" x="24" y="34" font-size="24">Quality Gates</text>
       <text class="muted" x="184" y="34" font-size="14">GitHub Actions, last 12 months</text>
-      <text class="muted" x="24" y="58" font-size="13">4 repos tracked | 37 workflows scanned | CI, SAST, security, smoke, and spec gates</text>
+      <text class="muted" x="24" y="58" font-size="13">7 repos tracked | 72 workflows scanned | CI, SAST, security, smoke, and spec gates</text>
 
       <g transform="translate(38 84)">
         <circle cx="0" cy="0" r="6" fill="#22c55e"/>
         <text class="muted" x="18" y="5" font-size="13">CI Pass Rate</text>
-        <text class="title" x="0" y="50" font-size="30">88%</text>
-        <text class="muted" x="0" y="76" font-size="12">7.9k successful runs</text>
+        <text class="title" x="0" y="50" font-size="30">83%</text>
+        <text class="muted" x="0" y="76" font-size="12">10k successful runs</text>
       </g>
 
       <g transform="translate(292 84)">
         <circle cx="0" cy="0" r="6" fill="#60a5fa"/>
         <text class="muted" x="18" y="5" font-size="13">Gate Runs</text>
-        <text class="title" x="0" y="50" font-size="30">6.8k</text>
-        <text class="muted" x="0" y="76" font-size="12">CI/test/security runs</text>
+        <text class="title" x="0" y="50" font-size="30">12k</text>
+        <text class="muted" x="0" y="76" font-size="12">9.5k CI/test/security</text>
       </g>
 
       <g transform="translate(546 84)">
         <circle cx="0" cy="0" r="6" fill="#facc15"/>
         <text class="muted" x="18" y="5" font-size="13">SAST/Security</text>
-        <text class="title" x="0" y="50" font-size="30">1.3k</text>
+        <text class="title" x="0" y="50" font-size="30">1.7k</text>
         <text class="muted" x="0" y="76" font-size="12">security-classified runs</text>
       </g>
 
       <g transform="translate(800 84)">
         <circle cx="0" cy="0" r="6" fill="#fb7185"/>
         <text class="muted" x="18" y="5" font-size="13">Blocked Gates</text>
-        <text class="title" x="0" y="50" font-size="30">739</text>
+        <text class="title" x="0" y="50" font-size="30">1.7k</text>
         <text class="muted" x="0" y="76" font-size="12">failed/cancelled gates</text>
       </g>
       <rect class="track" x="758" y="26" width="288" height="8" rx="4"/>
-      <rect x="758" y="26" width="253" height="8" rx="4" fill="#22c55e"/>
+      <rect x="758" y="26" width="239" height="8" rx="4" fill="#22c55e"/>
     </g>
 
   <g transform="translate(54 1818)">
@@ -709,13 +709,13 @@
       <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="#86efac" fill-opacity="0.12" stroke="#86efac" stroke-width="2"/>
       <text fill="#86efac" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">6</text>
-      <text class="title" x="22" y="82" font-size="21">JARVIS</text>
-      <text class="muted" x="22" y="110" font-size="13">AI product launch methodology</text>
-      <text class="muted" x="22" y="132" font-size="12">trustyu-jarvis-site / HTML</text>
+      <text class="title" x="22" y="82" font-size="21">FORGE</text>
+      <text class="muted" x="22" y="110" font-size="13">AI-first engineering framework</text>
+      <text class="muted" x="22" y="132" font-size="12">trustyu-docs / HTML</text>
       <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
-      <rect x="22" y="150" width="136" height="8" rx="4" fill="#86efac"/>
-      <text class="text" x="196" y="158" font-size="12">85%</text>
-      <text class="muted" x="22" y="190" font-size="11">Updated 2026-06-27</text>
+      <rect x="22" y="150" width="141" height="8" rx="4" fill="#86efac"/>
+      <text class="text" x="196" y="158" font-size="12">88%</text>
+      <text class="muted" x="22" y="190" font-size="11">Updated 2026-06-30</text>
     </g>
   </g>
 </svg>
