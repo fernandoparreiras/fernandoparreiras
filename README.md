@@ -37,10 +37,16 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 ### Product Foundation
 
 ![Next.js](https://img.shields.io/badge/Next.js_16-111827?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React_19-111827?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript_6-111827?style=for-the-badge&logo=typescript&logoColor=3178C6)
-![React](https://img.shields.io/badge/React-111827?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-111827?style=for-the-badge&logo=shadcnui&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-111827?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
+![Radix UI](https://img.shields.io/badge/Radix_UI-111827?style=for-the-badge&logo=radixui&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_4-111827?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
+![TanStack Query](https://img.shields.io/badge/TanStack_Query-111827?style=for-the-badge&logo=reactquery&logoColor=FF4154)
+![Zod](https://img.shields.io/badge/Zod-111827?style=for-the-badge&logo=zod&logoColor=3E67B1)
+![React Hook Form](https://img.shields.io/badge/React_Hook_Form-111827?style=for-the-badge&logo=reacthookform&logoColor=EC5990)
+![Recharts](https://img.shields.io/badge/Recharts-111827?style=for-the-badge&logo=chartdotjs&logoColor=FF6384)
+![next-intl](https://img.shields.io/badge/next--intl-111827?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![pnpm](https://img.shields.io/badge/pnpm_11-111827?style=for-the-badge&logo=pnpm&logoColor=F69220)
 
 ### Backend, Data, and Infra
@@ -48,13 +54,19 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 ![Node.js](https://img.shields.io/badge/Node.js_24_LTS-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
 ![Python](https://img.shields.io/badge/Python_3.12+-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
 ![FastAPI](https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=009688)
+![Pydantic](https://img.shields.io/badge/Pydantic-111827?style=for-the-badge&logo=pydantic&logoColor=E92063)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy_2-111827?style=for-the-badge&logo=sqlalchemy&logoColor=D71F00)
+![Alembic](https://img.shields.io/badge/Alembic-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
+![Prisma](https://img.shields.io/badge/Prisma-111827?style=for-the-badge&logo=prisma&logoColor=2D3748)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL_%2B_pgvector-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
 ![Redis](https://img.shields.io/badge/Redis-111827?style=for-the-badge&logo=redis&logoColor=FF4438)
+![Keycloak](https://img.shields.io/badge/Keycloak_26.6-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
+![Docker](https://img.shields.io/badge/Docker_%2B_Compose-111827?style=for-the-badge&logo=docker&logoColor=2496ED)
 ![AWS](https://img.shields.io/badge/AWS-111827?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900)
-![Terraform](https://img.shields.io/badge/Terraform-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
-![Docker](https://img.shields.io/badge/Docker-111827?style=for-the-badge&logo=docker&logoColor=2496ED)
-![Keycloak](https://img.shields.io/badge/Keycloak-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=2088FF)
+![Terraform](https://img.shields.io/badge/Terraform_%2F_HCL-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
+![Railway](https://img.shields.io/badge/Railway-111827?style=for-the-badge&logo=railway&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-111827?style=for-the-badge&logo=vercel&logoColor=white)
+![Resend](https://img.shields.io/badge/Resend_SPI-111827?style=for-the-badge&logo=resend&logoColor=white)
 
 ### AI, Agents, and LLM Tooling
 
@@ -63,10 +75,25 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 ![OpenAI](https://img.shields.io/badge/OpenAI-111827?style=for-the-badge&logo=openai&logoColor=white)
 ![Codex](https://img.shields.io/badge/Codex-111827?style=for-the-badge&logo=openai&logoColor=white)
 ![Google Gemini](https://img.shields.io/badge/Gemini-111827?style=for-the-badge&logo=googlegemini&logoColor=8E75B2)
+![MCP](https://img.shields.io/badge/MCP-111827?style=for-the-badge&logo=protocolsdotio&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG_%2B_Embeddings-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
+![LLM Routing](https://img.shields.io/badge/LLM_Routing-111827?style=for-the-badge&logo=openai&logoColor=white)
+![Human in the Loop](https://img.shields.io/badge/HITL-111827?style=for-the-badge&logo=github&logoColor=white)
 ![LangGraph](https://img.shields.io/badge/LangGraph-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
 ![LangChain](https://img.shields.io/badge/LangChain-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
 ![LangSmith](https://img.shields.io/badge/LangSmith-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
 ![LangFuse](https://img.shields.io/badge/LangFuse-111827?style=for-the-badge&logo=rocket&logoColor=white)
+
+### Quality, Security, and Delivery
+
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=2088FF)
+![Vitest](https://img.shields.io/badge/Vitest-111827?style=for-the-badge&logo=vitest&logoColor=6E9F18)
+![Playwright](https://img.shields.io/badge/Playwright-111827?style=for-the-badge&logo=playwright&logoColor=2EAD33)
+![CodeQL](https://img.shields.io/badge/CodeQL_%2F_SAST-111827?style=for-the-badge&logo=github&logoColor=white)
+![Trivy](https://img.shields.io/badge/Trivy-111827?style=for-the-badge&logo=trivy&logoColor=1904DA)
+![Gitleaks](https://img.shields.io/badge/Gitleaks-111827?style=for-the-badge&logo=git&logoColor=F05032)
+![semantic-release](https://img.shields.io/badge/semantic--release-111827?style=for-the-badge&logo=semanticrelease&logoColor=white)
+![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-111827?style=for-the-badge&logo=opentelemetry&logoColor=white)
 
 ---
 
