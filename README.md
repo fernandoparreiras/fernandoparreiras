@@ -16,21 +16,57 @@
 
 ---
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-faith-stack.svg?v=20260716-premium-stack" alt="Faith-led purpose and production-grade AI platform stack" width="100%" />
+## Faith, Work, and Purpose
 
-<details>
-<summary><strong>Readable stack matrix</strong></summary>
+I am a Christian. I believe Jesus Christ is my only Savior, the center of my life, my family, and the work I build.
 
-| Track | What it carries | Core stack |
-| --- | --- | --- |
-| Faith and purpose | Conviction, stewardship, ethics, people and impact through [POR.life](https://por.life) | Jesus at the center, Job 8:7, Colossians 3:23 |
-| Product and UX | Fast, polished product surfaces for vertical SaaS and AI-native workflows | Next.js 16, React 19, TypeScript 6, shadcn/ui, Radix UI, Tailwind CSS 4, TanStack Query, Zod, React Hook Form, Recharts, next-intl, pnpm 11 |
-| Backend and APIs | Domain services, agent APIs, integrations and operational workflows | Node.js 24 LTS, Python 3.12+, FastAPI, Pydantic, SQLAlchemy 2, Alembic, Prisma, uv, pytest, REST contracts and webhooks |
-| Data, auth and infra | Multi-tenant product foundation, local-to-cloud parity and reusable delivery infrastructure | PostgreSQL 18, pgvector, Redis 8.2, Keycloak 26.6, Docker, Docker Compose, AWS, Terraform/HCL, Railway, Vercel, GitHub Actions, Resend SPI |
-| AI, agents and LLMOps | Agentic software with tools, memory, routing, traces and human checkpoints | Claude, Claude Code, OpenAI, Codex, Gemini, MCP, LangGraph, LangChain, LangSmith, LangFuse, RAG, embeddings, LLM routing, HITL and evaluation |
-| Engineering system | FORGE discipline codified into how products are specified, built, tested and released | ADRs, Definition of Done gates, contract-first tests, Vitest, Playwright E2E, CodeQL/SAST, Trivy, Gitleaks, semantic-release, worktrees, smoke checks, observability and FinOps |
+Through [POR.life](https://por.life), every business and initiative I lead is aligned with a simple conviction: Jesus is at the center. He is the true CEO over purpose, strategy, execution, ethics, people, and impact.
 
-</details>
+> Though thy beginning was small, yet thy latter end should greatly increase.
+>
+> **Job 8:7**
+
+> And whatsoever ye do, do it heartily, as to the Lord, and not unto men.
+>
+> **Colossians 3:23**
+
+---
+
+## Platform Stack
+
+### Product Foundation
+
+![Next.js](https://img.shields.io/badge/Next.js_16-111827?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript_6-111827?style=for-the-badge&logo=typescript&logoColor=3178C6)
+![React](https://img.shields.io/badge/React-111827?style=for-the-badge&logo=react&logoColor=61DAFB)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-111827?style=for-the-badge&logo=shadcnui&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-111827?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
+![pnpm](https://img.shields.io/badge/pnpm_11-111827?style=for-the-badge&logo=pnpm&logoColor=F69220)
+
+### Backend, Data, and Infra
+
+![Node.js](https://img.shields.io/badge/Node.js_24_LTS-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
+![Python](https://img.shields.io/badge/Python_3.12+-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
+![FastAPI](https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=009688)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL_%2B_pgvector-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
+![Redis](https://img.shields.io/badge/Redis-111827?style=for-the-badge&logo=redis&logoColor=FF4438)
+![AWS](https://img.shields.io/badge/AWS-111827?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900)
+![Terraform](https://img.shields.io/badge/Terraform-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
+![Docker](https://img.shields.io/badge/Docker-111827?style=for-the-badge&logo=docker&logoColor=2496ED)
+![Keycloak](https://img.shields.io/badge/Keycloak-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=2088FF)
+
+### AI, Agents, and LLM Tooling
+
+![Claude](https://img.shields.io/badge/Claude-111827?style=for-the-badge&logo=anthropic&logoColor=D97757)
+![Claude Code](https://img.shields.io/badge/Claude_Code-111827?style=for-the-badge&logo=anthropic&logoColor=D97757)
+![OpenAI](https://img.shields.io/badge/OpenAI-111827?style=for-the-badge&logo=openai&logoColor=white)
+![Codex](https://img.shields.io/badge/Codex-111827?style=for-the-badge&logo=openai&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Gemini-111827?style=for-the-badge&logo=googlegemini&logoColor=8E75B2)
+![LangGraph](https://img.shields.io/badge/LangGraph-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
+![LangChain](https://img.shields.io/badge/LangChain-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
+![LangSmith](https://img.shields.io/badge/LangSmith-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
+![LangFuse](https://img.shields.io/badge/LangFuse-111827?style=for-the-badge&logo=rocket&logoColor=white)
 
 ---
 
@@ -92,12 +128,11 @@ I use a pragmatic, production-minded stack: simple enough to ship fast, structur
 
 | Layer | Stack |
 | --- | --- |
-| Product foundation | Next.js 16, React 19, TypeScript 6, shadcn/ui, Radix UI, Tailwind CSS 4, TanStack Query, Zod, React Hook Form, Recharts, next-intl, pnpm 11 |
-| Backend and APIs | Node.js 24 LTS, Python 3.12+, FastAPI, Pydantic, SQLAlchemy 2, Alembic, Prisma, uv, pytest, REST contracts, webhooks |
-| Data, auth and infra | PostgreSQL 18 + pgvector, Redis 8.2, Keycloak 26.6, Docker, Docker Compose, GitHub Actions, Resend SPI |
-| Cloud platform | AWS, Terraform/HCL, Railway, Vercel, reusable CI/CD, production operations, FinOps |
-| Agent tooling | Claude, Claude Code, Codex, OpenAI, Gemini, MCP, LangGraph, LangChain, LangSmith, LangFuse, RAG, embeddings, LLM routing, HITL, evaluation |
-| Engineering system | ADRs, Definition of Done gates, contract-first tests, Vitest, Playwright E2E, CodeQL/SAST, Trivy, Gitleaks, semantic-release, worktrees, smoke checks, observability |
+| Product foundation | Next.js 16, TypeScript, React, shadcn/ui, Tailwind CSS, pnpm 11 |
+| AI backend | Python 3.12+, FastAPI, Pydantic, SQLAlchemy, Alembic, uv, pytest |
+| Data and infra | PostgreSQL 18 + pgvector, Redis 8.2, Docker, Keycloak 25, GitHub Actions |
+| Cloud platform | AWS, Terraform/HCL, Railway, Vercel, reusable CI/CD, production operations |
+| Agent tooling | Claude, Claude Code, Codex, OpenAI, Gemini, MCP, LangGraph, LangChain, LangSmith, LangFuse |
 
 ## AI Architecture Rules I Use
 
