@@ -76,12 +76,12 @@
 
     <text class="text" x="644" y="48" font-size="14">HTML</text>
     <rect class="track" x="770" y="37" width="212" height="9" rx="5"/>
-    <rect x="770" y="37" width="78" height="9" rx="5" fill="#e34c26"/>
-    <text class="text" x="1002" y="48" font-size="14" text-anchor="end">36.9%</text>
+    <rect x="770" y="37" width="79" height="9" rx="5" fill="#e34c26"/>
+    <text class="text" x="1002" y="48" font-size="14" text-anchor="end">37.1%</text>
     <text class="text" x="644" y="84" font-size="14">TypeScript</text>
     <rect class="track" x="770" y="73" width="212" height="9" rx="5"/>
-    <rect x="770" y="73" width="76" height="9" rx="5" fill="#3178c6"/>
-    <text class="text" x="1002" y="84" font-size="14" text-anchor="end">35.6%</text>
+    <rect x="770" y="73" width="75" height="9" rx="5" fill="#3178c6"/>
+    <text class="text" x="1002" y="84" font-size="14" text-anchor="end">35.5%</text>
     <text class="text" x="644" y="120" font-size="14">JavaScript</text>
     <rect class="track" x="770" y="109" width="212" height="9" rx="5"/>
     <rect x="770" y="109" width="27" height="9" rx="5" fill="#f1e05a"/>
@@ -89,7 +89,7 @@
     <text class="text" x="644" y="156" font-size="14">C#</text>
     <rect class="track" x="770" y="145" width="212" height="9" rx="5"/>
     <rect x="770" y="145" width="22" height="9" rx="5" fill="#178600"/>
-    <text class="text" x="1002" y="156" font-size="14" text-anchor="end">10.5%</text>
+    <text class="text" x="1002" y="156" font-size="14" text-anchor="end">10.4%</text>
     <text class="text" x="644" y="192" font-size="14">PLpgSQL</text>
     <rect class="track" x="770" y="181" width="212" height="9" rx="5"/>
     <rect x="770" y="181" width="8" height="9" rx="5" fill="#336790"/>
@@ -486,7 +486,7 @@
       <text class="muted" x="20" y="32" font-size="13">Contributions</text>
       <text class="title" x="20" y="68" font-size="30">9.3k</text>
       <text fill="#22c55e" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">last 12 months</text>
-      <polyline points="22.0,133.9 37.6,133.9 53.3,133.9 68.9,132.9 84.5,128.0 100.2,133.4 115.8,130.3 131.5,111.4 147.1,99.1 162.7,92.0 178.4,100.4 194.0,124.4" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,133.9 37.6,133.9 53.3,133.9 68.9,132.9 84.5,128.0 100.2,133.4 115.8,130.3 131.5,111.4 147.1,99.1 162.7,92.0 178.4,100.4 194.0,124.1" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
     <g transform="translate(242 0)">
@@ -494,7 +494,7 @@
       <text class="muted" x="20" y="32" font-size="13">Pull Requests</text>
       <text class="title" x="20" y="68" font-size="30">2.5k</text>
       <text fill="#a78bfa" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">authored</text>
-      <polyline points="22.0,134.0 37.6,134.0 53.3,134.0 68.9,134.0 84.5,134.0 100.2,134.0 115.8,134.0 131.5,131.5 147.1,110.4 162.7,92.0 178.4,101.8 194.0,124.0" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,134.0 37.6,134.0 53.3,134.0 68.9,134.0 84.5,134.0 100.2,134.0 115.8,134.0 131.5,131.5 147.1,110.4 162.7,92.0 178.4,101.8 194.0,123.8" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
     <g transform="translate(484 0)">
@@ -502,7 +502,7 @@
       <text class="muted" x="20" y="32" font-size="13">Issues</text>
       <text class="title" x="20" y="68" font-size="30">1.9k</text>
       <text fill="#facc15" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">authored</text>
-      <polyline points="22.0,133.9 37.6,133.2 53.3,133.3 68.9,128.4 84.5,133.8 100.2,133.8 115.8,131.6 131.5,103.9 147.1,96.1 162.7,92.0 178.4,94.4 194.0,124.5" fill="none" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="22.0,133.9 37.6,133.2 53.3,133.3 68.9,128.4 84.5,133.8 100.2,133.8 115.8,131.6 131.5,103.9 147.1,96.1 162.7,92.0 178.4,94.4 194.0,124.1" fill="none" stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
     <g transform="translate(726 0)">
@@ -555,7 +555,7 @@
       <rect class="mini-card" x="0" y="0" width="168" height="104" rx="14"/>
       <circle cx="22" cy="26" r="6" fill="#facc15"/>
       <text class="muted" x="40" y="31" font-size="13">Avg Active Day</text>
-      <text class="title" x="18" y="66" font-size="27">60.3</text>
+      <text class="title" x="18" y="66" font-size="27">60.4</text>
       <text class="muted" x="18" y="88" font-size="12">contributions/day</text>
     </g>
 
@@ -608,26 +608,26 @@
       <rect class="panel" x="0" y="0" width="1090" height="190" rx="16"/>
       <text class="title" x="24" y="34" font-size="24">Quality Gates</text>
       <text class="muted" x="184" y="34" font-size="14">GitHub Actions, last 12 months</text>
-      <text class="muted" x="24" y="58" font-size="13">7 repos tracked | 101 workflows scanned | CI, SAST, security, smoke, and spec gates</text>
+      <text class="muted" x="24" y="58" font-size="13">8 repos tracked | 116 workflows scanned | CI, SAST, security, smoke, and spec gates</text>
 
       <g transform="translate(38 84)">
         <circle cx="0" cy="0" r="6" fill="#22c55e"/>
         <text class="muted" x="18" y="5" font-size="13">CI Pass Rate</text>
         <text class="title" x="0" y="50" font-size="30">86%</text>
-        <text class="muted" x="0" y="76" font-size="12">18k successful runs</text>
+        <text class="muted" x="0" y="76" font-size="12">19k successful runs</text>
       </g>
 
       <g transform="translate(292 84)">
         <circle cx="0" cy="0" r="6" fill="#60a5fa"/>
         <text class="muted" x="18" y="5" font-size="13">Gate Runs</text>
-        <text class="title" x="0" y="50" font-size="30">21k</text>
+        <text class="title" x="0" y="50" font-size="30">22k</text>
         <text class="muted" x="0" y="76" font-size="12">16k CI/test/security</text>
       </g>
 
       <g transform="translate(546 84)">
         <circle cx="0" cy="0" r="6" fill="#facc15"/>
         <text class="muted" x="18" y="5" font-size="13">SAST/Security</text>
-        <text class="title" x="0" y="50" font-size="30">2.9k</text>
+        <text class="title" x="0" y="50" font-size="30">3.0k</text>
         <text class="muted" x="0" y="76" font-size="12">security-classified runs</text>
       </g>
 
@@ -649,12 +649,12 @@
       <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="#22c55e" fill-opacity="0.12" stroke="#22c55e" stroke-width="2"/>
       <text fill="#22c55e" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">1</text>
-      <text class="title" x="22" y="82" font-size="21">Trustyu.ai</text>
-      <text class="muted" x="22" y="110" font-size="13">AI trust and vertical SaaS platform</text>
+      <text class="title" x="22" y="82" font-size="21">Trustyu CRM</text>
+      <text class="muted" x="22" y="110" font-size="13">Vertical SaaS for immigration operations</text>
       <text class="muted" x="22" y="132" font-size="12">trustyu-crm / TypeScript</text>
       <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
-      <rect x="22" y="150" width="128" height="8" rx="4" fill="#22c55e"/>
-      <text class="text" x="196" y="158" font-size="12">80%</text>
+      <rect x="22" y="150" width="147" height="8" rx="4" fill="#22c55e"/>
+      <text class="text" x="196" y="158" font-size="12">92%</text>
       <text class="muted" x="22" y="190" font-size="11">Updated 2026-08-04</text>
     </g>
     <g transform="translate(358 0)">
@@ -662,32 +662,32 @@
       <circle cx="32" cy="36" r="18" fill="#a78bfa" fill-opacity="0.12" stroke="#a78bfa" stroke-width="2"/>
       <text fill="#a78bfa" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">2</text>
       <text class="title" x="22" y="82" font-size="21">Hub Agents</text>
-      <text class="muted" x="22" y="110" font-size="13">Multi-agent orchestration engine</text>
+      <text class="muted" x="22" y="110" font-size="13">Central AI engine and agent runtime</text>
       <text class="muted" x="22" y="132" font-size="12">trustyu-hub-agents / Python</text>
       <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
-      <rect x="22" y="150" width="112" height="8" rx="4" fill="#a78bfa"/>
-      <text class="text" x="196" y="158" font-size="12">70%</text>
+      <rect x="22" y="150" width="138" height="8" rx="4" fill="#a78bfa"/>
+      <text class="text" x="196" y="158" font-size="12">86%</text>
       <text class="muted" x="22" y="190" font-size="11">Updated 2026-08-04</text>
     </g>
     <g transform="translate(716 0)">
       <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="#facc15" fill-opacity="0.12" stroke="#facc15" stroke-width="2"/>
       <text fill="#facc15" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">3</text>
-      <text class="title" x="22" y="82" font-size="21">BMAI</text>
-      <text class="muted" x="22" y="110" font-size="13">Business maturity AI engine</text>
-      <text class="muted" x="22" y="132" font-size="12">trustyu-bmai / Private project</text>
+      <text class="title" x="22" y="82" font-size="21">AI Workstation</text>
+      <text class="muted" x="22" y="110" font-size="13">Agentic execution platform at scale</text>
+      <text class="muted" x="22" y="132" font-size="12">trustyu-ai-workstation / TypeScript</text>
       <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
-      <rect x="22" y="150" width="96" height="8" rx="4" fill="#facc15"/>
-      <text class="text" x="196" y="158" font-size="12">60%</text>
-      <text class="muted" x="22" y="190" font-size="11">Repo metadata gated</text>
+      <rect x="22" y="150" width="115" height="8" rx="4" fill="#facc15"/>
+      <text class="text" x="196" y="158" font-size="12">72%</text>
+      <text class="muted" x="22" y="190" font-size="11">Updated 2026-08-04</text>
     </g>
     <g transform="translate(0 200)">
       <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="#60a5fa" fill-opacity="0.12" stroke="#60a5fa" stroke-width="2"/>
       <text fill="#60a5fa" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">4</text>
-      <text class="title" x="22" y="82" font-size="21">CRM vNext</text>
-      <text class="muted" x="22" y="110" font-size="13">Intelligent CRM and operations platform</text>
-      <text class="muted" x="22" y="132" font-size="12">trustyu-crm / TypeScript</text>
+      <text class="title" x="22" y="82" font-size="21">FORGE</text>
+      <text class="muted" x="22" y="110" font-size="13">AI-first engineering framework</text>
+      <text class="muted" x="22" y="132" font-size="12">trustyu-docs / Python</text>
       <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
       <rect x="22" y="150" width="144" height="8" rx="4" fill="#60a5fa"/>
       <text class="text" x="196" y="158" font-size="12">90%</text>
@@ -697,24 +697,24 @@
       <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="2"/>
       <text fill="#38bdf8" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">5</text>
-      <text class="title" x="22" y="82" font-size="21">Needyu</text>
-      <text class="muted" x="22" y="110" font-size="13">Digital services and cloud infrastructure</text>
-      <text class="muted" x="22" y="132" font-size="12">needyu-service / TypeScript</text>
+      <text class="title" x="22" y="82" font-size="21">Needyu Platform</text>
+      <text class="muted" x="22" y="110" font-size="13">Meeting memory and tenant-safe AI</text>
+      <text class="muted" x="22" y="132" font-size="12">needyu-platform / TypeScript</text>
       <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
-      <rect x="22" y="150" width="120" height="8" rx="4" fill="#38bdf8"/>
-      <text class="text" x="196" y="158" font-size="12">75%</text>
-      <text class="muted" x="22" y="190" font-size="11">Updated 2026-07-25</text>
+      <rect x="22" y="150" width="118" height="8" rx="4" fill="#38bdf8"/>
+      <text class="text" x="196" y="158" font-size="12">74%</text>
+      <text class="muted" x="22" y="190" font-size="11">Updated 2026-08-03</text>
     </g>
     <g transform="translate(716 200)">
       <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="#86efac" fill-opacity="0.12" stroke="#86efac" stroke-width="2"/>
       <text fill="#86efac" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">6</text>
-      <text class="title" x="22" y="82" font-size="21">FORGE</text>
-      <text class="muted" x="22" y="110" font-size="13">AI-first engineering framework</text>
-      <text class="muted" x="22" y="132" font-size="12">trustyu-docs / Python</text>
+      <text class="title" x="22" y="82" font-size="21">TechHuman Platform</text>
+      <text class="muted" x="22" y="110" font-size="13">Humanized AI adoption platform</text>
+      <text class="muted" x="22" y="132" font-size="12">techhuman-platform / JavaScript</text>
       <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
-      <rect x="22" y="150" width="141" height="8" rx="4" fill="#86efac"/>
-      <text class="text" x="196" y="158" font-size="12">88%</text>
+      <rect x="22" y="150" width="109" height="8" rx="4" fill="#86efac"/>
+      <text class="text" x="196" y="158" font-size="12">68%</text>
       <text class="muted" x="22" y="190" font-size="11">Updated 2026-08-04</text>
     </g>
   </g>
