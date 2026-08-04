@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260708-forge" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260804-stats-refresh" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
 
 <br />
 <br />
@@ -60,7 +60,7 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 ![Prisma](https://img.shields.io/badge/Prisma-111827?style=for-the-badge&logo=prisma&logoColor=2D3748)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL_%2B_pgvector-111827?style=for-the-badge&logo=postgresql&logoColor=4169E1)
 ![Redis](https://img.shields.io/badge/Redis-111827?style=for-the-badge&logo=redis&logoColor=FF4438)
-![Keycloak](https://img.shields.io/badge/Keycloak_26.6-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
+![Keycloak](https://img.shields.io/badge/Keycloak_25.0.6-111827?style=for-the-badge&logo=keycloak&logoColor=4D8DFF)
 ![Docker](https://img.shields.io/badge/Docker_%2B_Compose-111827?style=for-the-badge&logo=docker&logoColor=2496ED)
 ![AWS](https://img.shields.io/badge/AWS-111827?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900)
 ![Terraform](https://img.shields.io/badge/Terraform_%2F_HCL-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
@@ -106,14 +106,14 @@ My current work connects [Trustyu.ai](https://trustyu.ai), [Trustyu FORGE](https
 | Domain | Founder/AI Expert focus |
 | --- | --- |
 | [Trustyu.ai](https://trustyu.ai) | Vertical AI products, Hub Agents, CRM vNext, BMAI, trust systems, and operational intelligence |
-| [Trustyu FORGE](https://forge.trustyu.ai) | AI-first engineering framework: ADRs, templates, reusable CI/CD, local AI environment, agent squads, and quality gates |
+| [Trustyu FORGE](https://forge.trustyu.ai) | AI-first engineering framework: ADRs, templates, reusable CI/CD, local AI environment, sandbox guardrails, agent squads, and quality gates |
 | [Tech Human](https://techhuman.com.br) | Humanized technology, AI literacy, governance readiness, leadership, and real-world business transformation |
 | [POR.life](https://por.life) | Faith-led initiative where Jesus is at the center of purpose, ethics, business, and impact |
 | AI architecture | Multi-agent workflows, RAG, LLM routing, tracing, evaluation, tenant isolation, and human-in-the-loop systems |
 
 ## Trustyu FORGE
 
-[Trustyu FORGE](https://forge.trustyu.ai) is the AI-first engineering framework behind the Trustyu ecosystem. It turns product ideas into production SaaS through documented decisions, reusable templates, shared infrastructure, local AI engineering environments, agent squads, and empirical validation.
+[Trustyu FORGE](https://forge.trustyu.ai) is the AI-first engineering framework behind the Trustyu ecosystem. It turns product ideas into production SaaS through documented decisions, reusable templates, shared infrastructure, local AI engineering environments, sandboxed agent execution, agent squads, and empirical validation.
 
 Public references: [FORGE Framework](https://forge.trustyu.ai), [Definition of Done](https://forge.trustyu.ai/#dod), [AI Squad](https://forge.trustyu.ai/#ia-squad), [Security](https://forge.trustyu.ai/#seguranca), and [Market Thesis](https://forge.trustyu.ai/#mercado).
 
@@ -122,7 +122,7 @@ Public references: [FORGE Framework](https://forge.trustyu.ai), [Definition of D
 | Knowledge OS | `trustyu-docs` | ADRs, engineering standards, business strategy, runbooks, and agent methodology |
 | Product template | `trustyu-template` | Base implementation for new Trustyu products: Next.js 16, TypeScript, Prisma, i18n, tests, CI, and design system |
 | Platform infra | `trustyu-infra` | Reusable GitHub Actions, CI/CD, Docker Compose, Keycloak, bootstrap scripts, and shared automation |
-| AI dev environment | `trustyu-ai-env` | Developer workstation, MCP setup, dotfiles, Codex/Claude kit, secrets workflow, and AI-first engineering tooling |
+| AI dev environment | `trustyu-ai-env` | Developer workstation, MCP setup, dotfiles, Codex/Claude kit, sandbox profiles, secrets workflow, and AI-first engineering tooling |
 
 ```mermaid
 flowchart LR
@@ -157,7 +157,7 @@ I use a pragmatic, production-minded stack: simple enough to ship fast, structur
 | --- | --- |
 | Product foundation | Next.js 16, TypeScript, React, shadcn/ui, Tailwind CSS, pnpm 11 |
 | AI backend | Python 3.12+, FastAPI, Pydantic, SQLAlchemy, Alembic, uv, pytest |
-| Data and infra | PostgreSQL 18 + pgvector, Redis 8.2, Docker, Keycloak 25, GitHub Actions |
+| Data and infra | PostgreSQL 18 + pgvector, Redis 8.2, Docker, Keycloak 25.0.6, GitHub Actions |
 | Cloud platform | AWS, Terraform/HCL, Railway, Vercel, reusable CI/CD, production operations |
 | Agent tooling | Claude, Claude Code, Codex, OpenAI, Gemini, MCP, LangGraph, LangChain, LangSmith, LangFuse |
 
@@ -186,7 +186,7 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 ## Active Building Themes
 
 - **Vertical SaaS:** repeatable product architecture for niche, high-context markets
-- **Trustyu FORGE:** AI-first framework for reusable product delivery, standards, templates, infra, and agent execution
+- **Trustyu FORGE:** AI-first framework for reusable product delivery, standards, templates, infra, sandbox guardrails, and agent execution
 - **AWS Infrastructure:** cloud architecture, automation, HCL/Terraform, CI/CD, and production operations
 - **Hub Agents:** shared AI engine with vertical isolation and reusable agent infrastructure
 - **Trustyu CRM:** AI-assisted CRM workflows, onboarding, messaging, and operational automation
