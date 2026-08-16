@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260804-current-projects" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260816-general-refresh" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
 
 <br />
 <br />
@@ -105,7 +105,7 @@ My current work connects [Trustyu.ai](https://trustyu.ai), [Trustyu FORGE](https
 
 | Domain | Founder/AI Expert focus |
 | --- | --- |
-| [Trustyu.ai](https://trustyu.ai) | Vertical AI products, Hub Agents, CRM vNext, BMAI, trust systems, and operational intelligence |
+| [Trustyu.ai](https://trustyu.ai) | Vertical AI products, Trustyu CRM, Hub Agents, Trustyu Score, Process Intelligence, AI Workstation, trust systems, and operational intelligence |
 | [Trustyu FORGE](https://forge.trustyu.ai) | AI-first engineering framework: ADRs, templates, reusable CI/CD, local AI environment, sandbox guardrails, agent squads, and quality gates |
 | [Tech Human](https://techhuman.com.br) | Humanized technology, AI literacy, governance readiness, leadership, and real-world business transformation |
 | [POR.life](https://por.life) | Faith-led initiative where Jesus is at the center of purpose, ethics, business, and impact |
@@ -187,9 +187,12 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 
 - **Vertical SaaS:** repeatable product architecture for niche, high-context markets
 - **Trustyu FORGE:** AI-first framework for reusable product delivery, standards, templates, infra, sandbox guardrails, and agent execution
-- **AWS Infrastructure:** cloud architecture, automation, HCL/Terraform, CI/CD, and production operations
-- **Hub Agents:** shared AI engine with vertical isolation and reusable agent infrastructure
-- **Trustyu CRM:** AI-assisted CRM workflows, onboarding, messaging, and operational automation
+- **Trustyu CRM:** AI-assisted immigration CRM workflows, onboarding, messaging, and operational automation
+- **Hub Agents:** shared AI engine with vertical isolation, reusable agent infrastructure, LangGraph workflows, and tenant-safe orchestration
+- **AI Workstation:** agentic execution platform for workers, sandboxed coding sessions, durable queues, and large-scale product delivery
+- **Trustyu Score:** autonomous audits for AI-built systems, score 0-100, dual-audience reports, and remediation roadmaps
+- **Process Intelligence:** LLM-assisted process mapping, BPMN diagrams, Process Specs, and operational documentation from meetings and source material
+- **Needyu 2.0:** meeting memory, context packets, Chrome capture client, and tenant-safe AI assistance
 - **AI Literacy:** governance readiness, use-case mapping, maturity models, and ROI frameworks through [Tech Human](https://techhuman.com.br)
 - **Faith and purpose:** businesses and products aligned under [POR.life](https://por.life), with Jesus at the center
 - **Humanized Technology:** systems that increase leverage without losing human judgment

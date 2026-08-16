@@ -31,6 +31,13 @@ const FORGE_PROJECT_REPOS = [
 ];
 const PROJECTS = [
   {
+    name: "Trustyu FORGE",
+    repo: "needyuai/trustyu-docs",
+    tagline: "AI-first engineering framework",
+    progress: 94,
+    color: "#60a5fa",
+  },
+  {
     name: "Trustyu CRM",
     repo: "needyuai/trustyu-crm",
     tagline: "Vertical SaaS for immigration operations",
@@ -41,35 +48,49 @@ const PROJECTS = [
     name: "Hub Agents",
     repo: "needyuai/trustyu-hub-agents",
     tagline: "Central AI engine and agent runtime",
-    progress: 86,
+    progress: 88,
     color: "#a78bfa",
   },
   {
     name: "AI Workstation",
     repo: "needyuai/trustyu-ai-workstation",
     tagline: "Agentic execution platform at scale",
-    progress: 72,
+    progress: 78,
     color: "#facc15",
   },
   {
-    name: "FORGE",
-    repo: "needyuai/trustyu-docs",
-    tagline: "AI-first engineering framework",
-    progress: 90,
-    color: "#60a5fa",
+    name: "Trustyu Score",
+    repo: "needyuai/trustyu-score",
+    tagline: "Autonomous AI systems audit engine",
+    progress: 64,
+    color: "#fb7185",
+  },
+  {
+    name: "Process Intelligence",
+    repo: "needyuai/trustyu-process-intelligence",
+    tagline: "LLM process mapping and BPMN specs",
+    progress: 58,
+    color: "#38bdf8",
   },
   {
     name: "Needyu Platform",
     repo: "needyuai/needyu-platform",
     tagline: "Meeting memory and tenant-safe AI",
-    progress: 74,
-    color: "#38bdf8",
+    progress: 76,
+    color: "#22c55e",
+  },
+  {
+    name: "Needyu Chrome Plugin",
+    repo: "needyuai/needyu-chrome-plugin",
+    tagline: "Meeting capture client and install path",
+    progress: 62,
+    color: "#f97316",
   },
   {
     name: "TechHuman Platform",
     repo: "TECH-HUMAN/techhuman-platform",
     tagline: "Humanized AI adoption platform",
-    progress: 68,
+    progress: 70,
     color: "#86efac",
   },
 ];
@@ -670,7 +691,9 @@ const contributionMix = {
   reviews: { total: totalReviews, percent: Math.round((totalReviews / contributionMixTotal) * 100) },
   reviewSignal: { total: reviewSignal, percent: Math.round((reviewSignal / contributionMixTotal) * 100) },
 };
-const svg = `<svg width="1200" height="2300" viewBox="0 0 1200 2300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+const PROJECTS_SECTION_Y = 1818;
+const SVG_HEIGHT = PROJECTS_SECTION_Y + Math.ceil(projects.length / 3) * 200 + 72;
+const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
   <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, contribution mix, activity overview, and AI infrastructure positioning.</desc>
   <defs>
@@ -705,9 +728,9 @@ const svg = `<svg width="1200" height="2300" viewBox="0 0 1200 2300" fill="none"
     </style>
   </defs>
 
-  <rect class="bg" width="1200" height="2300" rx="28"/>
-  <rect width="1200" height="2300" rx="28" fill="url(#greenGlow)"/>
-  <rect width="1200" height="2300" rx="28" fill="url(#blueGlow)"/>
+  <rect class="bg" width="1200" height="${SVG_HEIGHT}" rx="28"/>
+  <rect width="1200" height="${SVG_HEIGHT}" rx="28" fill="url(#greenGlow)"/>
+  <rect width="1200" height="${SVG_HEIGHT}" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
@@ -793,9 +816,9 @@ const svg = `<svg width="1200" height="2300" viewBox="0 0 1200 2300" fill="none"
 
   ${qualityGatesCard({ x: 54, y: 1568, stats: qualityGates })}
 
-  <g transform="translate(54 1818)">
+  <g transform="translate(54 ${PROJECTS_SECTION_Y})">
     <text class="title" x="0" y="-28" font-size="24">Current Projects</text>
-    <text class="muted" x="914" y="-28" font-size="14">Repo metadata updates automatically</text>
+    <text class="muted" x="1090" y="-28" font-size="14" text-anchor="end">Repo metadata updates automatically</text>
     ${projects.map(projectCard).join("")}
   </g>
 </svg>`;
