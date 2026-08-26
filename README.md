@@ -30,7 +30,9 @@ I turn complex business problems into practical AI products, operating systems, 
 | [Website source](https://github.com/fernandoparreiras/fernandoparreiras-website) | The React/Vite implementation, public routes, delivery controls, and technical documentation |
 | [Trustyu.ai](https://trustyu.ai) | Vertical AI products, trust systems, operational intelligence, and AI-native product infrastructure |
 | [Trustyu FORGE](https://forge.trustyu.ai) | The engineering framework used to move from product intent to validated software |
+| [needyu.ai](https://needyu.ai) | Meeting memory, context infrastructure, and human-centered AI assistance |
 | [Tech Human](https://techhuman.com.br) | AI literacy, leadership, governance readiness, and humanized digital transformation |
+| [POR.life](https://por.life) | The faith-led foundation connecting purpose, ethics, work, and impact |
 | [LinkedIn](https://www.linkedin.com/in/fernandoparreiras) | Notes on leadership, artificial intelligence, business, and technology |
 
 Most product engineering happens across organization and private repositories. These two public repositories document this profile and the source of my personal website.
