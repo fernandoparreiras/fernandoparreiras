@@ -16,6 +16,25 @@
 
 ---
 
+# Fernando Parreiras
+
+**Founder · AI systems architect · Builder of human-centered technology**
+
+I turn complex business problems into practical AI products, operating systems, and learning experiences. My work combines product strategy, software architecture, governance, and hands-on delivery across [Trustyu.ai](https://trustyu.ai), [Trustyu FORGE](https://forge.trustyu.ai), [Tech Human](https://techhuman.com.br), [needyu.ai](https://needyu.ai), and [POR.life](https://por.life).
+
+## Start Here
+
+| Destination | What you will find |
+| --- | --- |
+| [Personal website](https://fernandoparreiras.com.br) | Advisory, talks, case studies, businesses, books, and ways to work together |
+| [Website source](https://github.com/fernandoparreiras/fernandoparreiras-website) | The React/Vite implementation, public routes, delivery controls, and technical documentation |
+| [Trustyu.ai](https://trustyu.ai) | Vertical AI products, trust systems, operational intelligence, and AI-native product infrastructure |
+| [Trustyu FORGE](https://forge.trustyu.ai) | The engineering framework used to move from product intent to validated software |
+| [Tech Human](https://techhuman.com.br) | AI literacy, leadership, governance readiness, and humanized digital transformation |
+| [LinkedIn](https://www.linkedin.com/in/fernandoparreiras) | Notes on leadership, artificial intelligence, business, and technology |
+
+Most product engineering happens across organization and private repositories. These two public repositories document this profile and the source of my personal website.
+
 ## Faith, Work, and Purpose
 
 I am a Christian. I believe Jesus Christ is my only Savior, the center of my life, my family, and the work I build.
@@ -66,7 +85,7 @@ Through [POR.life](https://por.life), every business and initiative I lead is al
 ![Terraform](https://img.shields.io/badge/Terraform_%2F_HCL-111827?style=for-the-badge&logo=terraform&logoColor=844FBA)
 ![Railway](https://img.shields.io/badge/Railway-111827?style=for-the-badge&logo=railway&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-111827?style=for-the-badge&logo=vercel&logoColor=white)
-![Resend](https://img.shields.io/badge/Resend_SPI-111827?style=for-the-badge&logo=resend&logoColor=white)
+![Resend](https://img.shields.io/badge/Resend-111827?style=for-the-badge&logo=resend&logoColor=white)
 
 ### AI, Agents, and LLM Tooling
 
@@ -196,6 +215,13 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 - **AI Literacy:** governance readiness, use-case mapping, maturity models, and ROI frameworks through [Tech Human](https://techhuman.com.br)
 - **Faith and purpose:** businesses and products aligned under [POR.life](https://por.life), with Jesus at the center
 - **Humanized Technology:** systems that increase leverage without losing human judgment
+
+## Public Repositories
+
+| Repository | Purpose |
+| --- | --- |
+| [`fernandoparreiras`](https://github.com/fernandoparreiras/fernandoparreiras) | Source for this GitHub profile, its generated dashboard, and contribution visualization workflows |
+| [`fernandoparreiras-website`](https://github.com/fernandoparreiras/fernandoparreiras-website) | Source for the public personal hub, built with React, Vite, Tailwind CSS, and Netlify |
 
 ## Contribution Flow
 
