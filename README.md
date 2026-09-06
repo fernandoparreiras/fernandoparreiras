@@ -5,7 +5,7 @@
 <br />
 <br />
 
-[![Website](https://img.shields.io/badge/Website-fernandoparreiras.com.br-111827?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.fernandoparreiras.com.br)
+[![Website](https://img.shields.io/badge/Website-fernandoparreiras.com.br-111827?style=for-the-badge&logo=google-chrome&logoColor=white)](https://fernandoparreiras.com.br)
 [![Trustyu.ai](https://img.shields.io/badge/Trustyu.ai-AI_Product_Platform-111827?style=for-the-badge&logo=openai&logoColor=white)](https://trustyu.ai)
 [![Trustyu FORGE](https://img.shields.io/badge/Trustyu_FORGE-AI_First_Framework-111827?style=for-the-badge&logo=readme&logoColor=white)](https://forge.trustyu.ai)
 [![POR.life](https://img.shields.io/badge/POR.life-Jesus_at_the_center-111827?style=for-the-badge&logo=readme&logoColor=white)](https://por.life)
@@ -26,8 +26,9 @@ I turn complex business problems into practical AI products, operating systems, 
 
 | Destination | What you will find |
 | --- | --- |
-| [Personal website](https://fernandoparreiras.com.br) | Advisory, talks, case studies, businesses, books, and ways to work together |
-| [Website source](https://github.com/fernandoparreiras/fernandoparreiras-website) | The React/Vite implementation, public routes, delivery controls, and technical documentation |
+| [Personal website](https://fernandoparreiras.com.br) | Advisory, talks, case studies, businesses, books, articles, and ways to work together |
+| [Knowledge & articles](https://fernandoparreiras.com.br/artigos/) | Source-controlled essays on leadership, business, careers, and AI, with static delivery and RSS |
+| [Website source](https://github.com/fernandoparreiras/fernandoparreiras-website) | The React/Vite implementation, knowledge publishing system, delivery controls, and technical documentation |
 | [Trustyu.ai](https://trustyu.ai) | Vertical AI products, trust systems, operational intelligence, and AI-native product infrastructure |
 | [Trustyu FORGE](https://forge.trustyu.ai) | The engineering framework used to move from product intent to validated software |
 | [needyu.ai](https://needyu.ai) | Meeting memory, context infrastructure, and human-centered AI assistance |
@@ -215,6 +216,7 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 - **Process Intelligence:** LLM-assisted process mapping, BPMN diagrams, Process Specs, and operational documentation from meetings and source material
 - **Needyu 2.0:** meeting memory, context packets, Chrome capture client, and tenant-safe AI assistance
 - **AI Literacy:** governance readiness, use-case mapping, maturity models, and ROI frameworks through [Tech Human](https://techhuman.com.br)
+- **Authorial knowledge:** source-controlled essays, scheduled publishing, RSS, and learning paths across leadership, careers, business, and AI
 - **Faith and purpose:** businesses and products aligned under [POR.life](https://por.life), with Jesus at the center
 - **Humanized Technology:** systems that increase leverage without losing human judgment
 
@@ -223,7 +225,7 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 | Repository | Purpose |
 | --- | --- |
 | [`fernandoparreiras`](https://github.com/fernandoparreiras/fernandoparreiras) | Source for this GitHub profile, its generated dashboard, and contribution visualization workflows |
-| [`fernandoparreiras-website`](https://github.com/fernandoparreiras/fernandoparreiras-website) | Source for the public personal hub, built with React, Vite, Tailwind CSS, and Netlify |
+| [`fernandoparreiras-website`](https://github.com/fernandoparreiras/fernandoparreiras-website) | Source for the public personal hub and its scheduled knowledge publishing system, built with React, Vite, Tailwind CSS, and Netlify |
 
 ## Contribution Flow
 
