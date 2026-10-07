@@ -35,65 +35,65 @@ const PROJECTS = [
   {
     name: "Trustyu FORGE",
     repo: "needyuai/trustyu-docs",
-    tagline: "AI-first engineering framework",
-    progress: 94,
+    tagline: "Engineering harness + delivery integrity",
+    stage: "Alpha 3.3",
     color: "#60a5fa",
   },
   {
     name: "Trustyu CRM",
     repo: "needyuai/trustyu-crm",
-    tagline: "Vertical SaaS for immigration operations",
-    progress: 92,
+    tagline: "Vertical operations product",
+    stage: "Evidence per contract",
     color: "#22c55e",
   },
   {
     name: "Hub Agents",
     repo: "needyuai/trustyu-hub-agents",
-    tagline: "Central AI engine and agent runtime",
-    progress: 88,
+    tagline: "Multi-tenant product-agent runtime",
+    stage: "Capability-specific",
     color: "#a78bfa",
   },
   {
-    name: "AI Workstation",
+    name: "Trustyu AI Works",
     repo: "needyuai/trustyu-ai-workstation",
-    tagline: "Agentic execution platform at scale",
-    progress: 78,
+    tagline: "Agent, workflow and function platform",
+    stage: "Development",
     color: "#facc15",
   },
   {
     name: "Trustyu Score",
     repo: "needyuai/trustyu-score",
-    tagline: "Autonomous AI systems audit engine",
-    progress: 64,
+    tagline: "Human-led, AI-assisted assessment",
+    stage: "Professional-assisted",
     color: "#fb7185",
+  },
+  {
+    name: "Trustyu Lens",
+    repo: "needyuai/trustyu-lens",
+    tagline: "Problem and solution diagnosis",
+    stage: "Professional-assisted",
+    color: "#2dd4bf",
   },
   {
     name: "Process Intelligence",
     repo: "needyuai/trustyu-process-intelligence",
     tagline: "LLM process mapping and BPMN specs",
-    progress: 58,
+    stage: "POC",
     color: "#38bdf8",
   },
   {
-    name: "Needyu Platform",
+    name: "NEEDYU V2",
     repo: "needyuai/needyu-platform",
     tagline: "Meeting memory and tenant-safe AI",
-    progress: 76,
+    stage: "Pre-launch development",
     color: "#22c55e",
   },
   {
     name: "Needyu Chrome Plugin",
     repo: "needyuai/needyu-chrome-plugin",
     tagline: "Meeting capture client and install path",
-    progress: 62,
+    stage: "Development",
     color: "#f97316",
-  },
-  {
-    name: "TechHuman Platform",
-    repo: "TECH-HUMAN/techhuman-platform",
-    tagline: "Humanized AI adoption platform",
-    progress: 70,
-    color: "#86efac",
   },
 ];
 const FAITH_STATEMENT = "Jesus Christ at the center | CEO | POR.life";
@@ -550,24 +550,23 @@ function projectCard(project, index) {
   const col = index % 3;
   const row = Math.floor(index / 3);
   const x = col * 358;
-  const y = row * 200;
-  const progressWidth = Math.round((project.progress / 100) * 160);
+  const y = row * 208;
   const repoName = project.repo.split("/").at(-1);
   const updated = project.updatedAt ? `Updated ${project.updatedAt.slice(0, 10)}` : "Repo metadata gated";
   const language = project.language ? `${project.language}` : "Private project";
+  const stageWidth = Math.min(250, Math.max(74, project.stage.length * 7 + 26));
 
   return `
     <g transform="translate(${x} ${y})">
-      <rect class="mini-card" x="0" y="0" width="330" height="174" rx="16"/>
+      <rect class="mini-card" x="0" y="0" width="330" height="184" rx="16"/>
       <circle cx="32" cy="36" r="18" fill="${project.color}" fill-opacity="0.12" stroke="${project.color}" stroke-width="2"/>
       <text fill="${project.color}" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">${index + 1}</text>
-      <text class="title" x="22" y="82" font-size="21">${escapeXml(project.name)}</text>
-      <text class="muted" x="22" y="110" font-size="13">${escapeXml(project.tagline)}</text>
-      <text class="muted" x="22" y="132" font-size="12">${escapeXml(repoName)} / ${escapeXml(language)}</text>
-      <rect class="track" x="22" y="150" width="160" height="8" rx="4"/>
-      <rect x="22" y="150" width="${progressWidth}" height="8" rx="4" fill="${project.color}"/>
-      <text class="text" x="196" y="158" font-size="12">${project.progress}%</text>
-      <text class="muted" x="22" y="190" font-size="11">${escapeXml(updated)}</text>
+      <text class="title" x="22" y="76" font-size="21">${escapeXml(project.name)}</text>
+      <text class="muted" x="22" y="102" font-size="13">${escapeXml(project.tagline)}</text>
+      <text class="muted" x="22" y="123" font-size="12">${escapeXml(repoName)} / ${escapeXml(language)}</text>
+      <rect x="22" y="136" width="${stageWidth}" height="24" rx="12" fill="${project.color}" fill-opacity="0.12" stroke="${project.color}" stroke-opacity="0.72"/>
+      <text fill="${project.color}" x="35" y="153" font-size="12" font-family="Inter, ui-sans-serif, system-ui" font-weight="700">${escapeXml(project.stage)}</text>
+      <text class="muted" x="22" y="176" font-size="11">${escapeXml(updated)}</text>
     </g>`;
 }
 
@@ -694,10 +693,10 @@ const contributionMix = {
   reviewSignal: { total: reviewSignal, percent: Math.round((reviewSignal / contributionMixTotal) * 100) },
 };
 const PROJECTS_SECTION_Y = 1818;
-const SVG_HEIGHT = PROJECTS_SECTION_Y + Math.ceil(projects.length / 3) * 200 + 72;
+const SVG_HEIGHT = PROJECTS_SECTION_Y + Math.ceil(projects.length / 3) * 208 + 72;
 const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
-  <desc id="desc">Fernando Parreiras profile dashboard: human-centered AI, companies, public knowledge, talks, GitHub activity, and engineering signals.</desc>
+  <title id="title">Fernando Parreiras live GitHub and AI architecture dashboard</title>
+  <desc id="desc">Fernando Parreiras profile dashboard: human-centered AI, Trustyu Forge, agentic systems, durable memory, evidence-qualified product stages, and GitHub activity.</desc>
   <defs>
     <radialGradient id="greenGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 90) rotate(136) scale(560 360)">
       <stop stop-color="#22c55e" stop-opacity="0.28"/>
@@ -738,14 +737,21 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
     <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FERNANDO PARREIRAS / FOUNDER / AI SYSTEMS ARCHITECT</text>
     <text class="title" x="0" y="54" font-size="52">Building AI that serves people</text>
     <text class="text" x="0" y="92" font-size="21">Founder @ Trustyu.ai · Tech Human · needyu.ai · POR.life</text>
-    <text class="muted" x="0" y="132" font-size="17">Products, agentic systems, knowledge and talks for practical, responsible adoption.</text>
+    <text class="muted" x="0" y="132" font-size="17">Agentic systems, durable memory and evidence-qualified engineering with human authority.</text>
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
     <g transform="translate(0 186)">
-      ${["Trustyu.ai", "FORGE", "needyu.ai", "Tech Human", "POR.life", "Knowledge", "Talks & Docks"].map((label, i) => {
-        const widths = [112, 94, 108, 128, 94, 118, 150];
-        const x = widths.slice(0, i).reduce((sum, value) => sum + value + 12, 0);
-        return `<rect class="chip" x="${x}" y="0" width="${widths[i]}" height="34" rx="17"/><text class="${i % 3 === 0 ? "blue" : i % 3 === 1 ? "accent" : "purple"}" x="${x + 18}" y="22" font-size="13">${escapeXml(label)}</text>`;
+      ${[
+        ["Trustyu.ai", 112],
+        ["FORGE 3.3", 112],
+        ["AI Works", 104],
+        ["Agentic AI", 116],
+        ["Durable Memory", 146],
+        ["Evals", 78],
+        ["Human Gates", 126],
+      ].map(([label, width], i, chips) => {
+        const x = chips.slice(0, i).reduce((sum, [, chipWidth]) => sum + chipWidth + 12, 0);
+        return `<rect class="chip" x="${x}" y="0" width="${width}" height="34" rx="17"/><text class="${i % 3 === 0 ? "blue" : i % 3 === 1 ? "accent" : "purple"}" x="${x + 18}" y="22" font-size="13">${escapeXml(label)}</text>`;
       }).join("")}
     </g>
 
@@ -819,8 +825,8 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
   ${qualityGatesCard({ x: 54, y: 1568, stats: qualityGates })}
 
   <g transform="translate(54 ${PROJECTS_SECTION_Y})">
-    <text class="title" x="0" y="-28" font-size="24">Current Projects</text>
-    <text class="muted" x="1090" y="-28" font-size="14" text-anchor="end">Repo metadata updates automatically</text>
+    <text class="title" x="0" y="-28" font-size="24">Architecture &amp; Product Contexts</text>
+    <text class="muted" x="1090" y="-28" font-size="14" text-anchor="end">Repository activity + evidence-qualified stage</text>
     ${projects.map(projectCard).join("")}
   </g>
 </svg>`;
