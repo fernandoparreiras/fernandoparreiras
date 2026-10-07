@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20260816-general-refresh" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20261006-complete-refresh" alt="Fernando Parreiras - AI infrastructure dashboard" width="100%" />
 
 <br />
 <br />
@@ -28,7 +28,8 @@ I turn complex business problems into practical AI products, operating systems, 
 | --- | --- |
 | [Personal website](https://fernandoparreiras.com.br) | Advisory, talks, case studies, businesses, books, articles, and ways to work together |
 | [Knowledge & articles](https://fernandoparreiras.com.br/artigos/) | Source-controlled essays on leadership, business, careers, and AI, with static delivery and RSS |
-| [Website source](https://github.com/fernandoparreiras/fernandoparreiras-website) | The React/Vite implementation, knowledge publishing system, delivery controls, and technical documentation |
+| [Talks & Docks](https://fernandoparreiras.com.br/docks/) | Public presentations, speaker notes, downloadable materials, and practical follow-up paths |
+| [Website source](https://github.com/fernandoparreiras/fernandoparreiras-website) | The React/Vite implementation, knowledge and Docks publishing systems, delivery controls, and technical documentation |
 | [Trustyu.ai](https://trustyu.ai) | Vertical AI products, trust systems, operational intelligence, and AI-native product infrastructure |
 | [Trustyu FORGE](https://forge.trustyu.ai) | The engineering framework used to move from product intent to validated software |
 | [needyu.ai](https://needyu.ai) | Meeting memory, context infrastructure, and human-centered AI assistance |
@@ -217,6 +218,7 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 - **Needyu 2.0:** meeting memory, context packets, Chrome capture client, and tenant-safe AI assistance
 - **AI Literacy:** governance readiness, use-case mapping, maturity models, and ROI frameworks through [Tech Human](https://techhuman.com.br)
 - **Authorial knowledge:** source-controlled essays, scheduled publishing, RSS, and learning paths across leadership, careers, business, and AI
+- **Talks and Docks:** versioned presentation assets, public speaker notes, QR distribution, consent-based follow-up, and operational evidence
 - **Faith and purpose:** businesses and products aligned under [POR.life](https://por.life), with Jesus at the center
 - **Humanized Technology:** systems that increase leverage without losing human judgment
 
@@ -225,7 +227,7 @@ I use AI agents as an execution layer, not as a novelty layer. The goal is simpl
 | Repository | Purpose |
 | --- | --- |
 | [`fernandoparreiras`](https://github.com/fernandoparreiras/fernandoparreiras) | Source for this GitHub profile, its generated dashboard, and contribution visualization workflows |
-| [`fernandoparreiras-website`](https://github.com/fernandoparreiras/fernandoparreiras-website) | Source for the public personal hub and its scheduled knowledge publishing system, built with React, Vite, Tailwind CSS, and Netlify |
+| [`fernandoparreiras-website`](https://github.com/fernandoparreiras/fernandoparreiras-website) | Source for the public personal hub, scheduled knowledge publishing, Docks presentations, and consent-based lead delivery on Netlify |
 
 ## Contribution Flow
 
