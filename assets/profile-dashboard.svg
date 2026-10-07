@@ -1,6 +1,6 @@
 <svg width="1200" height="2490" viewBox="0 0 1200 2490" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
-  <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, contribution mix, activity overview, and AI infrastructure positioning.</desc>
+  <desc id="desc">Fernando Parreiras profile dashboard: human-centered AI, companies, public knowledge, talks, GitHub activity, and engineering signals.</desc>
   <defs>
     <radialGradient id="greenGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 90) rotate(136) scale(560 360)">
       <stop stop-color="#22c55e" stop-opacity="0.28"/>
@@ -38,14 +38,14 @@
   <rect width="1200" height="2490" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
-    <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
-    <text class="title" x="0" y="54" font-size="52">Hi, I'm Fernando Parreiras</text>
-    <text class="text" x="0" y="92" font-size="21">AI Builder | Systems Architect | Founder @ Trustyu.ai, needyu.ai &amp; Tech Human</text>
-    <text class="muted" x="0" y="132" font-size="17">I build AI-powered products, multi-agent systems and AWS-backed platform infrastructure.</text>
+    <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FERNANDO PARREIRAS / FOUNDER / AI SYSTEMS ARCHITECT</text>
+    <text class="title" x="0" y="54" font-size="52">Building AI that serves people</text>
+    <text class="text" x="0" y="92" font-size="21">Founder @ Trustyu.ai · Tech Human · needyu.ai · POR.life</text>
+    <text class="muted" x="0" y="132" font-size="17">Products, agentic systems, knowledge and talks for practical, responsible adoption.</text>
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
     <g transform="translate(0 186)">
-      <rect class="chip" x="0" y="0" width="112" height="34" rx="17"/><text class="blue" x="18" y="22" font-size="13">Trustyu.ai</text><rect class="chip" x="124" y="0" width="94" height="34" rx="17"/><text class="accent" x="142" y="22" font-size="13">FORGE</text><rect class="chip" x="230" y="0" width="126" height="34" rx="17"/><text class="purple" x="248" y="22" font-size="13">Hub Agents</text><rect class="chip" x="368" y="0" width="72" height="34" rx="17"/><text class="blue" x="386" y="22" font-size="13">AWS</text><rect class="chip" x="452" y="0" width="112" height="34" rx="17"/><text class="accent" x="470" y="22" font-size="13">Terraform</text><rect class="chip" x="576" y="0" width="80" height="34" rx="17"/><text class="purple" x="594" y="22" font-size="13">AI/ML</text><rect class="chip" x="668" y="0" width="142" height="34" rx="17"/><text class="blue" x="686" y="22" font-size="13">Vertical SaaS</text>
+      <rect class="chip" x="0" y="0" width="112" height="34" rx="17"/><text class="blue" x="18" y="22" font-size="13">Trustyu.ai</text><rect class="chip" x="124" y="0" width="94" height="34" rx="17"/><text class="accent" x="142" y="22" font-size="13">FORGE</text><rect class="chip" x="230" y="0" width="108" height="34" rx="17"/><text class="purple" x="248" y="22" font-size="13">needyu.ai</text><rect class="chip" x="350" y="0" width="128" height="34" rx="17"/><text class="blue" x="368" y="22" font-size="13">Tech Human</text><rect class="chip" x="490" y="0" width="94" height="34" rx="17"/><text class="accent" x="508" y="22" font-size="13">POR.life</text><rect class="chip" x="596" y="0" width="118" height="34" rx="17"/><text class="purple" x="614" y="22" font-size="13">Knowledge</text><rect class="chip" x="726" y="0" width="150" height="34" rx="17"/><text class="blue" x="744" y="22" font-size="13">Talks &amp; Docks</text>
     </g>
 
     <g transform="translate(0 242)">

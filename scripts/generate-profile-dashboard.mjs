@@ -733,17 +733,17 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
   <rect width="1200" height="${SVG_HEIGHT}" rx="28" fill="url(#blueGlow)"/>
 
   <g transform="translate(54 48)">
-    <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FOUNDER / ARCHITECT / AI INFRASTRUCTURE</text>
-    <text class="title" x="0" y="54" font-size="52">Hi, I'm Fernando Parreiras</text>
-    <text class="text" x="0" y="92" font-size="21">AI Builder | Systems Architect | Founder @ Trustyu.ai, needyu.ai &amp; Tech Human</text>
-    <text class="muted" x="0" y="132" font-size="17">I build AI-powered products, multi-agent systems and AWS-backed platform infrastructure.</text>
+    <text class="muted" x="0" y="0" font-size="14" letter-spacing="3">FERNANDO PARREIRAS / FOUNDER / AI SYSTEMS ARCHITECT</text>
+    <text class="title" x="0" y="54" font-size="52">Building AI that serves people</text>
+    <text class="text" x="0" y="92" font-size="21">Founder @ Trustyu.ai · Tech Human · needyu.ai · POR.life</text>
+    <text class="muted" x="0" y="132" font-size="17">Products, agentic systems, knowledge and talks for practical, responsible adoption.</text>
     <rect x="0" y="160" width="620" height="4" rx="2" fill="url(#heroLine)"/>
 
     <g transform="translate(0 186)">
-      ${["Trustyu.ai", "FORGE", "Hub Agents", "AWS", "Terraform", "AI/ML", "Vertical SaaS"].map((label, i) => {
-        const widths = [112, 94, 126, 72, 112, 80, 142];
+      ${["Trustyu.ai", "FORGE", "needyu.ai", "Tech Human", "POR.life", "Knowledge", "Talks & Docks"].map((label, i) => {
+        const widths = [112, 94, 108, 128, 94, 118, 150];
         const x = widths.slice(0, i).reduce((sum, value) => sum + value + 12, 0);
-        return `<rect class="chip" x="${x}" y="0" width="${widths[i]}" height="34" rx="17"/><text class="${i % 3 === 0 ? "blue" : i % 3 === 1 ? "accent" : "purple"}" x="${x + 18}" y="22" font-size="13">${label}</text>`;
+        return `<rect class="chip" x="${x}" y="0" width="${widths[i]}" height="34" rx="17"/><text class="${i % 3 === 0 ? "blue" : i % 3 === 1 ? "accent" : "purple"}" x="${x + 18}" y="22" font-size="13">${escapeXml(label)}</text>`;
       }).join("")}
     </g>
 
