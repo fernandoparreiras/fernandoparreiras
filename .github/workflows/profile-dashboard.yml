@@ -25,10 +25,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}
           PROFILE_USERNAME: fernandoparreiras
+          PROFILE_DASHBOARD_OUT: assets/profile-dashboard-${{ github.run_id }}.svg
+          PROFILE_README_PATH: README.md
+          PROFILE_UPDATE_README: "1"
         run: node scripts/generate-profile-dashboard.mjs
 
       - name: Commit updated dashboard
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update generated profile dashboard"
-          file_pattern: assets/profile-dashboard-v2.svg
+          file_pattern: "README.md assets/profile-dashboard-*.svg"
