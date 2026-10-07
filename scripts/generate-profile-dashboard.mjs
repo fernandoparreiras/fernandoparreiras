@@ -3,6 +3,8 @@ import fs from "node:fs/promises";
 const USERNAME = process.env.PROFILE_USERNAME || "fernandoparreiras";
 const TOKEN = process.env.PROFILE_STATS_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard-v2.svg";
+const README_PATH = process.env.PROFILE_README_PATH || "README.md";
+const UPDATE_README = process.env.PROFILE_UPDATE_README === "1";
 const DEFAULT_AI_REVIEW_ACTORS = [
   "coderabbitai[bot]",
   "claude[bot]",
@@ -695,7 +697,7 @@ const PROJECTS_SECTION_Y = 1818;
 const SVG_HEIGHT = PROJECTS_SECTION_Y + Math.ceil(projects.length / 3) * 200 + 72;
 const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub profile dashboard</title>
-  <desc id="desc">Live generated GitHub profile dashboard with stats, languages, contribution graph, contribution mix, activity overview, and AI infrastructure positioning.</desc>
+  <desc id="desc">Fernando Parreiras profile dashboard: human-centered AI, companies, public knowledge, talks, GitHub activity, and engineering signals.</desc>
   <defs>
     <radialGradient id="greenGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 90) rotate(136) scale(560 360)">
       <stop stop-color="#22c55e" stop-opacity="0.28"/>
@@ -826,3 +828,18 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
 await fs.mkdir(OUT.split("/").slice(0, -1).join("/"), { recursive: true });
 await fs.writeFile(OUT, svg.replace(/^[ \t]+$/gm, ""), "utf8");
 console.log(`Generated ${OUT}`);
+
+if (UPDATE_README) {
+  const repository = process.env.GITHUB_REPOSITORY || `${USERNAME}/${USERNAME}`;
+  const ref = process.env.PROFILE_DASHBOARD_REF || "main";
+  const assetUrl = `https://raw.githubusercontent.com/${repository}/${ref}/${OUT}`;
+  const dashboardUrlPattern = /https:\/\/raw\.githubusercontent\.com\/[^/\s"]+\/[^/\s"]+\/[^/\s"]+\/assets\/profile-dashboard[^\s"]*\.svg(?:\?[^\s"]*)?/;
+  const readme = await fs.readFile(README_PATH, "utf8");
+
+  if (!dashboardUrlPattern.test(readme)) {
+    throw new Error(`Could not find the dashboard image URL in ${README_PATH}`);
+  }
+
+  await fs.writeFile(README_PATH, readme.replace(dashboardUrlPattern, assetUrl), "utf8");
+  console.log(`Updated ${README_PATH} to reference ${OUT}`);
+}
