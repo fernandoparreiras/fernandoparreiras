@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 
 const USERNAME = process.env.PROFILE_USERNAME || "fernandoparreiras";
 const TOKEN = process.env.PROFILE_STATS_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
-const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard.svg";
+const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard-v2.svg";
 const DEFAULT_AI_REVIEW_ACTORS = [
   "coderabbitai[bot]",
   "claude[bot]",
