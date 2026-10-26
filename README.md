@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard-39290192142.svg" alt="Fernando Parreiras — human-centered AI, engineering evidence, public knowledge, and GitHub activity" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard-40362523439.svg" alt="Fernando Parreiras — human-centered AI, engineering evidence, public knowledge, and GitHub activity" width="100%" />
 
 <br />
 <br />
