@@ -77,9 +77,6 @@ const FAITH_REFERENCES = "Job 8:7 | Colossians 3:23";
 if (!TOKEN) {
   throw new Error("Missing GitHub token. Set PROFILE_STATS_TOKEN, GH_TOKEN, or GITHUB_TOKEN.");
 }
-if (process.env.GITHUB_ACTIONS === "true" && !process.env.PROFILE_STATS_TOKEN) {
-  throw new Error("PROFILE_STATS_TOKEN is required in GitHub Actions to prevent partial profile-wide metrics.");
-}
 
 const now = new Date();
 const to = now.toISOString();
@@ -217,7 +214,18 @@ function fmt(value) {
   return new Intl.NumberFormat("en-US").format(value);
 }
 
-function validateMetrics(metrics, calendarDays) {
+async function readPreviousMetrics(path) {
+  try {
+    return JSON.parse(await fs.readFile(path, "utf8"));
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      return null;
+    }
+    throw new Error(`Could not read previous metrics snapshot: ${error.message}`);
+  }
+}
+
+function validateMetrics(metrics, calendarDays, previousMetrics) {
   const values = metrics.github;
   for (const [name, value] of Object.entries(values)) {
     if (typeof value === "number" && (!Number.isFinite(value) || value < 0)) {
@@ -232,6 +240,16 @@ function validateMetrics(metrics, calendarDays) {
   }
   if (values.currentStreak > values.longestStreak) {
     throw new Error("Current streak cannot exceed the longest streak.");
+  }
+  const previous = previousMetrics?.github;
+  if (previous?.contributions >= 1000 && values.contributions < previous.contributions * 0.5) {
+    throw new Error("Contribution count dropped by more than 50% from the previous snapshot.");
+  }
+  if (previous?.privateContributions >= 1000 && values.privateContributions === 0) {
+    throw new Error("Private contribution count unexpectedly became zero.");
+  }
+  if (previous?.pullRequests >= 20 && values.pullRequests === 0) {
+    throw new Error("Pull request count unexpectedly became zero.");
   }
 }
 
@@ -561,7 +579,8 @@ const metricsDocument = {
   },
   products: projects.map(({ name, tagline, stage, evidence }) => ({ name, tagline, stage, evidence })),
 };
-validateMetrics(metricsDocument, days.length);
+const previousMetrics = await readPreviousMetrics(METRICS_OUT);
+validateMetrics(metricsDocument, days.length, previousMetrics);
 const PROJECTS_SECTION_Y = 1818;
 const SVG_HEIGHT = PROJECTS_SECTION_Y + Math.ceil(projects.length / 3) * 208 + 72;
 const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
