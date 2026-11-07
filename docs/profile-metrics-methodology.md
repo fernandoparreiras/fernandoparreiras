@@ -10,7 +10,7 @@ The dashboard is regenerated every Monday at 10:17 UTC and can also be refreshed
 - `assets/profile-metrics.json`, the machine-readable snapshot;
 - the dashboard URL in `README.md`, with a cache key tied to the workflow run.
 
-The generator is public in [`scripts/generate-profile-dashboard.mjs`](../scripts/generate-profile-dashboard.mjs). A dedicated profile token is used only inside GitHub Actions; credentials are never written to generated artifacts.
+The generator is public in [`scripts/generate-profile-dashboard.mjs`](../scripts/generate-profile-dashboard.mjs). The workflow uses GitHub's ephemeral workflow token for public and anonymized profile signals; an optional dedicated profile token can extend API scope without being written to generated artifacts. Every refresh is checked against the previous snapshot, and an abnormal loss of profile-wide coverage fails before publication.
 
 ## Sources and definitions
 
