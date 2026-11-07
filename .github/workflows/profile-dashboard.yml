@@ -17,12 +17,10 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Generate dashboard SVG
         env:
@@ -37,7 +35,7 @@ jobs:
         run: node scripts/generate-profile-dashboard.mjs
 
       - name: Commit updated dashboard
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7.2.1
         with:
           commit_message: "Update generated profile dashboard"
           file_pattern: "README.md assets/profile-dashboard.svg assets/profile-metrics.json"
