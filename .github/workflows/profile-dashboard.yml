@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: profile-dashboard
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -25,7 +29,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}
           PROFILE_USERNAME: fernandoparreiras
-          PROFILE_DASHBOARD_OUT: assets/profile-dashboard-${{ github.run_id }}.svg
+          PROFILE_DASHBOARD_OUT: assets/profile-dashboard.svg
+          PROFILE_METRICS_OUT: assets/profile-metrics.json
+          PROFILE_DASHBOARD_CACHE_KEY: ${{ github.run_id }}
           PROFILE_README_PATH: README.md
           PROFILE_UPDATE_README: "1"
         run: node scripts/generate-profile-dashboard.mjs
@@ -34,4 +40,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update generated profile dashboard"
-          file_pattern: "README.md assets/profile-dashboard-*.svg"
+          file_pattern: "README.md assets/profile-dashboard.svg assets/profile-metrics.json"
