@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-07T00:04:20.705Z",
+  "generatedLocalDate": "2026-11-06",
+  "displayTimeZone": "America/Sao_Paulo",
+  "window": {
+    "from": "2025-11-07T00:04:20.705Z",
+    "to": "2026-11-07T00:04:20.705Z",
+    "basis": "rolling-12-months-utc"
+  },
+  "scope": {
+    "contributions": "GitHub profile contribution calendar; private repository details remain anonymized",
+    "repositories": "Public, non-fork repositories owned by the profile",
+    "languages": "Bytes reported by GitHub for those public repositories",
+    "qualityEvidence": "Not published from private repositories; absence is not reported as zero"
+  },
+  "github": {
+    "contributions": 19772,
+    "privateContributions": 19511,
+    "commits": 166,
+    "pullRequests": 79,
+    "issues": 13,
+    "pullRequestReviews": 1,
+    "activeDays": 228,
+    "currentStreak": 26,
+    "longestStreak": 35,
+    "bestDay": {
+      "date": "2026-07-11",
+      "contributions": 387
+    },
+    "followers": 15,
+    "publicRepositories": 2,
+    "publicStars": 2
+  },
+  "products": [
+    {
+      "name": "Trustyu FORGE",
+      "tagline": "Engineering harness + delivery integrity",
+      "stage": "Alpha 3.3",
+      "evidence": "Public architecture map"
+    },
+    {
+      "name": "Trustyu CRM",
+      "tagline": "Vertical operations product",
+      "stage": "Evidence per contract",
+      "evidence": "Private implementation context"
+    },
+    {
+      "name": "Hub Agents",
+      "tagline": "Multi-tenant product-agent runtime",
+      "stage": "Capability-specific",
+      "evidence": "Private implementation context"
+    },
+    {
+      "name": "Trustyu AI Works",
+      "tagline": "Agent, workflow and function platform",
+      "stage": "Development",
+      "evidence": "Five compiled resource kinds"
+    },
+    {
+      "name": "Trustyu Score",
+      "tagline": "Human-led, AI-assisted assessment",
+      "stage": "Professional-assisted",
+      "evidence": "Core 3.0 + report standard 4.1"
+    },
+    {
+      "name": "Trustyu Lens",
+      "tagline": "Problem and solution diagnosis",
+      "stage": "Professional-assisted",
+      "evidence": "Method + versioned brief"
+    },
+    {
+      "name": "Process Intelligence",
+      "tagline": "LLM process mapping and BPMN specs",
+      "stage": "POC",
+      "evidence": "Public claims stay bounded"
+    },
+    {
+      "name": "NEEDYU V2",
+      "tagline": "Meeting memory and tenant-safe AI",
+      "stage": "Pre-launch development",
+      "evidence": "Implementation slices, no GA claim"
+    },
+    {
+      "name": "Needyu Chrome Plugin",
+      "tagline": "Meeting capture client and install path",
+      "stage": "Development",
+      "evidence": "Private implementation context"
+    }
+  ]
+}

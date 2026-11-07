@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard-41518547048.svg" alt="Fernando Parreiras — human-centered AI, engineering evidence, public knowledge, and GitHub activity" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=professional-refresh-2026-11-06" alt="Fernando Parreiras — exact GitHub activity counts, data provenance, human-centered AI, engineering evidence, and public knowledge" width="100%" />
 
 <br />
 <br />
@@ -33,6 +33,8 @@ I turn complex business problems into practical AI products and operating system
 | [Trustyu.ai](https://trustyu.ai) | A B2B AI Native solutions accelerator spanning discovery, assessment, engineering, and qualified execution |
 | [Trustyu Forge](https://forge.trustyu.ai) | The human-directed engineering harness around AI-assisted software delivery |
 | [Public AI architecture map](docs/trustyu-ai-architecture.md) | Evidence-qualified detail on Forge, AI Works, Hub Agents, LLM routing, durable memory, evals, Jev, Score, and safety boundaries |
+| [Metrics methodology](docs/profile-metrics-methodology.md) | Sources, definitions, refresh policy, limitations, and the boundary between public counts and private engineering evidence |
+| [Machine-readable metrics](assets/profile-metrics.json) | Exact generated values behind the dashboard, with the measurement window and scope recorded alongside them |
 | [needyu.ai](https://needyu.ai) | Meeting memory, context infrastructure, and human-centered AI assistance |
 | [Tech Human](https://techhuman.com.br) | AI literacy, leadership, governance readiness, and humanized transformation |
 | [POR.life](https://por.life) | The faith-led foundation connecting purpose, ethics, work, and impact |
@@ -50,6 +52,15 @@ Most product engineering lives in organization and private repositories. This pr
 | **Development / Alpha / POC / Research** | Work exists, but availability, scale, adoption, and outcomes are not implied. |
 
 Implementation, verification, merge, deployment, public behavior, operation, and outcomes are separate gates.
+
+## Now — November 2026
+
+- **Trustyu Forge 3.3:** Alpha engineering harness with risk-proportional governance, delivery integrity, evidence, readback, and human verdicts. A three-layer model for canonical knowledge, distribution, and client delivery is proposed and still awaits its final architectural approval.
+- **Trustyu AI Works:** 12 public resource kinds are modeled; five currently enter the compiled artifact build and publication path — Agent, Function, Workflow, Widget, and Surface. Generic Git Code Ops and the Forge 3.3 operational pilot are not presented as operating capabilities.
+- **Trustyu Score:** deterministic Core 3.0.0 remains the computational authority; the three-report editorial standard is now 4.1.0. The navigable BETA journey is a fixture-based prototype for review, not a production portal.
+- **NEEDYU V2:** active pre-launch engineering includes meeting capture, versioned transcription metadata, post-call handling, sharing controls, durable context, and tenant-safe assistance. Merged slices do not imply owner application, public release, or GA.
+
+This status cut is dated **2026-11-06** and exposes only facts that can be stated without publishing private code, customer evidence, credentials, internal topology, or unverified outcomes.
 
 ## Faith, Work, and Purpose
 
@@ -143,9 +154,9 @@ These are technologies used across different Trustyu, Tech Human, NEEDYU, and pe
 | Capability | What it does | Public status cut |
 | --- | --- | --- |
 | **Trustyu Lens** | Clarifies the problem, buyer, alternatives, evidence, hypotheses, and next validation through a versioned `SolutionBrief` | **Professional-assisted**; methodology/skill, not a SaaS claim |
-| **Trustyu Score** | Assesses existing and AI-built systems across Technical, Product, and Market tracks | **Professional-assisted**; deterministic Core v3 + human review |
+| **Trustyu Score** | Assesses existing and AI-built systems across Technical, Product, and Market tracks | **Professional-assisted**; deterministic Core 3.0.0 + report standard 4.1.0 + human review |
 | [**Trustyu Forge**](https://forge.trustyu.ai) | Governs AI-assisted engineering from intent and architecture through evidence and human verdict | **FORGE 3.3 Alpha**; adoption and `Operating` are qualified separately |
-| **Trustyu AI Works** | Authors, publishes, composes, and executes agents, workflows, functions, and related resources | **Development**; public scale, self-service, and GA are not claimed |
+| **Trustyu AI Works** | Models 12 resource kinds and provides qualified build/publication paths for Agent, Function, Workflow, Widget, and Surface | **Development**; generic Git Code Ops, operational-pilot completion, public scale, self-service, and GA are not claimed |
 | **Hub Agents** | Multi-tenant runtime for product agents and vertical workflows | **Capability-specific**; active slices do not prove every planned integration |
 | **Process Intelligence** | Explores LLM-assisted process mapping, BPMN, and technical process specifications | **POC**; product stack and operation are not inferred |
 
@@ -156,7 +167,9 @@ Lens, Score, Forge, and AI Works are complementary entry points, not a mandatory
 [Trustyu Forge](https://forge.trustyu.ai) is the human-directed engineering harness around AI-assisted delivery. It does not promise that generated code becomes production software automatically. It makes intent, context, execution, verification, evidence, authority, and outcomes traceable.
 
 ```text
-SPEC → EXPLORE → PLAN → RED → IMPLEMENT → GREEN → VERIFY → VERDICT
+SPEC → EXPLORE → PLAN → RED → IMPLEMENT → GREEN → SELF-VERIFY → PR
+                                                               ↓
+                  LEARN ← ROLLBACK/ADAPT ← OBSERVE ← READBACK ← RELEASE
 ```
 
 | Harness layer | Public description |
@@ -169,15 +182,16 @@ SPEC → EXPLORE → PLAN → RED → IMPLEMENT → GREEN → VERIFY → VERDICT
 | Delivery integrity | CI, merge, deployment, public behavior, operation, and outcome remain separate states |
 | Learning | Measured reliability, cost, failure modes, and durable feedback without invented productivity multipliers |
 
-FORGE 3.2 adds Brownfield & Consolidation for systems that must be preserved, integrated, redesigned, or retired. FORGE 3.3 adds verifiable governance and delivery integrity. The current integrated program is Alpha; each mechanism carries its own implementation, verification, and operating evidence.
+FORGE 3.2 adds Brownfield & Consolidation for systems that must be preserved, integrated, redesigned, or retired. FORGE 3.3 adds verifiable governance and delivery integrity. The current integrated program is Alpha; each mechanism carries its own implementation, verification, and operating evidence. A proposed three-layer boundary — canonical framework, versioned distribution, and client-scoped delivery — remains explicitly proposed until its final architectural approval.
 
 ## AI Architecture
 
 ### Agentic systems and workflows
 
 - **Hub Agents:** Python, FastAPI, Clean Architecture, LangGraph, PostgreSQL/pgvector, Redis/Arq, tenant isolation, pluggable channels, and product-specific personas and tools.
-- **AI Works:** TypeScript/Fastify control and data planes, Next.js authoring, Temporal durable supervision, Go/Zigflow workflow execution, and workerd-isolated Functions.
+- **AI Works:** TypeScript/Fastify control and data planes, Next.js authoring, Temporal durable supervision, Go/Zigflow workflow execution, and workerd-isolated Functions. Twelve resource kinds are modeled; five currently have compiled artifact build/publication paths.
 - **Compiled contracts:** Agents and Workflows become versioned `openworkflow/v1` artifacts; Functions execute exact immutable targets with authorization and policy revalidation.
+- **Control and execution:** Forge governs intent, risk, evidence, states, and authority; AI Works provides qualified execution surfaces. Their composition is architectural direction, not a universal operating claim.
 - **Effects:** idempotency keys, tool journals, approvals, and effect receipts make retries explicit; uncertain external effects stop for reconciliation.
 - **Human authority:** a model can propose or execute within policy, but external, irreversible, and production decisions remain with an authorized person.
 
@@ -223,7 +237,9 @@ Trustyu Score is currently **human-led and AI-assisted**, not an autonomous audi
 - explicit `unknown` and `not_observed` states instead of turning missing evidence into zero;
 - safety caps and applicable-coverage requirements;
 - three report tracks: Technical, Product, and Market;
-- typed evidence, risks, impact, priorities, limitations, and remediation roadmaps.
+- typed evidence, risks, impact, priorities, limitations, and remediation roadmaps;
+- an approved 4.1.0 editorial/layout standard for new manual HTML/PDF emissions across all three report perspectives;
+- a fixture-only navigable BETA journey used to review the engagement flow without claiming a production portal, real authorization, billing, tenant isolation, or client execution.
 
 The target source-bound runtime, specialized product agents, Evidence Plane, and client portal remain review-gated. No claim of scientific validation, certification, autonomous availability, or FORGE attestation is made here.
 
@@ -257,13 +273,13 @@ I use AI agents as a bounded execution layer:
 ## Active Building Themes
 
 - **Trustyu Forge:** engineering harness, Brownfield/Consolidation, verifiable governance, delivery integrity, evidence, and human verdicts
-- **Trustyu AI Works:** versioned authoring and qualified execution of agents, workflows, functions, evaluations, datasets, surfaces, systems, and databases
+- **Trustyu AI Works:** 12 modeled resource kinds, with qualified compiled-artifact paths for Agent, Function, Workflow, Widget, and Surface; assistant, memory, evaluation, preview, and migration work remains evidence-bounded
 - **Hub Agents:** tenant-safe product agents, vertical isolation, multi-provider routing, RAG, async workers, channels, and observability
-- **Trustyu Score:** deterministic assessment Core, technical/product/market reports, evidence contracts, and human-reviewed delivery
+- **Trustyu Score:** deterministic Core 3.0.0, report standard 4.1.0, technical/product/market evidence contracts, a fixture-only BETA journey, and human-reviewed delivery
 - **Trustyu Lens:** problem and solution diagnosis through evidence, alternatives, hypotheses, and the next useful validation
 - **Process Intelligence:** POC for converting organizational knowledge into BPMN and process specifications
 - **Trustyu CRM:** AI-assisted vertical workflows, onboarding, messaging, and operational automation under product-specific evidence
-- **NEEDYU V2:** pre-launch development around meeting memory, context, capture, and human-centered assistance
+- **NEEDYU V2:** pre-launch development around meeting memory, context, capture, versioned transcription metadata, post-call handling, sharing controls, and human-centered assistance
 - **AI literacy:** governance readiness, use-case mapping, leadership, and humanized adoption through [Tech Human](https://techhuman.com.br)
 - **Authorial knowledge and Talks:** source-controlled publishing, Docks, public notes, and consent-based follow-up
 - **Faith and purpose:** products and businesses aligned under [POR.life](https://por.life), with Jesus at the center
@@ -274,14 +290,6 @@ I use AI agents as a bounded execution layer:
 | --- | --- |
 | [`fernandoparreiras`](https://github.com/fernandoparreiras/fernandoparreiras) | Source for this GitHub profile, its evidence-qualified architecture map, generated dashboard, and contribution workflows |
 | [`fernandoparreiras-website`](https://github.com/fernandoparreiras/fernandoparreiras-website) | Source for the public personal hub, scheduled knowledge publishing, Docks presentations, and consent-based lead delivery |
-
-## Contribution Flow
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/output/github-contribution-grid-snake.svg" />
-  <img alt="GitHub contribution snake animation" src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/output/github-contribution-grid-snake.svg" />
-</picture>
 
 ## Operating Principles
 

@@ -3,96 +3,71 @@ import fs from "node:fs/promises";
 const USERNAME = process.env.PROFILE_USERNAME || "fernandoparreiras";
 const TOKEN = process.env.PROFILE_STATS_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard-v2.svg";
+const METRICS_OUT = process.env.PROFILE_METRICS_OUT || "assets/profile-metrics.json";
 const README_PATH = process.env.PROFILE_README_PATH || "README.md";
 const UPDATE_README = process.env.PROFILE_UPDATE_README === "1";
-const DEFAULT_AI_REVIEW_ACTORS = [
-  "coderabbitai[bot]",
-  "claude[bot]",
-  "copilot-pull-request-reviewer[bot]",
-  "cursor[bot]",
-  "openai-codex[bot]",
-  "sourcery-ai[bot]",
-  "qodo-merge-pro[bot]",
-  "qodo-ai[bot]",
-  "qodo[bot]",
-  "greptile-apps[bot]",
-  "sweep-ai[bot]",
-  "devin-ai-integration[bot]",
-];
-const AI_REVIEW_ACTORS = (process.env.PROFILE_AI_REVIEW_ACTORS || DEFAULT_AI_REVIEW_ACTORS.join(","))
-  .split(",")
-  .map((actor) => actor.trim())
-  .filter(Boolean);
-const SECURITY_WORKFLOW_PATTERN = /(security|sast|codeql|semgrep|trivy|snyk|gitleaks|secret|dependency|dependabot|audit|vulnerab|sonar|scorecard|osv|zap)/i;
-const QUALITY_WORKFLOW_PATTERN = /(ci|test|build|lint|quality|gate|spec|smoke|e2e|unit|integration|check|security|sast)/i;
-const FORGE_PROJECT_REPOS = [
-  "needyuai/trustyu-docs",
-  "needyuai/trustyu-template",
-  "needyuai/trustyu-infra",
-  "needyuai/trustyu-ai-env",
-];
 const PROJECTS = [
   {
     name: "Trustyu FORGE",
-    repo: "needyuai/trustyu-docs",
     tagline: "Engineering harness + delivery integrity",
     stage: "Alpha 3.3",
+    evidence: "Public architecture map",
     color: "#60a5fa",
   },
   {
     name: "Trustyu CRM",
-    repo: "needyuai/trustyu-crm",
     tagline: "Vertical operations product",
     stage: "Evidence per contract",
+    evidence: "Private implementation context",
     color: "#22c55e",
   },
   {
     name: "Hub Agents",
-    repo: "needyuai/trustyu-hub-agents",
     tagline: "Multi-tenant product-agent runtime",
     stage: "Capability-specific",
+    evidence: "Private implementation context",
     color: "#a78bfa",
   },
   {
     name: "Trustyu AI Works",
-    repo: "needyuai/trustyu-ai-workstation",
     tagline: "Agent, workflow and function platform",
     stage: "Development",
+    evidence: "Five compiled resource kinds",
     color: "#facc15",
   },
   {
     name: "Trustyu Score",
-    repo: "needyuai/trustyu-score",
     tagline: "Human-led, AI-assisted assessment",
     stage: "Professional-assisted",
+    evidence: "Core 3.0 + report standard 4.1",
     color: "#fb7185",
   },
   {
     name: "Trustyu Lens",
-    repo: "needyuai/trustyu-lens",
     tagline: "Problem and solution diagnosis",
     stage: "Professional-assisted",
+    evidence: "Method + versioned brief",
     color: "#2dd4bf",
   },
   {
     name: "Process Intelligence",
-    repo: "needyuai/trustyu-process-intelligence",
     tagline: "LLM process mapping and BPMN specs",
     stage: "POC",
+    evidence: "Public claims stay bounded",
     color: "#38bdf8",
   },
   {
     name: "NEEDYU V2",
-    repo: "needyuai/needyu-platform",
     tagline: "Meeting memory and tenant-safe AI",
     stage: "Pre-launch development",
+    evidence: "Implementation slices, no GA claim",
     color: "#22c55e",
   },
   {
     name: "Needyu Chrome Plugin",
-    repo: "needyuai/needyu-chrome-plugin",
     tagline: "Meeting capture client and install path",
     stage: "Development",
+    evidence: "Private implementation context",
     color: "#f97316",
   },
 ];
@@ -101,6 +76,9 @@ const FAITH_REFERENCES = "Job 8:7 | Colossians 3:23";
 
 if (!TOKEN) {
   throw new Error("Missing GitHub token. Set PROFILE_STATS_TOKEN, GH_TOKEN, or GITHUB_TOKEN.");
+}
+if (process.env.GITHUB_ACTIONS === "true" && !process.env.PROFILE_STATS_TOKEN) {
+  throw new Error("PROFILE_STATS_TOKEN is required in GitHub Actions to prevent partial profile-wide metrics.");
 }
 
 const now = new Date();
@@ -135,12 +113,10 @@ query ProfileDashboard($login: String!, $from: DateTime!, $to: DateTime!) {
         }
       }
     }
-    repositories(first: 100, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER], isFork: false, orderBy: {field: UPDATED_AT, direction: DESC}) {
+    repositories(first: 100, privacy: PUBLIC, ownerAffiliations: [OWNER], isFork: false, orderBy: {field: UPDATED_AT, direction: DESC}) {
       totalCount
       nodes {
         name
-        isPrivate
-        isFork
         stargazerCount
         forkCount
         primaryLanguage {
@@ -198,128 +174,6 @@ async function searchCount(query) {
   return payload?.total_count ?? 0;
 }
 
-function uniqueValues(values) {
-  return Array.from(new Set(values.filter(Boolean)));
-}
-
-async function actionsRunCount(repo, params = {}) {
-  const query = new URLSearchParams({ per_page: "1", ...params });
-  const payload = await githubRest(`/repos/${repo}/actions/runs?${query}`);
-  return payload?.total_count ?? 0;
-}
-
-async function workflowRunCount(repo, workflowId, params = {}) {
-  const query = new URLSearchParams({ per_page: "1", ...params });
-  const payload = await githubRest(`/repos/${repo}/actions/workflows/${workflowId}/runs?${query}`);
-  return payload?.total_count ?? 0;
-}
-
-async function qualityGateStats({ from, to }) {
-  const start = from.slice(0, 10);
-  const end = to.slice(0, 10);
-  const created = `${start}..${end}`;
-  const defaultRepos = [...PROJECTS.map((project) => project.repo), ...FORGE_PROJECT_REPOS];
-  const repos = uniqueValues(
-    (process.env.PROFILE_QUALITY_GATE_REPOS || defaultRepos.join(","))
-      .split(",")
-      .map((repo) => repo.trim()),
-  );
-  const blockedStatuses = ["failure", "timed_out", "cancelled", "action_required"];
-  const totals = {
-    repos: 0,
-    workflows: 0,
-    completed: 0,
-    success: 0,
-    blocked: 0,
-    security: 0,
-    quality: 0,
-  };
-
-  for (const repo of repos) {
-    const completed = await actionsRunCount(repo, { created, status: "completed" });
-    if (!completed) {
-      continue;
-    }
-
-    totals.repos += 1;
-    totals.completed += completed;
-    totals.success += await actionsRunCount(repo, { created, status: "success" });
-    for (const status of blockedStatuses) {
-      totals.blocked += await actionsRunCount(repo, { created, status });
-    }
-
-    const workflowPayload = await githubRest(`/repos/${repo}/actions/workflows?per_page=100`);
-    const workflows = workflowPayload?.workflows || [];
-    totals.workflows += workflows.length;
-    for (const workflow of workflows) {
-      const label = `${workflow.name || ""} ${workflow.path || ""}`;
-      if (SECURITY_WORKFLOW_PATTERN.test(label)) {
-        totals.security += await workflowRunCount(repo, workflow.id, { created, status: "completed" });
-      }
-      if (QUALITY_WORKFLOW_PATTERN.test(label)) {
-        totals.quality += await workflowRunCount(repo, workflow.id, { created, status: "completed" });
-      }
-    }
-  }
-
-  return {
-    ...totals,
-    passRate: totals.completed ? Math.round((totals.success / totals.completed) * 100) : 0,
-  };
-}
-
-function aiActorLabel(actor) {
-  const labels = {
-    "coderabbitai[bot]": "CodeRabbit",
-    "claude[bot]": "Claude",
-    "copilot-pull-request-reviewer[bot]": "Copilot",
-    "cursor[bot]": "Cursor",
-    "openai-codex[bot]": "Codex",
-    "sourcery-ai[bot]": "Sourcery",
-    "qodo-merge-pro[bot]": "Qodo",
-    "qodo-ai[bot]": "Qodo",
-    "qodo[bot]": "Qodo",
-    "greptile-apps[bot]": "Greptile",
-    "sweep-ai[bot]": "Sweep",
-    "devin-ai-integration[bot]": "Devin",
-  };
-  if (labels[actor]) {
-    return labels[actor];
-  }
-  return actor
-    .replace(/\[bot\]$/i, "")
-    .replaceAll("-", " ")
-    .replaceAll("_", " ")
-    .replace(/\b\w/g, (char) => char.toUpperCase());
-}
-
-async function aiReviewStats({ from, to, totalPrs }) {
-  const start = from.slice(0, 10);
-  const end = to.slice(0, 10);
-  const tools = [];
-
-  for (const actor of AI_REVIEW_ACTORS) {
-    const base = `author:${USERNAME} type:pr created:${start}..${end}`;
-    const commenterCount = await searchCount(`${base} commenter:${actor}`);
-    const reviewCount = commenterCount > 0 ? 0 : await searchCount(`${base} reviewed-by:${actor}`);
-    const count = Math.max(commenterCount, reviewCount);
-    if (count > 0) {
-      tools.push({ actor, label: aiActorLabel(actor), count });
-    }
-  }
-
-  const signals = tools.reduce((sum, tool) => sum + tool.count, 0);
-  const reviewedPrs = Math.min(totalPrs || signals, signals);
-  const coverage = totalPrs ? Math.round((reviewedPrs / totalPrs) * 100) : 0;
-
-  return {
-    activeTools: tools.length,
-    coverage,
-    reviewedPrs,
-    tools: tools.sort((a, b) => b.count - a.count),
-  };
-}
-
 async function monthlyContributionCounts(months) {
   const query = `
   query MonthlyContributionCounts($login: String!, $from: DateTime!, $to: DateTime!) {
@@ -360,10 +214,25 @@ function escapeXml(value) {
 }
 
 function fmt(value) {
-  if (value >= 1000) {
-    return `${(value / 1000).toFixed(value >= 10000 ? 0 : 1)}k`;
+  return new Intl.NumberFormat("en-US").format(value);
+}
+
+function validateMetrics(metrics, calendarDays) {
+  const values = metrics.github;
+  for (const [name, value] of Object.entries(values)) {
+    if (typeof value === "number" && (!Number.isFinite(value) || value < 0)) {
+      throw new Error(`Invalid metric ${name}: ${value}`);
+    }
   }
-  return String(value);
+  if (values.privateContributions > values.contributions) {
+    throw new Error("Private contributions cannot exceed total contributions.");
+  }
+  if (values.activeDays > calendarDays) {
+    throw new Error("Active days cannot exceed the contribution-calendar window.");
+  }
+  if (values.currentStreak > values.longestStreak) {
+    throw new Error("Current streak cannot exceed the longest streak.");
+  }
 }
 
 function monthKey(date) {
@@ -407,10 +276,15 @@ function calcLongestStreak(days) {
 
 function calcCurrentStreak(days) {
   let current = 0;
-  for (let index = days.length - 1; index >= 0; index -= 1) {
+  let index = days.length - 1;
+  const todayUtc = now.toISOString().slice(0, 10);
+  if (days[index]?.date === todayUtc && days[index].contributionCount === 0) {
+    index -= 1;
+  }
+  for (; index >= 0; index -= 1) {
     if (days[index].contributionCount > 0) {
       current += 1;
-    } else if (current > 0 || days[index].date === now.toISOString().slice(0, 10)) {
+    } else if (current > 0) {
       break;
     }
   }
@@ -454,14 +328,14 @@ function points(values, x, y, width, height) {
 }
 
 function metricCard({ x, y, title, value, change, color, values }) {
-  const line = points(values, 22, 92, 172, 42);
+  const line = values?.length > 1 ? points(values, 22, 92, 172, 42) : null;
   return `
     <g transform="translate(${x} ${y})">
       <rect class="mini-card" x="0" y="0" width="216" height="158" rx="14"/>
       <text class="muted" x="20" y="32" font-size="13">${escapeXml(title)}</text>
       <text class="title" x="20" y="68" font-size="30">${escapeXml(value)}</text>
       <text fill="${color}" x="20" y="91" font-size="13" font-family="Inter, ui-sans-serif, system-ui">${escapeXml(change)}</text>
-      <polyline points="${line}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      ${line ? `<polyline points="${line}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>` : `<text class="muted" x="20" y="127" font-size="12">Current public snapshot</text>`}
     </g>`;
 }
 
@@ -485,8 +359,7 @@ function contributionMixCard({ x, y, mix, total }) {
   const centerY = 136;
   const commits = mixAxisLength(mix.commits.percent);
   const issues = mixAxisLength(mix.issues.percent);
-  const reviewSignal = mix.reviewSignal || mix.reviews;
-  const reviews = mixAxisLength(reviewSignal.percent);
+  const reviews = mixAxisLength(mix.reviews.percent);
   const prs = mixAxisLength(mix.pullRequests.percent);
 
   return `
@@ -510,39 +383,35 @@ function contributionMixCard({ x, y, mix, total }) {
       <text class="muted" x="106" y="${centerY + 8}" font-size="12" text-anchor="middle">Commits</text>
       <text class="muted" x="408" y="${centerY - 10}" font-size="12" text-anchor="middle">${mix.issues.percent}%</text>
       <text class="muted" x="408" y="${centerY + 8}" font-size="12" text-anchor="middle">Issues</text>
-      <text class="muted" x="${centerX}" y="78" font-size="12" text-anchor="middle">${reviewSignal.percent}%</text>
-      <text class="muted" x="${centerX}" y="96" font-size="12" text-anchor="middle">Review signal</text>
-      <text class="muted" x="${centerX}" y="112" font-size="11" text-anchor="middle">Human + AI</text>
+      <text class="muted" x="${centerX}" y="78" font-size="12" text-anchor="middle">${mix.reviews.percent}%</text>
+      <text class="muted" x="${centerX}" y="96" font-size="12" text-anchor="middle">PR reviews</text>
+      <text class="muted" x="${centerX}" y="112" font-size="11" text-anchor="middle">GitHub-counted</text>
       <text class="muted" x="${centerX}" y="204" font-size="12" text-anchor="middle">${mix.pullRequests.percent}%</text>
       <text class="muted" x="${centerX}" y="222" font-size="12" text-anchor="middle">Pull requests</text>
     </g>`;
 }
 
-function qualityMetric({ x, title, value, detail, color }) {
+function scopeMetric({ x, title, value, detail, color }) {
   return `
       <g transform="translate(${x} 84)">
         <circle cx="0" cy="0" r="6" fill="${color}"/>
         <text class="muted" x="18" y="5" font-size="13">${escapeXml(title)}</text>
-        <text class="title" x="0" y="50" font-size="30">${escapeXml(value)}</text>
+        <text class="title" x="0" y="50" font-size="24">${escapeXml(value)}</text>
         <text class="muted" x="0" y="76" font-size="12">${escapeXml(detail)}</text>
       </g>`;
 }
 
-function qualityGatesCard({ x, y, stats }) {
-  const passWidth = Math.round((stats.passRate / 100) * 288);
-  const gateRunDetail = stats.quality ? `${fmt(stats.quality)} CI/test/security` : "completed workflow runs";
+function provenanceCard({ x, y, updated }) {
   return `
     <g transform="translate(${x} ${y})">
       <rect class="panel" x="0" y="0" width="1090" height="190" rx="16"/>
-      <text class="title" x="24" y="34" font-size="24">Quality Gates</text>
-      <text class="muted" x="184" y="34" font-size="14">GitHub Actions, last 12 months</text>
-      <text class="muted" x="24" y="58" font-size="13">${stats.repos} repos tracked | ${stats.workflows} workflows scanned | CI, SAST, security, smoke, and spec gates</text>
-      ${qualityMetric({ x: 38, title: "CI Pass Rate", value: `${stats.passRate}%`, detail: `${fmt(stats.success)} successful runs`, color: "#22c55e" })}
-      ${qualityMetric({ x: 292, title: "Gate Runs", value: fmt(stats.completed), detail: gateRunDetail, color: "#60a5fa" })}
-      ${qualityMetric({ x: 546, title: "SAST/Security", value: fmt(stats.security), detail: "security-classified runs", color: "#facc15" })}
-      ${qualityMetric({ x: 800, title: "Blocked Gates", value: fmt(stats.blocked), detail: "failed/cancelled gates", color: "#fb7185" })}
-      <rect class="track" x="758" y="26" width="288" height="8" rx="4"/>
-      <rect x="758" y="26" width="${passWidth}" height="8" rx="4" fill="#22c55e"/>
+      <text class="title" x="24" y="34" font-size="24">Metrics &amp; Data Provenance</text>
+      <text class="muted" x="326" y="34" font-size="14">GitHub API · generated ${escapeXml(updated)} BRT</text>
+      <text class="muted" x="24" y="58" font-size="13">Exact counts where available; private activity stays anonymized; unavailable evidence is never presented as zero.</text>
+      ${scopeMetric({ x: 38, title: "Window", value: "12 months", detail: "rolling UTC interval", color: "#22c55e" })}
+      ${scopeMetric({ x: 292, title: "Contributions", value: "Profile-wide", detail: "private details anonymized", color: "#60a5fa" })}
+      ${scopeMetric({ x: 546, title: "Repositories", value: "Public only", detail: "owner repos + languages", color: "#facc15" })}
+      ${scopeMetric({ x: 800, title: "Quality Evidence", value: "Not published", detail: "private-by-design, not zero", color: "#fb7185" })}
     </g>`;
 }
 
@@ -551,9 +420,6 @@ function projectCard(project, index) {
   const row = Math.floor(index / 3);
   const x = col * 358;
   const y = row * 208;
-  const repoName = project.repo.split("/").at(-1);
-  const updated = project.updatedAt ? `Updated ${project.updatedAt.slice(0, 10)}` : "Repo metadata gated";
-  const language = project.language ? `${project.language}` : "Private project";
   const stageWidth = Math.min(250, Math.max(74, project.stage.length * 7 + 26));
 
   return `
@@ -563,10 +429,10 @@ function projectCard(project, index) {
       <text fill="${project.color}" x="32" y="42" font-size="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-weight="800">${index + 1}</text>
       <text class="title" x="22" y="76" font-size="21">${escapeXml(project.name)}</text>
       <text class="muted" x="22" y="102" font-size="13">${escapeXml(project.tagline)}</text>
-      <text class="muted" x="22" y="123" font-size="12">${escapeXml(repoName)} / ${escapeXml(language)}</text>
+      <text class="muted" x="22" y="123" font-size="12">${escapeXml(project.evidence)}</text>
       <rect x="22" y="136" width="${stageWidth}" height="24" rx="12" fill="${project.color}" fill-opacity="0.12" stroke="${project.color}" stroke-opacity="0.72"/>
       <text fill="${project.color}" x="35" y="153" font-size="12" font-family="Inter, ui-sans-serif, system-ui" font-weight="700">${escapeXml(project.stage)}</text>
-      <text class="muted" x="22" y="176" font-size="11">${escapeXml(updated)}</text>
+      <text class="muted" x="22" y="176" font-size="11">Evidence-qualified public stage</text>
     </g>`;
 }
 
@@ -614,17 +480,7 @@ const calendar = collection.contributionCalendar;
 const weeks = calendar.weeks;
 const days = weeks.flatMap((week) => week.contributionDays).sort((a, b) => a.date.localeCompare(b.date));
 const repos = user.repositories.nodes || [];
-const publicProfile = await githubRest(`/users/${USERNAME}`);
-const projects = [];
-for (const project of PROJECTS) {
-  const repo = await githubRest(`/repos/${project.repo}`);
-  projects.push({
-    ...project,
-    updatedAt: repo?.updated_at,
-    language: repo?.language,
-    stars: repo?.stargazers_count,
-  });
-}
+const projects = PROJECTS;
 
 const months = lastMonths(12);
 const contributionSeries = monthlyContributionSeries(days, months);
@@ -642,16 +498,18 @@ if (!prSeries.some(Boolean) && !issueSeries.some(Boolean)) {
   }
 }
 
-const repoSeries = months.map((m, index) => {
-  const base = Math.max((publicProfile?.public_repos || repos.length) - (months.length - index - 1), 1);
-  return base;
-});
-
-const updated = now.toISOString().slice(0, 10);
+const localDateParts = Object.fromEntries(new Intl.DateTimeFormat("en", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  timeZone: "America/Sao_Paulo",
+}).formatToParts(now).map(({ type, value }) => [type, value]));
+const updated = `${localDateParts.year}-${localDateParts.month}-${localDateParts.day}`;
 const totalContributions = calendar.totalContributions;
 const privateContributions = collection.restrictedContributionsCount;
-const publicRepos = publicProfile?.public_repos ?? repos.filter((repo) => !repo.isPrivate).length;
-const visibleRepos = user.repositories.totalCount;
+const publicRepos = user.repositories.totalCount;
+const followers = user.followers.totalCount;
+const publicStars = repos.reduce((sum, repo) => sum + repo.stargazerCount, 0);
 const longestStreak = calcLongestStreak(days);
 const currentStreak = calcCurrentStreak(days);
 const activeDays = days.filter((day) => day.contributionCount > 0).length;
@@ -666,37 +524,49 @@ const totalCommits = collection.totalCommitContributions;
 const totalReviews = collection.totalPullRequestReviewContributions;
 const languages = languageStats(repos);
 
-const tokenLooksUnderScoped =
-  process.env.GITHUB_ACTIONS === "true" &&
-  !process.env.PROFILE_STATS_TOKEN &&
-  totalContributions > 500 &&
-  totalPrs < 50 &&
-  totalIssues < 50;
-
-if (tokenLooksUnderScoped) {
-  console.warn(
-    `Skipping dashboard update: default GITHUB_TOKEN appears under-scoped for ${USERNAME} profile-wide PR/issue stats. ` +
-      "Add PROFILE_STATS_TOKEN to enable full automatic updates.",
-  );
-  process.exit(0);
-}
-
-const aiReviews = await aiReviewStats({ from, to, totalPrs });
-const qualityGates = await qualityGateStats({ from, to });
-const reviewSignal = totalReviews + aiReviews.reviewedPrs;
-const contributionMixTotal = Math.max(totalCommits + totalIssues + totalPrs + reviewSignal, 1);
+const contributionMixTotal = Math.max(totalCommits + totalIssues + totalPrs + totalReviews, 1);
 const contributionMix = {
   commits: { total: totalCommits, percent: Math.round((totalCommits / contributionMixTotal) * 100) },
   issues: { total: totalIssues, percent: Math.round((totalIssues / contributionMixTotal) * 100) },
   pullRequests: { total: totalPrs, percent: Math.round((totalPrs / contributionMixTotal) * 100) },
   reviews: { total: totalReviews, percent: Math.round((totalReviews / contributionMixTotal) * 100) },
-  reviewSignal: { total: reviewSignal, percent: Math.round((reviewSignal / contributionMixTotal) * 100) },
 };
+
+const metricsDocument = {
+  schemaVersion: 1,
+  generatedAt: now.toISOString(),
+  generatedLocalDate: updated,
+  displayTimeZone: "America/Sao_Paulo",
+  window: { from, to, basis: "rolling-12-months-utc" },
+  scope: {
+    contributions: "GitHub profile contribution calendar; private repository details remain anonymized",
+    repositories: "Public, non-fork repositories owned by the profile",
+    languages: "Bytes reported by GitHub for those public repositories",
+    qualityEvidence: "Not published from private repositories; absence is not reported as zero",
+  },
+  github: {
+    contributions: totalContributions,
+    privateContributions,
+    commits: totalCommits,
+    pullRequests: totalPrs,
+    issues: totalIssues,
+    pullRequestReviews: totalReviews,
+    activeDays,
+    currentStreak,
+    longestStreak,
+    bestDay: { date: bestDay.date, contributions: bestDay.contributionCount },
+    followers,
+    publicRepositories: publicRepos,
+    publicStars,
+  },
+  products: projects.map(({ name, tagline, stage, evidence }) => ({ name, tagline, stage, evidence })),
+};
+validateMetrics(metricsDocument, days.length);
 const PROJECTS_SECTION_Y = 1818;
 const SVG_HEIGHT = PROJECTS_SECTION_Y + Math.ceil(projects.length / 3) * 208 + 72;
 const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Fernando Parreiras live GitHub and AI architecture dashboard</title>
-  <desc id="desc">Fernando Parreiras profile dashboard: human-centered AI, Trustyu Forge, agentic systems, durable memory, evidence-qualified product stages, and GitHub activity.</desc>
+  <desc id="desc">Fernando Parreiras profile dashboard: exact GitHub activity counts, explicit data provenance, human-centered AI, Trustyu Forge, agentic systems, durable memory, and evidence-qualified product stages.</desc>
   <defs>
     <radialGradient id="greenGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 90) rotate(136) scale(560 360)">
       <stop stop-color="#22c55e" stop-opacity="0.28"/>
@@ -773,12 +643,12 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
     <text class="accent" x="482" y="104" font-size="16" text-anchor="end">${privateContributions > 0 ? fmt(privateContributions) : "Token gated"}</text>
     <text class="muted" x="26" y="140" font-size="15">Public Repositories</text>
     <text class="accent" x="482" y="140" font-size="16" text-anchor="end">${fmt(publicRepos)}</text>
-    <text class="muted" x="26" y="176" font-size="15">Visible Repositories</text>
-    <text class="accent" x="482" y="176" font-size="16" text-anchor="end">${fmt(visibleRepos)}</text>
-    <text class="muted" x="26" y="212" font-size="15">Longest Contribution Streak</text>
-    <text class="accent" x="482" y="212" font-size="16" text-anchor="end">${fmt(longestStreak)} days</text>
+    <text class="muted" x="26" y="176" font-size="15">Followers</text>
+    <text class="accent" x="482" y="176" font-size="16" text-anchor="end">${fmt(followers)}</text>
+    <text class="muted" x="26" y="212" font-size="15">Stars on Public Repositories</text>
+    <text class="accent" x="482" y="212" font-size="16" text-anchor="end">${fmt(publicStars)}</text>
 
-    <text class="title" x="620" y="0" font-size="24">Top Languages</text>
+    <text class="title" x="620" y="0" font-size="24">Public Repository Languages</text>
     <rect class="panel" x="620" y="22" width="470" height="218" rx="16"/>
     ${languages.map(languageRow).join("")}
   </g>
@@ -805,8 +675,8 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
     ${metricCard({ x: 0, y: 0, title: "Contributions", value: fmt(totalContributions), change: "last 12 months", color: "#22c55e", values: contributionSeries })}
     ${metricCard({ x: 242, y: 0, title: "Pull Requests", value: fmt(totalPrs), change: "authored", color: "#a78bfa", values: prSeries })}
     ${metricCard({ x: 484, y: 0, title: "Issues", value: fmt(totalIssues), change: "authored", color: "#facc15", values: issueSeries })}
-    ${metricCard({ x: 726, y: 0, title: "Repositories", value: fmt(publicRepos), change: "public active", color: "#60a5fa", values: repoSeries })}
-    <text class="muted" x="786" y="136" font-size="13">Auto-updated daily</text>
+    ${metricCard({ x: 726, y: 0, title: "Repositories", value: fmt(publicRepos), change: "public owner repos", color: "#60a5fa", values: [] })}
+    <text class="muted" x="760" y="148" font-size="13">Weekly + on-demand refresh</text>
   </g>
 
   <g transform="translate(54 1188)">
@@ -814,19 +684,18 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
     <text class="muted" x="120" y="-26" font-size="14">last 12 months</text>
     ${pulseCard({ x: 0, y: 0, title: "Commits", value: fmt(totalCommits), detail: "direct git activity", color: "#22c55e" })}
     ${pulseCard({ x: 184, y: 0, title: "Human Reviews", value: fmt(totalReviews), detail: "formal PR reviews", color: "#38bdf8" })}
-    ${pulseCard({ x: 368, y: 0, title: "AI Reviews", value: fmt(aiReviews.reviewedPrs), detail: `${aiReviews.activeTools} tools | ${aiReviews.coverage}% PRs`, color: "#86efac" })}
-    ${pulseCard({ x: 0, y: 120, title: "Active Days", value: fmt(activeDays), detail: `${Math.round((activeDays / days.length) * 100)}% of days`, color: "#a78bfa" })}
-    ${pulseCard({ x: 184, y: 120, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
-    ${pulseCard({ x: 368, y: 120, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
-    ${pulseCard({ x: 0, y: 240, title: "Current Streak", value: `${fmt(currentStreak)}d`, detail: `longest ${fmt(longestStreak)}d`, color: "#60a5fa" })}
+    ${pulseCard({ x: 368, y: 0, title: "Active Days", value: fmt(activeDays), detail: `${Math.round((activeDays / days.length) * 100)}% of days`, color: "#a78bfa" })}
+    ${pulseCard({ x: 0, y: 120, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
+    ${pulseCard({ x: 184, y: 120, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
+    ${pulseCard({ x: 368, y: 120, title: "Current Streak", value: `${fmt(currentStreak)}d`, detail: `longest ${fmt(longestStreak)}d`, color: "#60a5fa" })}
     ${contributionMixCard({ x: 590, y: -38, mix: contributionMix, total: contributionMixTotal })}
   </g>
 
-  ${qualityGatesCard({ x: 54, y: 1568, stats: qualityGates })}
+  ${provenanceCard({ x: 54, y: 1568, updated })}
 
   <g transform="translate(54 ${PROJECTS_SECTION_Y})">
     <text class="title" x="0" y="-28" font-size="24">Architecture &amp; Product Contexts</text>
-    <text class="muted" x="1090" y="-28" font-size="14" text-anchor="end">Repository activity + evidence-qualified stage</text>
+    <text class="muted" x="1090" y="-28" font-size="14" text-anchor="end">Public context + evidence-qualified stage</text>
     ${projects.map(projectCard).join("")}
   </g>
 </svg>`;
@@ -834,11 +703,16 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
 await fs.mkdir(OUT.split("/").slice(0, -1).join("/"), { recursive: true });
 await fs.writeFile(OUT, svg.replace(/^[ \t]+$/gm, ""), "utf8");
 console.log(`Generated ${OUT}`);
+await fs.mkdir(METRICS_OUT.split("/").slice(0, -1).join("/"), { recursive: true });
+await fs.writeFile(METRICS_OUT, `${JSON.stringify(metricsDocument, null, 2)}\n`, "utf8");
+console.log(`Generated ${METRICS_OUT}`);
 
 if (UPDATE_README) {
   const repository = process.env.GITHUB_REPOSITORY || `${USERNAME}/${USERNAME}`;
   const ref = process.env.PROFILE_DASHBOARD_REF || "main";
-  const assetUrl = `https://raw.githubusercontent.com/${repository}/${ref}/${OUT}`;
+  const cacheKey = process.env.PROFILE_DASHBOARD_CACHE_KEY;
+  const cacheSuffix = cacheKey ? `?v=${encodeURIComponent(cacheKey)}` : "";
+  const assetUrl = `https://raw.githubusercontent.com/${repository}/${ref}/${OUT}${cacheSuffix}`;
   const dashboardUrlPattern = /https:\/\/raw\.githubusercontent\.com\/[^/\s"]+\/[^/\s"]+\/[^/\s"]+\/assets\/profile-dashboard[^\s"]*\.svg(?:\?[^\s"]*)?/;
   const readme = await fs.readFile(README_PATH, "utf8");
 
