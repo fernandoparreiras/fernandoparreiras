@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20261116-refresh" alt="Fernando Parreiras — exact GitHub activity counts, data provenance, human-centered AI, engineering evidence, and public knowledge" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=43925776786" alt="Fernando Parreiras — exact GitHub activity counts, data provenance, human-centered AI, engineering evidence, and public knowledge" width="100%" />
 
 <br />
 <br />
@@ -29,10 +29,10 @@ Updated **2026-11-16** · [exact UTC window and JSON](assets/profile-metrics.jso
 
 | Rolling 12-month activity | Count |
 | --- | ---: |
-| Profile contributions | 20,513 |
+| Profile contributions | 20,515 |
 | Anonymized private contributions | 20,226 |
-| API-visible commits | 182 |
-| API-visible authored pull requests | 89 |
+| API-visible commits | 183 |
+| API-visible authored pull requests | 90 |
 | API-visible authored issues | 13 |
 | API-visible formal PR reviews | 1 |
 | Active days | 237 |
