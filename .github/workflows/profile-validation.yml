@@ -1,0 +1,28 @@
+name: Validate profile dashboard
+
+on:
+  pull_request:
+    paths:
+      - "scripts/generate-profile-dashboard*"
+      - "assets/profile-metrics.json"
+      - ".github/workflows/profile-*.yml"
+      - "README.md"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check syntax and synthetic regression cases
+        run: |
+          node --check scripts/generate-profile-dashboard.mjs
+          node --test scripts/generate-profile-dashboard.test.mjs
+          node -e 'JSON.parse(require("node:fs").readFileSync("assets/profile-metrics.json", "utf8"))'

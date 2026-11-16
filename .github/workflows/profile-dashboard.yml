@@ -2,8 +2,8 @@ name: Generate profile dashboard
 
 on:
   schedule:
-    # Mondays at 07:17 America/Sao_Paulo (10:17 UTC).
-    - cron: "17 10 * * 1"
+    # Daily at 07:17 America/Sao_Paulo (10:17 UTC).
+    - cron: "17 10 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Verify dashboard regression cases
+        run: node --test scripts/generate-profile-dashboard.test.mjs
 
       - name: Generate dashboard SVG
         env:

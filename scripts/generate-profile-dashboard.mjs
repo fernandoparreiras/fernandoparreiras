@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 
 const USERNAME = process.env.PROFILE_USERNAME || "fernandoparreiras";
 const TOKEN = process.env.PROFILE_STATS_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
-const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard-v2.svg";
+const OUT = process.env.PROFILE_DASHBOARD_OUT || "assets/profile-dashboard.svg";
 const METRICS_OUT = process.env.PROFILE_METRICS_OUT || "assets/profile-metrics.json";
 const README_PATH = process.env.PROFILE_README_PATH || "README.md";
 const UPDATE_README = process.env.PROFILE_UPDATE_README === "1";
@@ -13,6 +13,13 @@ const PROJECTS = [
     stage: "Alpha 3.3",
     evidence: "Public architecture map",
     color: "#60a5fa",
+  },
+  {
+    name: "Forge Base Skills",
+    tagline: "Progressive team engineering practices",
+    stage: "Distribution 0.2.0",
+    evidence: "Seven skills + release provenance",
+    color: "#7dd3fc",
   },
   {
     name: "Trustyu CRM",
@@ -39,7 +46,7 @@ const PROJECTS = [
     name: "Trustyu Score",
     tagline: "Human-led, AI-assisted assessment",
     stage: "Professional-assisted",
-    evidence: "Core 3.0 + report standard 4.1",
+    evidence: "Core 3.0 + assisted review candidate",
     color: "#fb7185",
   },
   {
@@ -64,11 +71,25 @@ const PROJECTS = [
     color: "#22c55e",
   },
   {
-    name: "Needyu Chrome Plugin",
-    tagline: "Meeting capture client and install path",
-    stage: "Development",
-    evidence: "Private implementation context",
+    name: "Personal Knowledge Hub",
+    tagline: "Articles, talks and Docks publishing",
+    stage: "Public website",
+    evidence: "Public source + delivery contracts",
     color: "#f97316",
+  },
+  {
+    name: "Tech Human",
+    tagline: "AI literacy, leadership and governance",
+    stage: "Professional-assisted",
+    evidence: "Public offerings and knowledge",
+    color: "#d8ff57",
+  },
+  {
+    name: "POR.life",
+    tagline: "Faith, purpose and authorial knowledge",
+    stage: "Public initiative",
+    evidence: "Public site + editorial contexts",
+    color: "#c4b5fd",
   },
 ];
 const FAITH_STATEMENT = "Jesus Christ at the center | CEO | POR.life";
@@ -150,25 +171,6 @@ async function githubGraphql(query, variables) {
     throw new Error(JSON.stringify(payload.errors || payload, null, 2));
   }
   return payload.data;
-}
-
-async function githubRest(path) {
-  const response = await fetch(`https://api.github.com${path}`, {
-    headers: {
-      authorization: `Bearer ${TOKEN}`,
-      "user-agent": "fernandoparreiras-profile-dashboard",
-    },
-  });
-  if (!response.ok) {
-    return null;
-  }
-  return response.json();
-}
-
-async function searchCount(query) {
-  const encoded = encodeURIComponent(query);
-  const payload = await githubRest(`/search/issues?q=${encoded}&per_page=1`);
-  return payload?.total_count ?? 0;
 }
 
 async function monthlyContributionCounts(months) {
@@ -302,7 +304,7 @@ function calcCurrentStreak(days) {
   for (; index >= 0; index -= 1) {
     if (days[index].contributionCount > 0) {
       current += 1;
-    } else if (current > 0) {
+    } else {
       break;
     }
   }
@@ -384,7 +386,7 @@ function contributionMixCard({ x, y, mix, total }) {
     <g transform="translate(${x} ${y})">
       <rect class="panel" x="0" y="0" width="500" height="260" rx="16"/>
       <text class="title" x="24" y="34" font-size="22">Contribution Mix</text>
-      <text class="muted" x="24" y="58" font-size="13">${escapeXml(fmt(total))} classified actions, last 12 months</text>
+      <text class="muted" x="24" y="58" font-size="13">${escapeXml(fmt(total))} API-visible classified actions, last 12 months</text>
       <line x1="92" y1="${centerY}" x2="420" y2="${centerY}" stroke="#1f3b35" stroke-width="2"/>
       <line x1="${centerX}" y1="58" x2="${centerX}" y2="220" stroke="#1f3b35" stroke-width="2"/>
       <line x1="${centerX}" y1="${centerY}" x2="${(centerX - commits).toFixed(1)}" y2="${centerY}" stroke="#39d353" stroke-width="3" stroke-linecap="round"/>
@@ -503,18 +505,8 @@ const projects = PROJECTS;
 const months = lastMonths(12);
 const contributionSeries = monthlyContributionSeries(days, months);
 const monthlyCounts = await monthlyContributionCounts(months);
-let prSeries = monthlyCounts.prs;
-let issueSeries = monthlyCounts.issues;
-
-if (!prSeries.some(Boolean) && !issueSeries.some(Boolean)) {
-  prSeries = [];
-  issueSeries = [];
-  for (const m of months) {
-    const { start, end } = monthRange(m);
-    prSeries.push(await searchCount(`author:${USERNAME} type:pr created:${start}..${end}`));
-    issueSeries.push(await searchCount(`author:${USERNAME} type:issue created:${start}..${end}`));
-  }
-}
+const prSeries = monthlyCounts.prs;
+const issueSeries = monthlyCounts.issues;
 
 const localDateParts = Object.fromEntries(new Intl.DateTimeFormat("en", {
   year: "numeric",
@@ -536,28 +528,30 @@ const bestDay = days.reduce(
   (best, day) => (day.contributionCount > best.contributionCount ? day : best),
   { date: updated, contributionCount: 0 },
 );
-const totalPrs = collection.totalPullRequestContributions || prSeries.reduce((sum, value) => sum + value, 0);
-const totalIssues = collection.totalIssueContributions || issueSeries.reduce((sum, value) => sum + value, 0);
+const totalPrs = collection.totalPullRequestContributions;
+const totalIssues = collection.totalIssueContributions;
 const totalCommits = collection.totalCommitContributions;
 const totalReviews = collection.totalPullRequestReviewContributions;
 const languages = languageStats(repos);
 
-const contributionMixTotal = Math.max(totalCommits + totalIssues + totalPrs + totalReviews, 1);
+const contributionMixTotal = totalCommits + totalIssues + totalPrs + totalReviews;
+const contributionMixDenominator = Math.max(contributionMixTotal, 1);
 const contributionMix = {
-  commits: { total: totalCommits, percent: Math.round((totalCommits / contributionMixTotal) * 100) },
-  issues: { total: totalIssues, percent: Math.round((totalIssues / contributionMixTotal) * 100) },
-  pullRequests: { total: totalPrs, percent: Math.round((totalPrs / contributionMixTotal) * 100) },
-  reviews: { total: totalReviews, percent: Math.round((totalReviews / contributionMixTotal) * 100) },
+  commits: { total: totalCommits, percent: Math.round((totalCommits / contributionMixDenominator) * 100) },
+  issues: { total: totalIssues, percent: Math.round((totalIssues / contributionMixDenominator) * 100) },
+  pullRequests: { total: totalPrs, percent: Math.round((totalPrs / contributionMixDenominator) * 100) },
+  reviews: { total: totalReviews, percent: Math.round((totalReviews / contributionMixDenominator) * 100) },
 };
 
 const metricsDocument = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   generatedAt: now.toISOString(),
   generatedLocalDate: updated,
   displayTimeZone: "America/Sao_Paulo",
   window: { from, to, basis: "rolling-12-months-utc" },
   scope: {
     contributions: "GitHub profile contribution calendar; private repository details remain anonymized",
+    activityBreakdown: "Contribution-type totals visible to this API credential; anonymized private activity is not classified by type",
     repositories: "Public, non-fork repositories owned by the profile",
     languages: "Bytes reported by GitHub for those public repositories",
     qualityEvidence: "Not published from private repositories; absence is not reported as zero",
@@ -692,17 +686,17 @@ const svg = `<svg width="1200" height="${SVG_HEIGHT}" viewBox="0 0 1200 ${SVG_HE
   <g transform="translate(54 980)">
     <text class="title" x="0" y="-26" font-size="24">Activity Overview</text>
     ${metricCard({ x: 0, y: 0, title: "Contributions", value: fmt(totalContributions), change: "last 12 months", color: "#22c55e", values: contributionSeries })}
-    ${metricCard({ x: 242, y: 0, title: "Pull Requests", value: fmt(totalPrs), change: "authored", color: "#a78bfa", values: prSeries })}
-    ${metricCard({ x: 484, y: 0, title: "Issues", value: fmt(totalIssues), change: "authored", color: "#facc15", values: issueSeries })}
+    ${metricCard({ x: 242, y: 0, title: "Pull Requests", value: fmt(totalPrs), change: "API-visible authored", color: "#a78bfa", values: prSeries })}
+    ${metricCard({ x: 484, y: 0, title: "Issues", value: fmt(totalIssues), change: "API-visible authored", color: "#facc15", values: issueSeries })}
     ${metricCard({ x: 726, y: 0, title: "Repositories", value: fmt(publicRepos), change: "public owner repos", color: "#60a5fa", values: [] })}
-    <text class="muted" x="760" y="148" font-size="13">Weekly + on-demand refresh</text>
+    <text class="muted" x="760" y="148" font-size="13">Daily + on-demand refresh</text>
   </g>
 
   <g transform="translate(54 1188)">
     <text class="title" x="0" y="-26" font-size="24">Git Pulse</text>
     <text class="muted" x="120" y="-26" font-size="14">last 12 months</text>
-    ${pulseCard({ x: 0, y: 0, title: "Commits", value: fmt(totalCommits), detail: "direct git activity", color: "#22c55e" })}
-    ${pulseCard({ x: 184, y: 0, title: "Human Reviews", value: fmt(totalReviews), detail: "formal PR reviews", color: "#38bdf8" })}
+    ${pulseCard({ x: 0, y: 0, title: "Commits", value: fmt(totalCommits), detail: "API-visible activity", color: "#22c55e" })}
+    ${pulseCard({ x: 184, y: 0, title: "PR Reviews", value: fmt(totalReviews), detail: "API-visible reviews", color: "#38bdf8" })}
     ${pulseCard({ x: 368, y: 0, title: "Active Days", value: fmt(activeDays), detail: `${Math.round((activeDays / days.length) * 100)}% of days`, color: "#a78bfa" })}
     ${pulseCard({ x: 0, y: 120, title: "Avg Active Day", value: averageActiveDay.toFixed(1), detail: "contributions/day", color: "#facc15" })}
     ${pulseCard({ x: 184, y: 120, title: "Best Day", value: fmt(bestDay.contributionCount), detail: dateLabel(bestDay.date), color: "#fb7185" })}
@@ -739,6 +733,28 @@ if (UPDATE_README) {
     throw new Error(`Could not find the dashboard image URL in ${README_PATH}`);
   }
 
-  await fs.writeFile(README_PATH, readme.replace(dashboardUrlPattern, assetUrl), "utf8");
+  const snapshotPattern = /<!-- profile-metrics:start -->[\s\S]*?<!-- profile-metrics:end -->/;
+  if (!snapshotPattern.test(readme)) {
+    throw new Error(`Could not find the metrics snapshot markers in ${README_PATH}`);
+  }
+  const snapshot = `<!-- profile-metrics:start -->
+Updated **${updated}** · [exact UTC window and JSON](assets/profile-metrics.json) · daily refresh at **07:17 America/Sao_Paulo**.
+
+| Rolling 12-month activity | Count |
+| --- | ---: |
+| Profile contributions | ${fmt(totalContributions)} |
+| Anonymized private contributions | ${fmt(privateContributions)} |
+| API-visible commits | ${fmt(totalCommits)} |
+| API-visible authored pull requests | ${fmt(totalPrs)} |
+| API-visible authored issues | ${fmt(totalIssues)} |
+| API-visible formal PR reviews | ${fmt(totalReviews)} |
+| Active days | ${fmt(activeDays)} |
+| Current / longest streak | ${fmt(currentStreak)} / ${fmt(longestStreak)} days |
+| Public owner repositories / stars | ${fmt(publicRepos)} / ${fmt(publicStars)} |
+| Followers | ${fmt(followers)} |
+
+Private activity is aggregated; the API-visible breakdown does not classify all private contributions. Counts include eligible automated activity and do not measure human effort or product readiness. [Methodology and limitations](docs/profile-metrics-methodology.md).
+<!-- profile-metrics:end -->`;
+  await fs.writeFile(README_PATH, readme.replace(dashboardUrlPattern, assetUrl).replace(snapshotPattern, snapshot), "utf8");
   console.log(`Updated ${README_PATH} to reference ${OUT}`);
 }
