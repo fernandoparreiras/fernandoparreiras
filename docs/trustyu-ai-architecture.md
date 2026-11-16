@@ -68,6 +68,8 @@ The team contribution loop is **case → triage → canonical PR → validation 
 
 Trustyu AI Works is a TypeScript modular monolith with separated control-plane, data-plane, and general contracts.
 
+Its current technology map includes **Temporal.io, Zigflow, Serverless Workflow, workerd, JEV/TypeSafe, TypeSpec, GraphQL, OpenAPI, JSON Schema/Ajv, SQLite/FTS5, sqlite-vec, Cohere Embed v4 through Bedrock, S3-compatible storage, SeaweedFS, LocalStack, Prometheus, Grafana, and Loki**. The [AI Works technology map](aiworks-technology-map.md) records their roles and distinguishes product runtime, providers, local development, and observation.
+
 ### Runtime architecture
 
 | Area | Current design |
