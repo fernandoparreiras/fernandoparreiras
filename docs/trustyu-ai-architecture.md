@@ -1,6 +1,6 @@
 # Trustyu AI architecture — public technical map
 
-> Evidence cut: 2026-11-06. This document is a public, deliberately redacted map of the architecture explored and implemented across Trustyu. It describes capabilities and boundaries; it does not publish credentials, customer data, private topology, commercial commitments, or unverified outcomes.
+> Evidence cut: 2026-11-16. This document is a public, deliberately redacted map of the architecture explored and implemented across Trustyu. The current cut reconciles default-branch product documentation and recent engineering handoffs; it is a targeted documentation review, not a full code or production audit. It describes capabilities and boundaries without publishing credentials, customer data, private topology, commercial commitments, or unverified outcomes.
 
 ## How to read the status
 
@@ -22,6 +22,7 @@ These states are intentionally independent. A merged implementation is not autom
 | **Trustyu Lens** | Investigates the problem, buyer, alternatives, evidence, hypotheses, and next validation through a versioned `SolutionBrief`. | **Professional-assisted.** Methodology and skills; not a SaaS portal. |
 | **Trustyu Score** | Evaluates existing and AI-built systems across technology, product, and market/business evidence. | **Professional-assisted.** Deterministic Core 3.0.0, report standard 4.1.0, and human review; autonomous runtime and portal remain gated. |
 | **Trustyu Forge** | Human-directed engineering harness for intent, architecture, agent execution, verification, evidence, and release decisions. | **FORGE 3.3 Alpha.** Mechanisms exist at different maturity levels; external adoption and `Operating` are qualified separately. |
+| **Forge Base** | Seven engineering skills distributed from canonical sources with build and release provenance. | **Distribution 0.2.0.** Installation, project use, and framework maturity have separate evidence. |
 | **Trustyu AI Works** | Models 12 resource kinds and provides qualified build/publication paths for Agent, Function, Workflow, Widget, and Surface. | **Development.** Generic Git Code Ops, operational-pilot completion, public scale, self-service, and GA are not claimed. |
 | **Hub Agents** | Multi-tenant product-agent runtime for vertical, channel-aware workflows. | **Capability-specific.** Operating slices exist; this does not prove every planned agent or product integration. |
 | **Process Intelligence** | Explores transcript/document-to-process mapping, BPMN, and technical process specifications. | **POC.** Foundational documentation and a first validation flow; product stack and commercial operation are not inferred. |
@@ -55,6 +56,14 @@ FORGE 3.2 adds the Brownfield & Consolidation track for preserving, integrating,
 
 A three-layer governance boundary — canonical framework, versioned distribution, and client-scoped delivery — is currently **proposed**, with its final architectural approval still pending. It is therefore recorded as direction, not as an accepted or universally operating model. Terraform is the current canonical infrastructure-as-code direction for Trustyu-managed products; client repositories keep their own approved infrastructure authority.
 
+### Progressive team adoption and Forge Base
+
+The current distributed plugin is **Forge Base 0.2.0**, with seven skills covering context routing, specifications, planning in slices, test proof, commits/PRs, review responses, and decisions. The derivation map links each practice to canonical standards. Reproducible builds, artifact digests, source provenance, and synchronization checks support the release chain.
+
+The adoption paths differ by project: client projects retain their local stack, commands, data restrictions, and acceptance criteria; Foundation products consume the applicable seed, runtime, and specialized squad practices. A compact skill routes to authorized context as needed. Framework, runtime, template, plugin, installed agent, and project behavior remain separate version and verification subjects.
+
+The team contribution loop is **case → triage → canonical PR → validation → release → installation → verified task**. **FORGE 3.4 remains a proposal**, focused on progressive adoption and verifiable synchronization; it has not replaced the current 3.3 version or acquired release maturity through documentation alone.
+
 ## Trustyu AI Works
 
 Trustyu AI Works is a TypeScript modular monolith with separated control-plane, data-plane, and general contracts.
@@ -74,7 +83,7 @@ Trustyu AI Works is a TypeScript modular monolith with separated control-plane, 
 
 Durable execution is not only queueing. Long-running work records exact artifact identity, policy snapshots, approvals, idempotency keys, tool journals, and effect receipts. If an external effect becomes uncertain, execution stops for reconciliation instead of guessing that it succeeded or retrying blindly.
 
-The current build/publication pipeline covers five compiled resource kinds: Agent, Function, Workflow, Widget, and Surface. The remaining modeled kinds are not silently promoted to compiled execution. Generic repository mutation through Git Code Ops remains specified but not implemented, and the FORGE 3.3 operational pilot for AI Works is designated but not started. CI availability is evidence of automated checks, not proof of release, deployment, readback, or operation.
+The reviewed build/publication model covers five compiled resource kinds: Agent, Function, Workflow, Widget, and Surface. Other modeled kinds retain their own contracts. Current product work includes creation, evolution, modernization, composition, durable assistant coordination, authoring consistency, and browser-assisted investigation. The assistant's code/browser tools do not establish specialized binary reverse-engineering capabilities or arbitrary repository mutation. Generic Git Code Ops and completion of the FORGE operational pilot are not asserted by this cut. Workflow definitions and their enabled state must be checked separately before claiming CI execution or deployment.
 
 ## Product agents and agentic workflows
 
@@ -117,7 +126,9 @@ This work appears in AI Works platform memory and in separate NEEDYU context/mem
 
 ### NEEDYU context infrastructure
 
-NEEDYU V2 remains in pre-launch development. Recent merged implementation slices include meeting capture, versioned transcription metadata, post-call handling, sharing controls, and the governed use of meeting context in the assistant. These are repository-level implementation facts only: they do not establish owner application, provider activation, public release, tenant-scale operation, or GA.
+NEEDYU V2 remains in pre-launch development, with five application contexts: Next.js web, Fastify API, background worker, Chrome Manifest V3 companion, and a Python/FastAPI ASR service using sherpa-onnx for local transcription and diarization. PostgreSQL holds authoritative records, jobs/outbox, and audit/usage/cost records; Redis Streams carries notifications. Temporal meeting memory, consented capture, transcription metadata, post-call handling, sharing, recovery, and tenant-safe assistant context have capability-specific evidence.
+
+The V2 companion belongs to the new platform. Historical V1 extension, API, avatar, and backoffice repositories preserve their own code and shutdown context; repository existence does not establish an active V1 service. V2 implementation and local verification do not establish public release, a second tenant, external identity qualification, or GA.
 
 ## Evaluations, typed decisions, and Jev
 
@@ -147,13 +158,21 @@ Trustyu Score is currently a professional, human-led and AI-assisted assessment 
 
 The target architecture includes source-bound execution, specialized product agents, an Evidence Plane, review gates, and a tenant-scoped portal. Those target components are not described as current autonomous availability, scientific validation, certification, or attestation.
 
+### Assisted-review candidate
+
+An integrated **3.0.1 assisted-review candidate** surrounds the approved Core with coverage obligations, collection/reading records, grounded observations, revision dependencies, explicit dispositions, calculation receipts, and replay. The contracts can detect missing or inconsistent declared evidence in exercised cases. Inventory, reading, transport to judgment, and semantic sufficiency remain distinct requirements.
+
+The approved mathematical authority remains **Core 3.0.0**. The assisted candidate, methodological acceptance, empirical calibration, report issuance, production runtime, and AI Works integration retain independent gates. New report editions record an edition identity and reading-completion time shared by their HTML/PDF pair. Client sources, judgments, findings, scores, and reports remain private.
+
 ## Stack map
 
 | Context | Stack and mechanisms |
 | --- | --- |
 | Product Foundation | Next.js 16, React, TypeScript strict, Tailwind CSS, shadcn/ui, Prisma, pnpm 11, i18n, Vitest |
 | Hub Agents | Python 3.12+, FastAPI, Pydantic, SQLAlchemy, Alembic, LangGraph, Arq, PostgreSQL 18 + pgvector, Redis 8.2.x |
-| AI Works | TypeScript, Fastify, Next.js, Temporal, Go/Zigflow, workerd, Kubernetes/Minikube, AWS EKS, S3-compatible object storage |
+| AI Works | Node.js 26+, pnpm 11.22, TypeScript, Fastify, Next.js, Temporal, Go/Zigflow, workerd, Kubernetes/Minikube, AWS EKS, S3-compatible object storage |
+| NEEDYU V2 | Node.js 24, Next.js, Fastify, PostgreSQL jobs/outbox, Redis Streams, Chrome Manifest V3, Python/FastAPI, sherpa-onnx |
+| Personal public knowledge hub | React 18, Vite 7, Tailwind CSS 3, Netlify Functions, static article routes, RSS, Docks and consent-based delivery |
 | Identity and tenancy | Keycloak 26.6.3, JWT/JWKS, account/workspace or tenant boundaries, service authority contracts |
 | Delivery | GitHub Actions, Docker, Terraform/HCL, Railway, Vercel, signed/pinned artifacts, reusable workflows |
 | Security | Gitleaks, CodeQL/SAST, Trivy/CVE gates, secret guards, capability boundaries, provenance, redaction, rollback |

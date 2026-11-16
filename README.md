@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=42695979257" alt="Fernando Parreiras — exact GitHub activity counts, data provenance, human-centered AI, engineering evidence, and public knowledge" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=20261116-refresh" alt="Fernando Parreiras — exact GitHub activity counts, data provenance, human-centered AI, engineering evidence, and public knowledge" width="100%" />
 
 <br />
 <br />
@@ -21,6 +21,27 @@
 **Founder · AI systems architect · Builder of human-centered technology**
 
 I turn complex business problems into practical AI products and operating systems. My work combines product strategy, software architecture, agentic systems, durable context, governance, and hands-on delivery across [Trustyu.ai](https://trustyu.ai), [Trustyu Forge](https://forge.trustyu.ai), [Tech Human](https://techhuman.com.br), [needyu.ai](https://needyu.ai), and [POR.life](https://por.life).
+
+## GitHub activity
+
+<!-- profile-metrics:start -->
+Updated **2026-11-16** · [exact UTC window and JSON](assets/profile-metrics.json) · daily refresh at **07:17 America/Sao_Paulo**.
+
+| Rolling 12-month activity | Count |
+| --- | ---: |
+| Profile contributions | 20,513 |
+| Anonymized private contributions | 20,226 |
+| API-visible commits | 182 |
+| API-visible authored pull requests | 89 |
+| API-visible authored issues | 13 |
+| API-visible formal PR reviews | 1 |
+| Active days | 237 |
+| Current / longest streak | 6 / 35 days |
+| Public owner repositories / stars | 2 / 2 |
+| Followers | 15 |
+
+Private activity is aggregated; the API-visible breakdown does not classify all private contributions. Counts include eligible automated activity and do not measure human effort or product readiness. [Methodology and limitations](docs/profile-metrics-methodology.md).
+<!-- profile-metrics:end -->
 
 ## Start Here
 
@@ -53,14 +74,18 @@ Most product engineering lives in organization and private repositories. This pr
 
 Implementation, verification, merge, deployment, public behavior, operation, and outcomes are separate gates.
 
-## Now — November 2026
+## Now — 16 November 2026
 
-- **Trustyu Forge 3.3:** Alpha engineering harness with risk-proportional governance, delivery integrity, evidence, readback, and human verdicts. A three-layer model for canonical knowledge, distribution, and client delivery is proposed and still awaits its final architectural approval.
-- **Trustyu AI Works:** 12 public resource kinds are modeled; five currently enter the compiled artifact build and publication path — Agent, Function, Workflow, Widget, and Surface. Generic Git Code Ops and the Forge 3.3 operational pilot are not presented as operating capabilities.
-- **Trustyu Score:** deterministic Core 3.0.0 remains the computational authority; the three-report editorial standard is now 4.1.0. The navigable BETA journey is a fixture-based prototype for review, not a production portal.
-- **NEEDYU V2:** active pre-launch engineering includes meeting capture, versioned transcription metadata, post-call handling, sharing controls, durable context, and tenant-safe assistance. Merged slices do not imply owner application, public release, or GA.
+- **Trustyu Forge:** the current framework is **3.3 Alpha**. Progressive team adoption and verifiable synchronization are the focus of the **3.4 proposal**, which has its own approval and qualification gates. The three-layer canonical/distribution/client-delivery model also remains proposed.
+- **Forge Base:** distribution **0.2.0** provides seven engineering skills, with canonical derivation, reproducible builds, versioned provenance, team feedback, and synchronization checks. Framework, runtime, template, plugin, installation, and actual use have independent versions and evidence.
+- **Trustyu AI Works:** creation, evolution, modernization, and composition of AI Native solutions; 12 modeled resource kinds and qualified compiled paths for Agent, Function, Workflow, Widget, and Surface. Current work includes durable assistant coordination, authoring consistency, browser-assisted investigation, and explicit solution-acceptance contracts.
+- **Trustyu Score:** approved deterministic **Core 3.0.0** and editorial standard **4.1.0** remain authoritative. A **3.0.1 assisted-review candidate** adds coverage obligations, evidence grounding, revision integrity, decision records, receipts, and replay. Runtime activation and candidate promotion retain their own gates.
+- **NEEDYU V2:** pre-launch meeting memory with web, API, worker, a Chrome companion, and local ASR. Engineering covers consented capture, transcription/diarization, temporal memory, post-call handling, sharing, tenant-safe assistance, and recoverable background work. V1 repositories preserve historical code separately.
+- **Public knowledge:** the personal hub connects articles, RSS, Docks presentations, advisory, talks, and consent-based follow-up; Tech Human and POR.life provide the broader leadership, learning, and purpose contexts.
 
-This status cut is dated **2026-11-06** and exposes only facts that can be stated without publishing private code, customer evidence, credentials, internal topology, or unverified outcomes.
+This status cut is dated **2026-11-16**, following a targeted review of current default-branch documentation and recent engineering handoffs. It publishes a redacted capability map; customer material, credentials, private topology, and unverified outcomes remain outside this profile.
+
+My role combines founding direction, product conception, frontend/UX, architecture-to-business decisions, and delivery review. AI Works engineering and architecture are led by Samuel Cardoso; Forge Base maintenance and team adoption are led by Diego. Contributions are collaborative, and AI-assisted work retains its provenance.
 
 ## Faith, Work, and Purpose
 
@@ -98,6 +123,7 @@ These are technologies used across different Trustyu, Tech Human, NEEDYU, and pe
 ### Backend, Data, and Durable Runtime
 
 ![Node.js](https://img.shields.io/badge/Node.js_24_LTS-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
+![Node.js AI Works](https://img.shields.io/badge/AI_Works-Node.js_26%2B-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)
 ![Python](https://img.shields.io/badge/Python_3.12+-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
 ![Go](https://img.shields.io/badge/Go-111827?style=for-the-badge&logo=go&logoColor=00ADD8)
 ![FastAPI](https://img.shields.io/badge/FastAPI-111827?style=for-the-badge&logo=fastapi&logoColor=009688)
@@ -130,6 +156,7 @@ These are technologies used across different Trustyu, Tech Human, NEEDYU, and pe
 ![LLM Routing](https://img.shields.io/badge/Multi--Provider_LLM_Routing-111827?style=for-the-badge&logo=openai&logoColor=white)
 ![Durable Memory](https://img.shields.io/badge/Durable_Memory-111827?style=for-the-badge&logo=databricks&logoColor=FF3621)
 ![Evals](https://img.shields.io/badge/Versioned_Evals-111827?style=for-the-badge&logo=checkmarx&logoColor=white)
+![Local ASR](https://img.shields.io/badge/Local_ASR-sherpa--onnx-111827?style=for-the-badge&logo=python&logoColor=FFD43B)
 ![Human Gates](https://img.shields.io/badge/Human_Verdict-111827?style=for-the-badge&logo=github&logoColor=white)
 ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry_GenAI-111827?style=for-the-badge&logo=opentelemetry&logoColor=white)
 ![LangSmith](https://img.shields.io/badge/LangSmith-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
@@ -184,12 +211,15 @@ SPEC → EXPLORE → PLAN → RED → IMPLEMENT → GREEN → SELF-VERIFY → PR
 
 FORGE 3.2 adds Brownfield & Consolidation for systems that must be preserved, integrated, redesigned, or retired. FORGE 3.3 adds verifiable governance and delivery integrity. The current integrated program is Alpha; each mechanism carries its own implementation, verification, and operating evidence. A proposed three-layer boundary — canonical framework, versioned distribution, and client-scoped delivery — remains explicitly proposed until its final architectural approval.
 
+The team distribution, **Forge Base 0.2.0**, packages seven practices: context routing, specifications, planning in slices, testing with proof, commits/PRs, responding to reviews, and recording decisions. Changes flow from canonical sources through review, validation, release, installation, and a verified project task. Local project rules and authorized context remain part of the work. **FORGE 3.4 is a proposal for progressive adoption and verifiable synchronization.**
+
 ## AI Architecture
 
 ### Agentic systems and workflows
 
 - **Hub Agents:** Python, FastAPI, Clean Architecture, LangGraph, PostgreSQL/pgvector, Redis/Arq, tenant isolation, pluggable channels, and product-specific personas and tools.
 - **AI Works:** TypeScript/Fastify control and data planes, Next.js authoring, Temporal durable supervision, Go/Zigflow workflow execution, and workerd-isolated Functions. Twelve resource kinds are modeled; five currently have compiled artifact build/publication paths.
+- **NEEDYU V2:** Next.js/Fastify/worker services, a Manifest V3 companion, and Python/FastAPI ASR with sherpa-onnx; PostgreSQL holds authoritative records and jobs/outbox, while Redis Streams carries notifications.
 - **Compiled contracts:** Agents and Workflows become versioned `openworkflow/v1` artifacts; Functions execute exact immutable targets with authorization and policy revalidation.
 - **Control and execution:** Forge governs intent, risk, evidence, states, and authority; AI Works provides qualified execution surfaces. Their composition is architectural direction, not a universal operating claim.
 - **Effects:** idempotency keys, tool journals, approvals, and effect receipts make retries explicit; uncertain external effects stop for reconciliation.
@@ -241,6 +271,8 @@ Trustyu Score is currently **human-led and AI-assisted**, not an autonomous audi
 - an approved 4.1.0 editorial/layout standard for new manual HTML/PDF emissions across all three report perspectives;
 - a fixture-only navigable BETA journey used to review the engagement flow without claiming a production portal, real authorization, billing, tenant isolation, or client execution.
 
+The integrated assisted-review candidate adds a question-based coverage plan, evidence grounding, revision/dependency checks, explicit dispositions, and Core receipt/replay. It makes missing or inconsistent records detectable in the exercised contracts. Semantic sufficiency, calibration, candidate promotion, and AI Works integration require their own reviews. Each new report edition carries a shared HTML/PDF identity and a recorded reading-completion time.
+
 The target source-bound runtime, specialized product agents, Evidence Plane, and client portal remain review-gated. No claim of scientific validation, certification, autonomous availability, or FORGE attestation is made here.
 
 Read the [full public architecture map](docs/trustyu-ai-architecture.md) for the detailed product, runtime, memory, evaluation, stack, and disclosure boundaries.
@@ -264,7 +296,9 @@ I use AI agents as a bounded execution layer:
 | --- | --- |
 | Foundation products | Next.js 16, React, TypeScript strict, Tailwind, shadcn/ui, Prisma, pnpm 11, i18n, Vitest |
 | Hub Agents | Python 3.12+, FastAPI, Pydantic, SQLAlchemy/Alembic, LangGraph, Arq, PostgreSQL 18 + pgvector, Redis 8.2.x |
-| AI Works | TypeScript, Fastify, Next.js, Temporal, Go/Zigflow, workerd, Kubernetes/Minikube, AWS EKS, object storage |
+| AI Works | Node.js 26+, pnpm 11.22, TypeScript, Fastify, Next.js, Temporal, Go/Zigflow, workerd, Kubernetes/Minikube, AWS EKS, object storage |
+| NEEDYU V2 | Node.js 24, Next.js, Fastify, PostgreSQL jobs/outbox, Redis Streams, Chrome Manifest V3, Python/FastAPI, sherpa-onnx |
+| Personal public hub | React 18, Vite 7, Tailwind CSS 3, Netlify Functions, static article routes, RSS and Docks |
 | Identity and tenancy | Keycloak 26.6.3, JWT/JWKS, tenant or account/workspace boundaries, service-authority contracts |
 | Delivery | GitHub Actions, Docker, Terraform/HCL, Railway, Vercel, reusable workflows, pinned artifacts |
 | Security and evidence | Gitleaks, CodeQL/SAST, Trivy/CVE gates, provenance, redaction, receipts, rollback |
@@ -272,14 +306,15 @@ I use AI agents as a bounded execution layer:
 
 ## Active Building Themes
 
-- **Trustyu Forge:** engineering harness, Brownfield/Consolidation, verifiable governance, delivery integrity, evidence, and human verdicts
+- **Trustyu Forge:** engineering harness, Brownfield/Consolidation, verifiable governance, delivery integrity, evidence, human verdicts, and progressive team adoption
+- **Forge Base:** seven versioned practices, canonical derivation, reproducible distribution, project context, and a team contribution loop
 - **Trustyu AI Works:** 12 modeled resource kinds, with qualified compiled-artifact paths for Agent, Function, Workflow, Widget, and Surface; assistant, memory, evaluation, preview, and migration work remains evidence-bounded
 - **Hub Agents:** tenant-safe product agents, vertical isolation, multi-provider routing, RAG, async workers, channels, and observability
-- **Trustyu Score:** deterministic Core 3.0.0, report standard 4.1.0, technical/product/market evidence contracts, a fixture-only BETA journey, and human-reviewed delivery
+- **Trustyu Score:** deterministic Core 3.0.0, report standard 4.1.0, an assisted-review candidate for coverage/grounding/revisions, receipts/replay, and human-reviewed delivery
 - **Trustyu Lens:** problem and solution diagnosis through evidence, alternatives, hypotheses, and the next useful validation
 - **Process Intelligence:** POC for converting organizational knowledge into BPMN and process specifications
 - **Trustyu CRM:** AI-assisted vertical workflows, onboarding, messaging, and operational automation under product-specific evidence
-- **NEEDYU V2:** pre-launch development around meeting memory, context, capture, versioned transcription metadata, post-call handling, sharing controls, and human-centered assistance
+- **NEEDYU V2:** pre-launch meeting memory, consented capture, local transcription/diarization, temporal context, post-call handling, sharing controls, and tenant-safe assistance
 - **AI literacy:** governance readiness, use-case mapping, leadership, and humanized adoption through [Tech Human](https://techhuman.com.br)
 - **Authorial knowledge and Talks:** source-controlled publishing, Docks, public notes, and consent-based follow-up
 - **Faith and purpose:** products and businesses aligned under [POR.life](https://por.life), with Jesus at the center

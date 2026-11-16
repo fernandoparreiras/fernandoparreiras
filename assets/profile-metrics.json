@@ -1,34 +1,35 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-11-09T20:45:33.456Z",
-  "generatedLocalDate": "2026-11-09",
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T18:02:06.333Z",
+  "generatedLocalDate": "2026-11-16",
   "displayTimeZone": "America/Sao_Paulo",
   "window": {
-    "from": "2025-11-09T20:45:33.456Z",
-    "to": "2026-11-09T20:45:33.456Z",
+    "from": "2025-11-16T18:02:06.333Z",
+    "to": "2026-11-16T18:02:06.333Z",
     "basis": "rolling-12-months-utc"
   },
   "scope": {
     "contributions": "GitHub profile contribution calendar; private repository details remain anonymized",
+    "activityBreakdown": "Contribution-type totals visible to this API credential; anonymized private activity is not classified by type",
     "repositories": "Public, non-fork repositories owned by the profile",
     "languages": "Bytes reported by GitHub for those public repositories",
     "qualityEvidence": "Not published from private repositories; absence is not reported as zero"
   },
   "github": {
-    "contributions": 19984,
-    "privateContributions": 19708,
-    "commits": 175,
-    "pullRequests": 85,
+    "contributions": 20513,
+    "privateContributions": 20226,
+    "commits": 182,
+    "pullRequests": 89,
     "issues": 13,
     "pullRequestReviews": 1,
-    "activeDays": 231,
-    "currentStreak": 29,
+    "activeDays": 237,
+    "currentStreak": 6,
     "longestStreak": 35,
     "bestDay": {
       "date": "2026-07-11",
       "contributions": 387
     },
-    "followers": 16,
+    "followers": 15,
     "publicRepositories": 2,
     "publicStars": 2
   },
@@ -38,6 +39,12 @@
       "tagline": "Engineering harness + delivery integrity",
       "stage": "Alpha 3.3",
       "evidence": "Public architecture map"
+    },
+    {
+      "name": "Forge Base Skills",
+      "tagline": "Progressive team engineering practices",
+      "stage": "Distribution 0.2.0",
+      "evidence": "Seven skills + release provenance"
     },
     {
       "name": "Trustyu CRM",
@@ -61,7 +68,7 @@
       "name": "Trustyu Score",
       "tagline": "Human-led, AI-assisted assessment",
       "stage": "Professional-assisted",
-      "evidence": "Core 3.0 + report standard 4.1"
+      "evidence": "Core 3.0 + assisted review candidate"
     },
     {
       "name": "Trustyu Lens",
@@ -82,10 +89,22 @@
       "evidence": "Implementation slices, no GA claim"
     },
     {
-      "name": "Needyu Chrome Plugin",
-      "tagline": "Meeting capture client and install path",
-      "stage": "Development",
-      "evidence": "Private implementation context"
+      "name": "Personal Knowledge Hub",
+      "tagline": "Articles, talks and Docks publishing",
+      "stage": "Public website",
+      "evidence": "Public source + delivery contracts"
+    },
+    {
+      "name": "Tech Human",
+      "tagline": "AI literacy, leadership and governance",
+      "stage": "Professional-assisted",
+      "evidence": "Public offerings and knowledge"
+    },
+    {
+      "name": "POR.life",
+      "tagline": "Faith, purpose and authorial knowledge",
+      "stage": "Public initiative",
+      "evidence": "Public site + editorial contexts"
     }
   ]
 }
