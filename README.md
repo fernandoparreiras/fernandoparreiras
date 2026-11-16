@@ -162,6 +162,31 @@ These are technologies used across different Trustyu, Tech Human, NEEDYU, and pe
 ![LangSmith](https://img.shields.io/badge/LangSmith-111827?style=for-the-badge&logo=langchain&logoColor=1C3C3C)
 ![LangFuse](https://img.shields.io/badge/LangFuse-111827?style=for-the-badge&logo=rocket&logoColor=white)
 
+### AI Works — Orchestration, Decisions, Contracts, and Data
+
+Additional technologies verified in the AI Works dependency manifests, runtime documentation, and infrastructure definitions on **2026-11-16**. These complement the cross-product stack above; the [AI Works technology map](docs/aiworks-technology-map.md) explains each role and its usage boundary.
+
+[![Temporal.io](https://img.shields.io/badge/Temporal.io-Durable_Orchestration-111827?style=for-the-badge&logo=temporal&logoColor=white)](https://temporal.io/)
+![Zigflow](https://img.shields.io/badge/Zigflow-Go_Workflow_Runtime-111827?style=for-the-badge&logo=go&logoColor=00ADD8)
+![Serverless Workflow](https://img.shields.io/badge/Serverless_Workflow-openworkflow%2Fv1-111827?style=for-the-badge&logo=cncf&logoColor=white)
+![JEV](https://img.shields.io/badge/JEV-TypeSafe_Decisions-111827?style=for-the-badge)
+![TypeSpec](https://img.shields.io/badge/TypeSpec-Resource_Contracts-111827?style=for-the-badge)
+![GraphQL](https://img.shields.io/badge/GraphQL-111827?style=for-the-badge&logo=graphql&logoColor=E10098)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-111827?style=for-the-badge&logo=openapiinitiative&logoColor=6BA539)
+![JSON Schema and Ajv](https://img.shields.io/badge/JSON_Schema-Ajv-111827?style=for-the-badge&logo=json&logoColor=white)
+![SQLite FTS5](https://img.shields.io/badge/SQLite-FTS5-111827?style=for-the-badge&logo=sqlite&logoColor=003B57)
+![sqlite-vec](https://img.shields.io/badge/sqlite--vec-Vector_Search-111827?style=for-the-badge&logo=sqlite&logoColor=38BDF8)
+![Cohere Embed](https://img.shields.io/badge/Cohere_Embed-v4-111827?style=for-the-badge)
+![Amazon Bedrock](https://img.shields.io/badge/Amazon_Bedrock-Embeddings-111827?style=for-the-badge)
+![Amazon S3](https://img.shields.io/badge/Amazon_S3-Object_Storage-111827?style=for-the-badge&logo=amazons3&logoColor=569A31)
+![SeaweedFS](https://img.shields.io/badge/SeaweedFS-Local_S3-111827?style=for-the-badge)
+![LocalStack](https://img.shields.io/badge/LocalStack-AWS_Development-111827?style=for-the-badge&logo=localstack&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-Metrics-111827?style=for-the-badge&logo=prometheus&logoColor=E6522C)
+![Grafana](https://img.shields.io/badge/Grafana-Dashboards-111827?style=for-the-badge&logo=grafana&logoColor=F46800)
+![Loki](https://img.shields.io/badge/Grafana_Loki-Logs-111827?style=for-the-badge&logo=grafana&logoColor=F46800)
+![esbuild](https://img.shields.io/badge/esbuild-Artifact_Builds-111827?style=for-the-badge&logo=esbuild&logoColor=FFCF00)
+![Biome](https://img.shields.io/badge/Biome-Tooling-111827?style=for-the-badge&logo=biome&logoColor=60A5FA)
+
 ### Quality and Security
 
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-111827?style=for-the-badge&logo=githubactions&logoColor=2088FF)
