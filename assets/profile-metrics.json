@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T18:58:13.171Z",
-  "generatedLocalDate": "2026-11-19",
+  "generatedAt": "2026-11-20T18:35:35.217Z",
+  "generatedLocalDate": "2026-11-20",
   "displayTimeZone": "America/Sao_Paulo",
   "window": {
-    "from": "2025-11-19T18:58:13.171Z",
-    "to": "2026-11-19T18:58:13.171Z",
+    "from": "2025-11-20T18:35:35.217Z",
+    "to": "2026-11-20T18:35:35.217Z",
     "basis": "rolling-12-months-utc"
   },
   "scope": {
@@ -16,20 +16,20 @@
     "qualityEvidence": "Not published from private repositories; absence is not reported as zero"
   },
   "github": {
-    "contributions": 20794,
-    "privateContributions": 20495,
-    "commits": 190,
-    "pullRequests": 93,
+    "contributions": 20848,
+    "privateContributions": 20547,
+    "commits": 191,
+    "pullRequests": 94,
     "issues": 13,
     "pullRequestReviews": 1,
-    "activeDays": 240,
-    "currentStreak": 9,
+    "activeDays": 241,
+    "currentStreak": 10,
     "longestStreak": 35,
     "bestDay": {
       "date": "2026-07-11",
       "contributions": 387
     },
-    "followers": 15,
+    "followers": 16,
     "publicRepositories": 2,
     "publicStars": 2
   },
