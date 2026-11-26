@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=45689782409" alt="Fernando Parreiras — exact GitHub activity counts, data provenance, human-centered AI, engineering evidence, and public knowledge" width="100%" />
+<img src="https://raw.githubusercontent.com/fernandoparreiras/fernandoparreiras/main/assets/profile-dashboard.svg?v=45884826847" alt="Fernando Parreiras — exact GitHub activity counts, data provenance, human-centered AI, engineering evidence, and public knowledge" width="100%" />
 
 <br />
 <br />
@@ -25,20 +25,20 @@ I turn complex business problems into practical AI products and operating system
 ## GitHub activity
 
 <!-- profile-metrics:start -->
-Updated **2026-11-25** · [exact UTC window and JSON](assets/profile-metrics.json) · daily refresh at **07:17 America/Sao_Paulo**.
+Updated **2026-11-26** · [exact UTC window and JSON](assets/profile-metrics.json) · daily refresh at **07:17 America/Sao_Paulo**.
 
 | Rolling 12-month activity | Count |
 | --- | ---: |
-| Profile contributions | 21,539 |
-| Anonymized private contributions | 21,229 |
-| API-visible commits | 199 |
+| Profile contributions | 21,575 |
+| Anonymized private contributions | 21,264 |
+| API-visible commits | 200 |
 | API-visible authored pull requests | 95 |
 | API-visible authored issues | 13 |
 | API-visible formal PR reviews | 1 |
-| Active days | 245 |
-| Current / longest streak | 15 / 35 days |
+| Active days | 246 |
+| Current / longest streak | 16 / 35 days |
 | Public owner repositories / stars | 2 / 2 |
-| Followers | 16 |
+| Followers | 17 |
 
 Private activity is aggregated; the API-visible breakdown does not classify all private contributions. Counts include eligible automated activity and do not measure human effort or product readiness. [Methodology and limitations](docs/profile-metrics-methodology.md).
 <!-- profile-metrics:end -->
